@@ -10,6 +10,14 @@
 
 ### READY (próximas tarefas a executar)
 
+- **T-002:** Python bootstrap + venv + pre-commit
+  - Descrição: Executar `bootstrap.ps1`, criar venv, instalar deps base, pre-commit hooks.
+  - Persona: TL
+  - DoR: [x] T-001 concluído; [x] DUV-003 resolvida (path curto)
+  - Dependências: T-001 ✅ DONE
+  - Link WorkOrder: `_OBSIDIAN/Organização do Projeto/WorkOrders/T-002-WorkOrder.md`
+  - Status: DESBLOQUEADA (DUV-003 resolvida)
+
 - **T-003:** CI/tests/lint/typecheck (GitHub Actions)
   - Descrição: Configurar `.github/workflows/` (lint, pytest, mypy, security scan).
   - Persona: TL
@@ -37,14 +45,7 @@
 
 ### BLOCKED
 
-- **T-002:** Python bootstrap + venv + pre-commit — ⚠️ BLOCKED por DUV-003
-  - Descrição: Executar `bootstrap.ps1`, criar venv, instalar deps base, pre-commit hooks.
-  - Persona: TL
-  - DoR: [x] T-001 concluído
-  - Dependências: T-001 ✅ DONE
-  - **Blocker**: DUV-003 (Windows path limit — 260 caracteres)
-  - Link WorkOrder: `_OBSIDIAN/Organização do Projeto/WorkOrders/T-002-WorkOrder.md`
-  - Link Evidence Pack: `docs/evidence/T-002-notes.md` (parcial — bloqueado)
+(Nenhuma no momento — T-002 DESBLOQUEADA)
 
 ### DONE
 
@@ -65,12 +66,12 @@
 
 ## 2. DÚVIDAS / IMPEDIMENTOS (SLA 24h)
 
-| ID      | Data     | Tarefa | Descrição                                     | SLA      | Status       | Resolução                                                                                                                              |
-| ------- | -------- | ------ | --------------------------------------------- | -------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| DUV-001 | 20260130 | Geral  | GitHub remoto: usar org pessoal ou novo?      | 20260131 | ✅ RESOLVIDA | Decisão: GitHub pessoal FREE. Registrado em DEC-007. (2026-01-30)                                                                      |
-| DUV-002 | 20260130 | T-004  | Quais fontes incluir na allowlist inicial?    | 20260131 | ✅ RESOLVIDA | Decisão: 5 fontes gov brasileiras (DOU, Planalto, IBGE, BCB, dados.gov.br). Registrado em DEC-008. (2026-01-30)                      |
-| **DUV-003** | **20260130** | **T-002** | **Windows path limit (260 caracteres)** | **20260131** | **⚠️ OPEN** | **BLOCKER P0**: Path ultrapassa 260 chars, impede instalação Python. Opções: A) Mover projeto, B) LongPathsEnabled, C) Symlink. [Link](DUV-003-path-limit.md) |
-| DUV-002 | 20260130 | T-004  | Quais são as primeiras 5 fontes da allowlist? | 20260131 | ✅ RESOLVIDA | Decisão: SRC-001 (DOU), SRC-002 (Planalto), SRC-003 (IBGE), SRC-004 (BCB), SRC-005 (dados.gov.br). Registrado em DEC-008. (2026-01-30) |
+| ID          | Data         | Tarefa    | Descrição                                     | SLA          | Status           | Resolução                                                                                                                              |
+| ----------- | ------------ | --------- | --------------------------------------------- | ------------ | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| DUV-001     | 20260130     | Geral     | GitHub remoto: usar org pessoal ou novo?      | 20260131     | ✅ RESOLVIDA     | Decisão: GitHub pessoal FREE. Registrado em DEC-007. (2026-01-30)                                                                      |
+| DUV-002     | 20260130     | T-004     | Quais fontes incluir na allowlist inicial?    | 20260131     | ✅ RESOLVIDA     | Decisão: 5 fontes gov brasileiras (DOU, Planalto, IBGE, BCB, dados.gov.br). Registrado em DEC-008. (2026-01-30)                        |
+| **DUV-003** | **20260130** | **T-002** | **Windows path limit (260 caracteres)**       | **20260131** | **✅ RESOLVIDA** | **Resolução**: Projeto movido para C:\Dev\banco-dados-publicos (path curto). robocopy completado com sucesso. (2026-01-30)             |
+| DUV-002     | 20260130     | T-004     | Quais são as primeiras 5 fontes da allowlist? | 20260131     | ✅ RESOLVIDA     | Decisão: SRC-001 (DOU), SRC-002 (Planalto), SRC-003 (IBGE), SRC-004 (BCB), SRC-005 (dados.gov.br). Registrado em DEC-008. (2026-01-30) |
 
 ---
 
