@@ -1,8 +1,53 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 16:30 UTC
+**Última atualização:** 2026-01-30 19:35 UTC
 **Rodada:** #2 (T-002 PYTHON BOOTSTRAP)
-**Status:** 🔄 T-002 IN_PROGRESS
+**Status:** ✅ T-002 CONCLUÍDA
+
+---
+
+## Rodada #2 — T-002: Python bootstrap + venv + pre-commit (2026-01-30)
+
+### Tarefas executadas nesta rodada
+
+- **T-002:** Python bootstrap + venv + pre-commit
+  - Status: ✅ DONE
+  - Tempo: ~60 min
+  - Persona: TL (Tech Lead)
+  - Ações:
+    - Ambiente virtual criado: `.venv/` (Python 3.14.2)
+    - 66 packages core instalados (fastapi, sqlalchemy, pytest, black, mypy, etc.)
+    - Correções de compatibilidade Python 3.14:
+      - scikit-learn, datasketch, lxml, pydantic, pydantic-settings, psycopg
+    - Bootstrap.ps1 corrigido: venv → .venv
+    - Pre-commit hooks configurados (.pre-commit-config.yaml criado)
+    - Arquivo .env criado a partir de .env.example
+    - Commit d0c256b + push para origin/master
+  - WorkOrder: [T-002-WorkOrder.md](WorkOrders/T-002-WorkOrder.md)
+  - Evidence: [T-002 Evidence Pack](../../docs/evidence/T-002/)
+  - Handoff: [T-002-Handoff.md](Handoffs/T-002-Handoff.md)
+
+### Tarefas do próximo ciclo (READY)
+
+1. **T-003:** CI/tests/lint/typecheck (DESBLOQUEADA - T-002 DONE)
+2. **T-ONB-SRC-001 a T-ONB-SRC-005:** Onboarding compliance de 5 fontes (READY)
+3. **T-005:** Postgres schema v0 (READY - pode executar após T-002)
+
+### Métricas da rodada
+
+| Métrica                    | Valor                                        |
+| -------------------------- | -------------------------------------------- |
+| Tarefas completadas        | 1 (T-002)                                    |
+| Tempo total                | ~60 min                                      |
+| Bloqueadores resolvidos    | 0                                            |
+| Dependências desbloqueadas | 1 (T-003)                                    |
+| Packages instalados        | 66 (core MVP)                                |
+| Files changed              | 8 (requirements, bootstrap, .pre-commit, .env, evidence) |
+| Commits                    | 1 (d0c256b)                                  |
+
+### STOP.md status
+
+✅ **Não existe** → Loop continua (próxima rodada autorizada)
 
 ---
 

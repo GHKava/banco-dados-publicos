@@ -56,6 +56,15 @@
   - Evidence: [T-001-notes.md](../../docs/evidence/T-001-notes.md)
   - Handoff: [T-001-Handoff.md](Handoffs/T-001-Handoff.md)
 
+- **T-002:** Python bootstrap + venv + pre-commit
+  - Data: 2026-01-30
+  - Tempo: ~60 min
+  - Resultado: 66 packages instalados, .venv criado, pre-commit configurado
+  - Correções: requirements.txt atualizado para Python 3.14, bootstrap.ps1 fixado
+  - Evidence: [T-002 Evidence Pack](../../docs/evidence/T-002/)
+  - Handoff: [T-002-Handoff.md](Handoffs/T-002-Handoff.md)
+  - Commit: d0c256b
+
 - **T-004:** Define allowlist + sources.yaml
   - Data: 2026-01-30
   - Tempo: ~30 min (incluído em DUV-002)
