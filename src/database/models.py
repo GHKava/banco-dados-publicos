@@ -17,7 +17,7 @@ from sqlalchemy.orm import relationship
 Base = declarative_base()  # type: ignore[misc]
 
 
-class Source(Base):  # type: ignore[valid-type]
+class Source(Base):  # type: ignore
     """Data source registry with crawl and compliance policies."""
 
     __tablename__ = "sources"
@@ -56,7 +56,7 @@ class Source(Base):  # type: ignore[valid-type]
     documents = relationship("Document", back_populates="source", cascade="all, delete-orphan")
 
 
-class Document(Base):  # type: ignore[valid-type]
+class Document(Base):  # type: ignore
     """Collected and processed documents."""
 
     __tablename__ = "documents"
@@ -118,7 +118,7 @@ class Document(Base):  # type: ignore[valid-type]
     chunks = relationship("Chunk", back_populates="document", cascade="all, delete-orphan")
 
 
-class Chunk(Base):  # type: ignore[valid-type]
+class Chunk(Base):  # type: ignore
     """Text segments for RAG indexing."""
 
     __tablename__ = "chunks"
@@ -159,7 +159,7 @@ class Chunk(Base):  # type: ignore[valid-type]
     embeddings = relationship("Embedding", back_populates="chunk", cascade="all, delete-orphan")
 
 
-class Embedding(Base):  # type: ignore[valid-type]
+class Embedding(Base):  # type: ignore
     """Vector embeddings for semantic search."""
 
     __tablename__ = "embeddings"
@@ -184,7 +184,7 @@ class Embedding(Base):  # type: ignore[valid-type]
     chunk = relationship("Chunk", back_populates="embeddings")
 
 
-class AuditLog(Base):
+class AuditLog(Base):  # type: ignore
     """Audit log for compliance and traceability."""
 
     __tablename__ = "audit_log"
