@@ -1,8 +1,8 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 19:35 UTC
-**Rodada:** #2 (T-002 PYTHON BOOTSTRAP)
-**Status:** ✅ T-002 CONCLUÍDA
+**Última atualização:** 2026-01-30 19:40 UTC
+**Rodada:** #3 (T-003 CI/TESTS/LINT)
+**Status:** 🔄 T-003 IN_PROGRESS
 
 ---
 
@@ -35,15 +35,15 @@
 
 ### Métricas da rodada
 
-| Métrica                    | Valor                                        |
-| -------------------------- | -------------------------------------------- |
-| Tarefas completadas        | 1 (T-002)                                    |
-| Tempo total                | ~60 min                                      |
-| Bloqueadores resolvidos    | 0                                            |
-| Dependências desbloqueadas | 1 (T-003)                                    |
-| Packages instalados        | 66 (core MVP)                                |
+| Métrica                    | Valor                                                    |
+| -------------------------- | -------------------------------------------------------- |
+| Tarefas completadas        | 1 (T-002)                                                |
+| Tempo total                | ~60 min                                                  |
+| Bloqueadores resolvidos    | 0                                                        |
+| Dependências desbloqueadas | 1 (T-003)                                                |
+| Packages instalados        | 66 (core MVP)                                            |
 | Files changed              | 8 (requirements, bootstrap, .pre-commit, .env, evidence) |
-| Commits                    | 1 (d0c256b)                                  |
+| Commits                    | 1 (d0c256b)                                              |
 
 ### STOP.md status
 

@@ -1,0 +1,67 @@
+{
+  "task_id": "T-003",
+  "date": "2026-01-30",
+  "files_changed": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "action": "created",
+      "reason": "GitHub Actions CI workflow with lint/typecheck/tests"
+    },
+    {
+      "path": "src/",
+      "action": "created",
+      "reason": "Source code directory structure"
+    },
+    {
+      "path": "src/__init__.py",
+      "action": "created",
+      "reason": "Package init with version 0.1.0"
+    },
+    {
+      "path": "src/README.md",
+      "action": "created",
+      "reason": "Documentation of planned src/ structure"
+    },
+    {
+      "path": "tests/",
+      "action": "created",
+      "reason": "Tests directory structure"
+    },
+    {
+      "path": "tests/__init__.py",
+      "action": "created",
+      "reason": "Tests package init"
+    },
+    {
+      "path": "tests/README.md",
+      "action": "created",
+      "reason": "Documentation of how to run tests"
+    },
+    {
+      "path": "tests/test_basic.py",
+      "action": "created",
+      "reason": "Dummy tests to validate CI pipeline (7 tests)"
+    },
+    {
+      "path": "docs/evidence/T-003/",
+      "action": "created",
+      "reason": "Evidence Pack directory"
+    },
+    {
+      "path": "docs/evidence/T-003/notes.md",
+      "action": "created",
+      "reason": "Summary and validation guide"
+    },
+    {
+      "path": "docs/evidence/T-003/files_changed.json",
+      "action": "created",
+      "reason": "This file"
+    }
+  ],
+  "ci_workflow": "GitHub Actions",
+  "python_versions": ["3.11", "3.12", "3.14"],
+  "lint_tools": ["black", "flake8", "isort"],
+  "typecheck_tool": "mypy",
+  "test_framework": "pytest",
+  "tests_created": 7
+}
