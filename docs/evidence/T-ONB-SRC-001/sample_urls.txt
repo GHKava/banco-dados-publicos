@@ -1,0 +1,25 @@
+# Sample URLs — SRC-001 (DOU)
+
+## Golden URLs para testes (quando acesso for autorizado)
+
+1. https://www.in.gov.br/leiturajornal
+   - Descrição: Página de leitura do jornal oficial
+   - Tipo: HTML (índice)
+
+2. https://www.in.gov.br/web/dou
+   - Descrição: Seção do Diário Oficial
+   - Tipo: HTML (navegação)
+
+3. https://www.in.gov.br/
+   - Descrição: Homepage
+   - Tipo: HTML (portal)
+
+---
+
+## URLs alternativos (dados.gov.br)
+
+A verificar se DOU está catalogado em:
+- https://dados.gov.br/home
+- Buscar por "Diário Oficial" ou "Imprensa Nacional"
+
+---

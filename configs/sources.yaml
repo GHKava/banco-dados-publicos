@@ -19,14 +19,18 @@ sources:
       allow_paths: ["/", "/leiturajornal", "/web/dou"]
       deny_paths: []
     license_policy:
-      license_status: "unknown"
-      license_evidence: "Registrar ToS/licença em Fontes_Licencas.md"
-      default_storage_mode: "METADATA_ONLY"
+      license_status: "blocked_waf"
+      license_evidence: "T-ONB-SRC-001 (2026-01-30): 403 Forbidden (Azion WAF) ao tentar fetch robots.txt. ToS não localizado. LAI provável mas scraping não autorizado."
+      default_storage_mode: "BLOCK"
     data_handling:
       pii_expected: "medium"
       pii_actions: ["detect", "redact"]
       retention_days: 365
-    notes: "MVP: armazenar metadados + link; liberar texto integral somente após licença verificada."
+    notes: "BLOQUEADO: Site protegido por Azion WAF. Scraping resulta em 403. Próximos passos: (1) verificar API oficial em dados.gov.br, (2) feeds RSS, (3) contato formal. DUV-004 aberta."
+    onboarding_status: "completed"
+    onboarding_date: "2026-01-30"
+    onboarding_task: "T-ONB-SRC-001"
+    duv_related: "DUV-004"
 
   - source_id: "SRC-002"
     name: "Planalto - Legislação"

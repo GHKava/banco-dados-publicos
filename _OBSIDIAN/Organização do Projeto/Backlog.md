@@ -76,6 +76,16 @@
   - Handoff: [T-005-Handoff.md](Handoffs/T-005-Handoff.md)
   - Commit: 534a519
 
+- **T-ONB-SRC-001:** Onboarding SRC-001 (DOU)
+  - Data: 2026-01-30
+  - Tempo: ~25 min
+  - Resultado: BLOCK provisório (proteção Azion WAF). DUV-004 criada. Evidence pack completo.
+  - Deliverables: WorkOrder, license_analysis.md, fetch_test.log, sample_urls.txt, notes.md
+  - Decision: default_storage_mode = BLOCK (fail-closed)
+  - Evidence: [T-ONB-SRC-001 Evidence Pack](../../docs/evidence/T-ONB-SRC-001/)
+  - Handoff: [T-ONB-SRC-001-Handoff.md](Handoffs/T-ONB-SRC-001-Handoff.md)
+  - DUV relacionada: DUV-004
+
 ---
 
 ## 2. DÚVIDAS / IMPEDIMENTOS (SLA 24h)
@@ -86,6 +96,7 @@
 | DUV-002     | 20260130     | T-004     | Quais fontes incluir na allowlist inicial?    | 20260131     | ✅ RESOLVIDA     | Decisão: 5 fontes gov brasileiras (DOU, Planalto, IBGE, BCB, dados.gov.br). Registrado em DEC-008. (2026-01-30)                        |
 | **DUV-003** | **20260130** | **T-002** | **Windows path limit (260 caracteres)**       | **20260131** | **✅ RESOLVIDA** | **Resolução**: Projeto movido para C:\Dev\banco-dados-publicos (path curto). robocopy completado com sucesso. (2026-01-30)             |
 | DUV-002     | 20260130     | T-004     | Quais são as primeiras 5 fontes da allowlist? | 20260131     | ✅ RESOLVIDA     | Decisão: SRC-001 (DOU), SRC-002 (Planalto), SRC-003 (IBGE), SRC-004 (BCB), SRC-005 (dados.gov.br). Registrado em DEC-008. (2026-01-30) |
+| **DUV-004** | **20260130** | **T-ONB-SRC-001** | **DOU bloqueado por WAF - Como obter dados?** | **20260201** | **🔴 ABERTA** | **Contexto**: in.gov.br protegido por Azion WAF (403 em robots.txt). Scraping não permitido. **Próximos passos**: (1) Verificar API oficial em dados.gov.br, (2) Pesquisar feeds RSS oficiais, (3) Considerar contato formal com Imprensa Nacional. **Impacto**: SRC-001 marcado como BLOCK até resolução. |
 
 ---
 

@@ -1,7 +1,7 @@
 # Fontes & Licenças — Registro Auditável
 
-**Data criação:** 2026-01-30  
-**Última atualização:** 2026-01-30  
+**Data criação:** 2026-01-30
+**Última atualização:** 2026-01-30
 **Mantido por:** PM + LEGAL + DPO
 
 ---
@@ -18,80 +18,83 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 
 ### SRC-001 — Diário Oficial da União (DOU) - Imprensa Nacional
 
-**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)  
-**Domínio:** in.gov.br  
-**Discovery:** RSS (https://www.in.gov.br/rss)  
-**Robots.txt:** [PENDENTE verificação]  
-**ToS:** [PENDENTE verificação formal]  
-**Licença:** [PENDENTE — assumir pública, mas confirmar]  
-**Policy Gate:** METADATA_ONLY (fail-closed até evidência de licença)  
-**PII esperado:** Não  
-**Rate limit:** 0.5 rps  
-**Budget:** 1000 URLs/dia, 100 MB/dia  
-**Observações:** DOU é público por natureza (transparência gov), mas precisamos confirmar ToS e licença específica antes de armazenar fulltext. Onboarding em T-ONB-SRC-001.
+**Status:** 🔴 BLOCKED PROVISORIAMENTE (proteção anti-bot + ToS não verificado)
+**Domínio:** in.gov.br
+**Discovery:** RSS (https://www.in.gov.br/rss) [NÃO TESTADO]
+**Robots.txt:** ❌ INACESSÍVEL (403 Forbidden - Azion WAF)
+**ToS:** ❌ NÃO LOCALIZADO (página oficial não encontrada)
+**Licença:** ⚠️ PROVÁVEL LAI (Lei 12.527/2011 - acesso a informações públicas), mas sem confirmação de permissão para scraping
+**Policy Gate:** **BLOCK** (fail-closed — proteção anti-bot indica que scraping não é permitido)
+**PII esperado:** Médio (documentos oficiais podem conter CPF/nomes)
+**Rate limit:** N/A (bloqueado)
+**Budget:** N/A (bloqueado)
+**Onboarding:** T-ONB-SRC-001 (2026-01-30) — COMPLETED com resultado BLOCK
+**Evidence Pack:** [docs/evidence/T-ONB-SRC-001/](../../docs/evidence/T-ONB-SRC-001/)
+**DUV aberta:** DUV-004 — "Como obter dados do DOU sem violar proteção anti-bot?"
+**Observações:** Site protegido por Azion CDN/WAF. Scraping tradicional resulta em 403 Forbidden. Próximos passos: (1) verificar API oficial em dados.gov.br, (2) verificar feeds RSS oficiais, (3) contato formal com Imprensa Nacional. **NÃO INGERIR até autorização formal ou API oficial identificada.**
 
 ---
 
 ### SRC-002 — Planalto - Legislação
 
-**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)  
-**Domínio:** planalto.gov.br  
-**Discovery:** Sitemap (https://www.planalto.gov.br/sitemap.xml)  
-**Robots.txt:** [PENDENTE verificação]  
-**ToS:** [PENDENTE verificação formal]  
-**Licença:** [PENDENTE — legislação é pública, mas confirmar termos de redistribuição]  
-**Policy Gate:** METADATA_ONLY (fail-closed)  
-**PII esperado:** Não  
-**Rate limit:** 0.5 rps  
-**Budget:** 500 URLs/dia, 50 MB/dia  
+**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)
+**Domínio:** planalto.gov.br
+**Discovery:** Sitemap (https://www.planalto.gov.br/sitemap.xml)
+**Robots.txt:** [PENDENTE verificação]
+**ToS:** [PENDENTE verificação formal]
+**Licença:** [PENDENTE — legislação é pública, mas confirmar termos de redistribuição]
+**Policy Gate:** METADATA_ONLY (fail-closed)
+**PII esperado:** Não
+**Rate limit:** 0.5 rps
+**Budget:** 500 URLs/dia, 50 MB/dia
 **Observações:** Legislação federal pública. Confirmar ToS antes de fulltext. Onboarding em T-ONB-SRC-002.
 
 ---
 
 ### SRC-003 — IBGE - APIs e Dados
 
-**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença CC)  
-**Domínio:** ibge.gov.br / servicodados.ibge.gov.br  
-**Discovery:** API oficial (https://servicodados.ibge.gov.br/api/docs)  
-**Robots.txt:** [PENDENTE verificação]  
-**ToS:** [PENDENTE — verificar termos de uso de APIs]  
-**Licença:** [PENDENTE — IBGE frequentemente usa CC-BY; confirmar]  
-**Policy Gate:** METADATA_ONLY (fail-closed até evidência CC-BY ou similar)  
-**PII esperado:** Não  
-**Rate limit:** 1.0 rps  
-**Budget:** 2000 URLs/dia, 200 MB/dia  
+**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença CC)
+**Domínio:** ibge.gov.br / servicodados.ibge.gov.br
+**Discovery:** API oficial (https://servicodados.ibge.gov.br/api/docs)
+**Robots.txt:** [PENDENTE verificação]
+**ToS:** [PENDENTE — verificar termos de uso de APIs]
+**Licença:** [PENDENTE — IBGE frequentemente usa CC-BY; confirmar]
+**Policy Gate:** METADATA_ONLY (fail-closed até evidência CC-BY ou similar)
+**PII esperado:** Não
+**Rate limit:** 1.0 rps
+**Budget:** 2000 URLs/dia, 200 MB/dia
 **Observações:** IBGE APIs públicas, mas precisamos confirmar licença CC-BY explícita. Se confirmado, upgrade para ALLOW_FULLTEXT. Onboarding em T-ONB-SRC-003.
 
 ---
 
 ### SRC-004 — Banco Central - Dados Abertos
 
-**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)  
-**Domínio:** bcb.gov.br / dadosabertos.bcb.gov.br  
-**Discovery:** API oficial (https://dadosabertos.bcb.gov.br/dataset)  
-**Robots.txt:** [PENDENTE verificação]  
-**ToS:** [PENDENTE — verificar termos "dados abertos"]  
-**Licença:** [PENDENTE — BCB frequentemente libera dados abertos; confirmar licença]  
-**Policy Gate:** METADATA_ONLY (fail-closed)  
-**PII esperado:** Não  
-**Rate limit:** 0.5 rps  
-**Budget:** 1000 URLs/dia, 100 MB/dia  
+**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)
+**Domínio:** bcb.gov.br / dadosabertos.bcb.gov.br
+**Discovery:** API oficial (https://dadosabertos.bcb.gov.br/dataset)
+**Robots.txt:** [PENDENTE verificação]
+**ToS:** [PENDENTE — verificar termos "dados abertos"]
+**Licença:** [PENDENTE — BCB frequentemente libera dados abertos; confirmar licença]
+**Policy Gate:** METADATA_ONLY (fail-closed)
+**PII esperado:** Não
+**Rate limit:** 0.5 rps
+**Budget:** 1000 URLs/dia, 100 MB/dia
 **Observações:** Dados abertos BCB. Confirmar licença explícita (CC-BY ou LAI). Onboarding em T-ONB-SRC-004.
 
 ---
 
 ### SRC-005 — dados.gov.br - Catálogo
 
-**Status:** ✅ APROVADO (METADATA_ONLY — licença variável por dataset)  
-**Domínio:** dados.gov.br  
-**Discovery:** API CKAN (https://dados.gov.br/api/3)  
-**Robots.txt:** [PENDENTE verificação]  
-**ToS:** [PENDENTE — verificar termos gerais do portal]  
-**Licença:** **VARIÁVEL POR DATASET** — cada dataset tem licença própria (CC0, CC-BY, Proprietária, etc.)  
-**Policy Gate:** METADATA_ONLY (fail-closed; verificar licença POR DATASET antes de fulltext)  
-**PII esperado:** POSSÍVEL (alguns datasets podem conter PII; detector obrigatório)  
-**Rate limit:** 0.5 rps  
-**Budget:** 500 URLs/dia, 50 MB/dia  
+**Status:** ✅ APROVADO (METADATA_ONLY — licença variável por dataset)
+**Domínio:** dados.gov.br
+**Discovery:** API CKAN (https://dados.gov.br/api/3)
+**Robots.txt:** [PENDENTE verificação]
+**ToS:** [PENDENTE — verificar termos gerais do portal]
+**Licença:** **VARIÁVEL POR DATASET** — cada dataset tem licença própria (CC0, CC-BY, Proprietária, etc.)
+**Policy Gate:** METADATA_ONLY (fail-closed; verificar licença POR DATASET antes de fulltext)
+**PII esperado:** POSSÍVEL (alguns datasets podem conter PII; detector obrigatório)
+**Rate limit:** 0.5 rps
+**Budget:** 500 URLs/dia, 50 MB/dia
 **Observações:** Catálogo misto; precisamos verificar licença individualmente por dataset. PII detection obrigatória. Onboarding em T-ONB-SRC-005.
 
 ---
@@ -125,8 +128,8 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 
 ## 🔄 Revisão e Auditoria
 
-**Frequência de revisão:** Trimestral (ou ao adicionar nova fonte)  
-**Próxima revisão:** 2026-04-30  
+**Frequência de revisão:** Trimestral (ou ao adicionar nova fonte)
+**Próxima revisão:** 2026-04-30
 **Responsável:** PM (Product Manager)
 
 **Checklist de auditoria:**
@@ -140,7 +143,7 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 
 ---
 
-**Mantido por:** PM + LEGAL + DPO  
+**Mantido por:** PM + LEGAL + DPO
 **Última atualização:** 2026-01-30
 
 ---
