@@ -39,15 +39,15 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 
 **Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)
 **Domínio:** planalto.gov.br
-**Discovery:** Sitemap (https://www.planalto.gov.br/sitemap.xml)
-**Robots.txt:** [PENDENTE verificação]
-**ToS:** [PENDENTE verificação formal]
-**Licença:** [PENDENTE — legislação é pública, mas confirmar termos de redistribuição]
+**Discovery:** HTML index (https://www.planalto.gov.br/ccivil_03/)
+**Robots.txt:** ❌ FALHA DE CONEXÃO (não verificado) — ver evidence pack
+**ToS:** ❌ NÃO LOCALIZADO (não verificado)
+**Licença:** ❌ NÃO VERIFICADA (sem evidência oficial)
 **Policy Gate:** METADATA_ONLY (fail-closed)
-**PII esperado:** Não
-**Rate limit:** 0.5 rps
+**PII esperado:** Médio
+**Rate limit:** 0.3 rps
 **Budget:** 500 URLs/dia, 50 MB/dia
-**Observações:** Legislação federal pública. Confirmar ToS antes de fulltext. Onboarding em T-ONB-SRC-002.
+**Observações:** Falha de conectividade impediu verificação de robots/ToS. Manter METADATA_ONLY até confirmação formal. Onboarding em T-ONB-SRC-002.
 
 ---
 

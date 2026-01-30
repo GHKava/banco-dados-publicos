@@ -86,6 +86,16 @@
   - Handoff: [T-ONB-SRC-001-Handoff.md](Handoffs/T-ONB-SRC-001-Handoff.md)
   - DUV relacionada: DUV-004
 
+- **T-ONB-SRC-002:** Onboarding SRC-002 (Planalto)
+  - Data: 2026-01-30
+  - Tempo: ~20 min
+  - Resultado: METADATA_ONLY (fail-closed — evidências não verificadas)
+  - Deliverables: WorkOrder, license_analysis.md, fetch_test.log, sample_urls.txt, notes.md, robots.txt
+  - Decision: default_storage_mode = METADATA_ONLY (fail-closed)
+  - Evidence: [T-ONB-SRC-002 Evidence Pack](../../docs/evidence/T-ONB-SRC-002/)
+  - Handoff: [T-ONB-SRC-002-Handoff.md](Handoffs/T-ONB-SRC-002.md)
+  - DUV relacionada: DUV-005
+
 ---
 
 ## 2. DÚVIDAS / IMPEDIMENTOS (SLA 24h)
@@ -97,6 +107,7 @@
 | **DUV-003** | **20260130** | **T-002**         | **Windows path limit (260 caracteres)**       | **20260131** | **✅ RESOLVIDA** | **Resolução**: Projeto movido para C:\Dev\banco-dados-publicos (path curto). robocopy completado com sucesso. (2026-01-30)                                                                                                                                                                                 |
 | DUV-002     | 20260130     | T-004             | Quais são as primeiras 5 fontes da allowlist? | 20260131     | ✅ RESOLVIDA     | Decisão: SRC-001 (DOU), SRC-002 (Planalto), SRC-003 (IBGE), SRC-004 (BCB), SRC-005 (dados.gov.br). Registrado em DEC-008. (2026-01-30)                                                                                                                                                                     |
 | **DUV-004** | **20260130** | **T-ONB-SRC-001** | **DOU bloqueado por WAF - Como obter dados?** | **20260201** | **🔴 ABERTA**    | **Contexto**: in.gov.br protegido por Azion WAF (403 em robots.txt). Scraping não permitido. **Próximos passos**: (1) Verificar API oficial em dados.gov.br, (2) Pesquisar feeds RSS oficiais, (3) Considerar contato formal com Imprensa Nacional. **Impacto**: SRC-001 marcado como BLOCK até resolução. |
+| **DUV-005** | **20260130** | **T-ONB-SRC-002** | **Falha de conectividade impede verificação de robots/ToS** | **20260201** | **🔴 ABERTA**    | **Contexto**: fetch para planalto.gov.br falhou (erro de conexão). Sem robots/ToS/licença verificáveis. **Impacto**: SRC-002 permanece METADATA_ONLY (fail-closed) até verificação em ambiente com conectividade estável. |
 
 ---
 
@@ -136,7 +147,7 @@
 
 | Tipo         | Total | Aberto | Vencido | Resolvido |
 | ------------ | ----- | ------ | ------- | --------- |
-| Dúvidas      | 2     | 0      | 0       | 2         |
+| Dúvidas      | 5     | 2      | 0       | 3         |
 | Impedimentos | 0     | 0      | 0       | 0         |
 
 **Próxima revisão:** 2026-01-31 (fim de rodada)

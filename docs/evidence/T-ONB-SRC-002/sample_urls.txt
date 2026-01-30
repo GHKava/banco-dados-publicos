@@ -1,0 +1,33 @@
+# Sample URLs — SRC-002 (Planalto - Legislação)
+
+## Golden URLs para testes (legislação federal)
+
+1. https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+   - Descrição: Constituição Federal de 1988
+   - Tipo: HTML (texto integral)
+   - Tamanho esperado: ~500 KB
+
+2. https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
+   - Descrição: Lei 13.709/2018 (LGPD)
+   - Tipo: HTML (texto integral)
+   - Tamanho esperado: ~100 KB
+
+3. https://www.planalto.gov.br/ccivil_03/leis/l8078.htm
+   - Descrição: Lei 8.078/1990 (CDC - Código de Defesa do Consumidor)
+   - Tipo: HTML (texto integral)
+   - Tamanho esperado: ~150 KB
+
+4. https://www.planalto.gov.br/ccivil_03/
+   - Descrição: Índice de legislação (ccivil_03)
+   - Tipo: HTML (navegação)
+   - Tamanho esperado: ~10 KB
+
+---
+
+## URLs alternativos (sitemap/RSS)
+
+A verificar:
+- https://www.planalto.gov.br/sitemap.xml (se existir)
+- https://www.planalto.gov.br/rss (se existir)
+
+---
