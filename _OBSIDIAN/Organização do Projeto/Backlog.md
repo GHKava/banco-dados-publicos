@@ -66,6 +66,16 @@
   - Resultado: 5 fontes gov brasileiras + policy fail-closed
   - Evidence: Commit d411ce9
 
+- **T-005:** Postgres schema v0 (metadata + pgvector)
+  - Data: 2026-01-30
+  - Tempo: ~40 min
+  - Resultado: Schema completo criado (sources, documents, chunks, embeddings, audit_log)
+  - Deliverables: schema.sql (275 linhas), models.py, init.py, tests
+  - Deferred: Postgres instance validation (requires Docker)
+  - Evidence: [T-005 Evidence Pack](../../docs/evidence/T-005/)
+  - Handoff: [T-005-Handoff.md](Handoffs/T-005-Handoff.md)
+  - Commit: 534a519
+
 ---
 
 ## 2. DÚVIDAS / IMPEDIMENTOS (SLA 24h)

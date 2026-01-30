@@ -185,13 +185,13 @@ def verify_setup(db_url: Optional[str] = None) -> dict:
     try:
         engine = create_engine(db_url)
         with engine.connect() as conn:
-            results["connection"] = True
+            results["connection"] = True  # type: ignore[index]
 
             # Check extensions
             ext_result = conn.execute(text("SELECT extname FROM pg_extension"))
             extensions = [row[0] for row in ext_result]
-            results["extensions"]["uuid-ossp"] = "uuid-ossp" in extensions
-            results["extensions"]["pgvector"] = "vector" in extensions
+            results["extensions"]["uuid-ossp"] = "uuid-ossp" in extensions  # type: ignore[index]
+            results["extensions"]["pgvector"] = "vector" in extensions  # type: ignore[index]
 
             # Check tables
             table_result = conn.execute(text("SELECT tablename FROM pg_tables WHERE schemaname = 'public'"))
@@ -199,12 +199,12 @@ def verify_setup(db_url: Optional[str] = None) -> dict:
 
             expected_tables = ["sources", "documents", "chunks", "embeddings", "audit_log"]
             for table in expected_tables:
-                results["tables"][table] = table in tables
+                results["tables"][table] = table in tables  # type: ignore[index]
 
         engine.dispose()
 
     except Exception as e:
-        results["error"] = str(e)
+        results["error"] = str(e)  # type: ignore[index]
 
     return results
 

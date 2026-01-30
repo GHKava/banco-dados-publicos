@@ -9,7 +9,6 @@ This script validates:
 """
 
 import sys
-from datetime import datetime, timezone
 
 from sqlalchemy import select
 
@@ -22,7 +21,7 @@ def test_connection():
     try:
         engine = get_engine()
         with engine.connect() as conn:
-            result = conn.execute(select(1))
+            _ = conn.execute(select(1))
             print("✅ Database connection successful")
             return True
     except Exception as e:

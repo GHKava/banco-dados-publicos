@@ -14,7 +14,7 @@ from sqlalchemy.dialects.postgresql import UUID as PGUUID
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
-Base = declarative_base()
+Base = declarative_base()  # type: ignore[misc]
 
 
 class Source(Base):
