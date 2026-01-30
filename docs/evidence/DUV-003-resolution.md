@@ -1,8 +1,8 @@
 # Evidence - DUV-003 Resolution: Windows Path Limit
 
-**Issue ID:** DUV-003  
-**Date:** 2026-01-30  
-**Status:** ✅ RESOLVED  
+**Issue ID:** DUV-003
+**Date:** 2026-01-30
+**Status:** ✅ RESOLVED
 **Resolution Time:** ~10 minutes
 
 ---
@@ -10,9 +10,11 @@
 ## Problem Summary
 
 Windows path limit (260 characters) was blocking T-002 (Python bootstrap). The original project path exceeded this limit:
+
 ```
 c:\Users\Gustavo\My Drive\DriveSyncFiles\1. OBSIDIAN - GUSTAVO - Arquivos Pessoais\02 - PROJECTS\02.03 - PROJETO - SISTEMA - Desenvolvimento de Sistemas
 ```
+
 Length: ~170 characters (base path) + venv paths = exceeds 260 limit
 
 ---
@@ -20,6 +22,7 @@ Length: ~170 characters (base path) + venv paths = exceeds 260 limit
 ## Solution Implemented
 
 **Option A: Move project to short path** (selected)
+
 - Target: `C:\Dev\banco-dados-publicos` (29 characters base)
 - Method: robocopy with full directory mirror
 - Validation: Git repository integrity confirmed
@@ -57,11 +60,11 @@ git status
 
 ## Validation Results
 
-✅ All files copied successfully (868 files, 11.23 MB)  
-✅ Git repository functional at new location  
-✅ Remote 'origin' still configured correctly  
-✅ Working directory clean (except Backlog.md updates)  
-✅ Path length: 29 characters (well under 260 limit)  
+✅ All files copied successfully (868 files, 11.23 MB)
+✅ Git repository functional at new location
+✅ Remote 'origin' still configured correctly
+✅ Working directory clean (except Backlog.md updates)
+✅ Path length: 29 characters (well under 260 limit)
 ✅ T-002 unblocked and ready to execute
 
 ---
@@ -69,12 +72,14 @@ git status
 ## Impact Assessment
 
 ### Positive
+
 - **T-002 unblocked**: Python venv can now be created without path limit issues
 - **All future tasks unblocked**: T-003, T-004, T-005 can proceed
 - **Better performance**: Shorter paths = faster filesystem operations
 - **Standard location**: C:\Dev is common development convention
 
 ### Minimal Risk
+
 - Old location still exists (user can delete manually if needed)
 - No code changes required - just location change
 - Git remote unchanged
@@ -90,6 +95,7 @@ git status
 ## Decision Record
 
 **DEC-DUV003-001: Move to C:\Dev**
+
 - **Rationale**: Fastest resolution without registry changes or symlinks
 - **Alternatives considered**:
   - Enable LongPathsEnabled (requires admin + reboot)
@@ -107,6 +113,6 @@ git status
 
 ---
 
-**Resolved by:** WORKER_AGENT (AUTO-RESOLUTION)  
-**Timestamp:** 2026-01-30T19:02:00Z  
+**Resolved by:** WORKER_AGENT (AUTO-RESOLUTION)
+**Timestamp:** 2026-01-30T19:02:00Z
 **Claim-Check:** All referenced files exist and Git validated

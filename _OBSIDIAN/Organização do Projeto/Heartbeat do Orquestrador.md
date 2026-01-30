@@ -1,8 +1,8 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 16:10 UTC  
-**Rodada:** #1 (T-001 GIT SETUP)  
-**Status:** ✅ T-001 CONCLUÍDA
+**Última atualização:** 2026-01-30 16:30 UTC
+**Rodada:** #2 (T-002 PYTHON BOOTSTRAP)
+**Status:** 🔄 T-002 IN_PROGRESS
 
 ---
 
@@ -33,14 +33,14 @@
 
 ### Métricas da rodada
 
-| Métrica                 | Valor                         |
-| ----------------------- | ----------------------------- |
-| Tarefas completadas     | 1 (T-001)                     |
-| Tempo total             | ~10 min                       |
-| Bloqueadores resolvidos | 0                             |
-| Dependências desbloqueadas | 1 (T-002)                  |
-| Files changed           | 3 (WorkOrder, Evidence, Handoff) |
-| Repos criados           | 1 (GitHub)                    |
+| Métrica                    | Valor                            |
+| -------------------------- | -------------------------------- |
+| Tarefas completadas        | 1 (T-001)                        |
+| Tempo total                | ~10 min                          |
+| Bloqueadores resolvidos    | 0                                |
+| Dependências desbloqueadas | 1 (T-002)                        |
+| Files changed              | 3 (WorkOrder, Evidence, Handoff) |
+| Repos criados              | 1 (GitHub)                       |
 
 ### STOP.md status
 

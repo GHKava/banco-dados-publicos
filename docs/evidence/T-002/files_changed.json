@@ -1,0 +1,54 @@
+{
+  "task_id": "T-002",
+  "date": "2026-01-30",
+  "files_changed": [
+    {
+      "path": "requirements.txt",
+      "action": "modified",
+      "reason": "Updated package versions for Python 3.14 compatibility"
+    },
+    {
+      "path": "scripts/setup/bootstrap.ps1",
+      "action": "modified",
+      "reason": "Changed venv → .venv for consistency with short path"
+    },
+    {
+      "path": ".env",
+      "action": "created",
+      "reason": "Copied from .env.example"
+    },
+    {
+      "path": ".venv/",
+      "action": "created",
+      "reason": "Virtual environment (66 packages installed)"
+    },
+    {
+      "path": ".git/hooks/pre-commit",
+      "action": "created",
+      "reason": "Pre-commit hooks installed"
+    },
+    {
+      "path": "docs/evidence/T-002/",
+      "action": "created",
+      "reason": "Evidence Pack directory"
+    },
+    {
+      "path": "docs/evidence/T-002/commands.log",
+      "action": "created",
+      "reason": "Commands execution log"
+    },
+    {
+      "path": "docs/evidence/T-002/notes.md",
+      "action": "created",
+      "reason": "Summary and validation guide"
+    },
+    {
+      "path": "docs/evidence/T-002/files_changed.json",
+      "action": "created",
+      "reason": "This file"
+    }
+  ],
+  "packages_installed": 66,
+  "python_version": "3.14.2",
+  "venv_location": "C:/Dev/banco-dados-publicos/.venv"
+}

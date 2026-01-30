@@ -35,20 +35,20 @@ Write-Log "✅ Python encontrado: $PythonVersion" $Green
 # Step 2: Create venv (unless --NoVenv)
 if (-not $NoVenv) {
     Write-Log "Step 2: Criando virtual environment..." $Blue
-    if (Test-Path "venv") {
-        Write-Log "⚠️  venv já existe, pulando criação" $Yellow
+    if (Test-Path ".venv") {
+        Write-Log "⚠️  .venv já existe, pulando criação" $Yellow
     } else {
-        & python -m venv venv
+        & python -m venv .venv
         if ($LASTEXITCODE -ne 0) {
-            Write-Log "❌ Erro ao criar venv" $Red
+            Write-Log "❌ Erro ao criar .venv" $Red
             exit 1
         }
-        Write-Log "✅ venv criado" $Green
+        Write-Log "✅ .venv criado" $Green
     }
-    
+
     # Activate venv
-    & ".\venv\Scripts\Activate.ps1"
-    Write-Log "✅ venv ativado" $Green
+    & ".\.venv\Scripts\Activate.ps1"
+    Write-Log "✅ .venv ativado" $Green
 }
 
 # Step 3: Install dependencies
@@ -126,4 +126,4 @@ Write-Log "  2. Ler README.md para mais instruções"
 Write-Log "  3. Ler _OBSIDIAN/Organização do Projeto/Contexto Global de Agentes.md"
 Write-Log "  4. Iniciar T-001: Git setup + GitHub remote"
 Write-Log ""
-Write-Log "Para ativar venv novamente: .\venv\Scripts\Activate.ps1" $Yellow
+Write-Log "Para ativar venv novamente: .\.venv\Scripts\Activate.ps1" $Yellow
