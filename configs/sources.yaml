@@ -1,0 +1,137 @@
+version: 1
+
+sources:
+  - source_id: "SRC-001"
+    name: "Diário Oficial da União (DOU) - Imprensa Nacional"
+    owner_org: "Imprensa Nacional"
+    base_domains: ["in.gov.br"]
+    entrypoints:
+      - "https://www.in.gov.br/"
+    discovery:
+      method: "html_index"
+      urls:
+        - "https://www.in.gov.br/leiturajornal"
+    crawl_policy:
+      robots_respect: true
+      user_agent: "PublicDataPipelineBot/1.0 (contact: <email>)"
+      rate_limit_rps: 0.2
+      concurrency: 1
+      allow_paths: ["/", "/leiturajornal", "/web/dou"]
+      deny_paths: []
+    license_policy:
+      license_status: "unknown"
+      license_evidence: "Registrar ToS/licença em Fontes_Licencas.md"
+      default_storage_mode: "METADATA_ONLY"
+    data_handling:
+      pii_expected: "medium"
+      pii_actions: ["detect", "redact"]
+      retention_days: 365
+    notes: "MVP: armazenar metadados + link; liberar texto integral somente após licença verificada."
+
+  - source_id: "SRC-002"
+    name: "Planalto - Legislação"
+    owner_org: "Presidência da República"
+    base_domains: ["planalto.gov.br"]
+    entrypoints:
+      - "https://www.planalto.gov.br/"
+    discovery:
+      method: "html_index"
+      urls:
+        - "https://www.planalto.gov.br/ccivil_03/"
+    crawl_policy:
+      robots_respect: true
+      user_agent: "PublicDataPipelineBot/1.0 (contact: <email>)"
+      rate_limit_rps: 0.3
+      concurrency: 1
+      allow_paths: ["/ccivil_03/"]
+      deny_paths: []
+    license_policy:
+      license_status: "unknown"
+      license_evidence: "Registrar ToS/licença em Fontes_Licencas.md"
+      default_storage_mode: "METADATA_ONLY"
+    data_handling:
+      pii_expected: "low"
+      pii_actions: ["detect"]
+      retention_days: 365
+    notes: "Conteúdo legal; geralmente baixo PII. MVP: metadados + link."
+
+  - source_id: "SRC-003"
+    name: "IBGE - Dados e APIs"
+    owner_org: "IBGE"
+    base_domains: ["ibge.gov.br", "servicodados.ibge.gov.br"]
+    entrypoints:
+      - "https://servicodados.ibge.gov.br/api/"
+    discovery:
+      method: "api"
+      urls:
+        - "https://servicodados.ibge.gov.br/api/docs"
+    crawl_policy:
+      robots_respect: true
+      user_agent: "PublicDataPipelineBot/1.0 (contact: <email>)"
+      rate_limit_rps: 1.0
+      concurrency: 2
+      allow_paths: ["/api/"]
+      deny_paths: []
+    license_policy:
+      license_status: "unknown"
+      license_evidence: "Registrar termos de uso/licença em Fontes_Licencas.md"
+      default_storage_mode: "ALLOW_FULLTEXT"
+    data_handling:
+      pii_expected: "low"
+      pii_actions: ["detect"]
+      retention_days: 365
+    notes: "Fonte via API: normalmente mais segura. Confirmar termos e manter citações."
+
+  - source_id: "SRC-004"
+    name: "Banco Central do Brasil - Dados (API/Séries)"
+    owner_org: "Banco Central do Brasil"
+    base_domains: ["bcb.gov.br", "dadosabertos.bcb.gov.br"]
+    entrypoints:
+      - "https://dadosabertos.bcb.gov.br/"
+    discovery:
+      method: "html_index"
+      urls:
+        - "https://dadosabertos.bcb.gov.br/"
+    crawl_policy:
+      robots_respect: true
+      user_agent: "PublicDataPipelineBot/1.0 (contact: <email>)"
+      rate_limit_rps: 0.5
+      concurrency: 2
+      allow_paths: ["/"]
+      deny_paths: []
+    license_policy:
+      license_status: "unknown"
+      license_evidence: "Registrar termos/licença em Fontes_Licencas.md"
+      default_storage_mode: "ALLOW_FULLTEXT"
+    data_handling:
+      pii_expected: "low"
+      pii_actions: ["detect"]
+      retention_days: 365
+    notes: "Dados econômicos; baixo risco de PII."
+
+  - source_id: "SRC-005"
+    name: "dados.gov.br - Catálogo de Dados Abertos"
+    owner_org: "Governo Federal"
+    base_domains: ["dados.gov.br"]
+    entrypoints:
+      - "https://dados.gov.br/"
+    discovery:
+      method: "html_index"
+      urls:
+        - "https://dados.gov.br/dados/conjuntos-dados"
+    crawl_policy:
+      robots_respect: true
+      user_agent: "PublicDataPipelineBot/1.0 (contact: <email>)"
+      rate_limit_rps: 0.2
+      concurrency: 1
+      allow_paths: ["/dados/"]
+      deny_paths: []
+    license_policy:
+      license_status: "unknown"
+      license_evidence: "Registrar termos/licença em Fontes_Licencas.md"
+      default_storage_mode: "METADATA_ONLY"
+    data_handling:
+      pii_expected: "medium"
+      pii_actions: ["detect", "redact"]
+      retention_days: 365
+    notes: "Catálogo: muitos datasets externos com licenças variadas. MVP: metadados + link para dataset."

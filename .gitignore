@@ -1,0 +1,71 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+data/raw/
+data/processed/
+data/curated/
+
+# Cache
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Evidence packs (apenas evidence/index.md deve versionarse, não outputs grandes)
+docs/evidence/*/output.txt
+docs/evidence/*/commands.log
+docs/evidence/*/tests.log
+docs/evidence/**/*.pkl
+docs/evidence/**/*.npy
+
+# Obsidian
+.obsidian/
+.obsidian.vimrc
+
+# Misc
+*.tmp
+temp/
+node_modules/ (se houver)
+package-lock.json (se houver)
+
+# Secrets
+secrets.yaml
+credentials.json
+
+# Large files
+*.tar.gz
+*.zip
+*.rar
