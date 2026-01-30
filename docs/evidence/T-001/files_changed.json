@@ -19,11 +19,7 @@
     "remote_configured": true,
     "repository_url": "https://github.com/GHKava/banco-dados-publicos",
     "commits_pushed": 3,
-    "commit_hashes": [
-      "53a2fe6",
-      "d411ce9",
-      "defa893"
-    ]
+    "commit_hashes": ["53a2fe6", "d411ce9", "defa893"]
   },
   "validation": {
     "remote_configured": true,
