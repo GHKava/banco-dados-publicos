@@ -1,7 +1,97 @@
 # Log de Execução — Banco de Dados Interrelacional
 
 **Data criação:** 2026-01-30  
-**Última atualização:** 2026-01-30 14:35 UTC
+**Última atualização:** 2026-01-30 15:55 UTC
+
+---
+
+## 2026-01-30 — RODADA #0.1 (RESOLUÇÃO DUV-001/DUV-002)
+
+### [15:00 UTC] Resolução autônoma DUV-001 e DUV-002 iniciada
+
+- Decisão DUV-001: GitHub pessoal FREE
+- Decisão DUV-002: Allowlist com 5 fontes governamentais brasileiras
+
+### [15:05 UTC] DUV-001 RESOLVIDA
+
+```
+✅ Decisão registrada: GitHub pessoal FREE (DEC-007)
+✅ Backlog.md atualizado: DUV-001 status ✅ RESOLVIDA
+✅ Dúvidas & Decisões.md atualizado: DEC-007 adicionado
+✅ T-001 DESBLOQUEADA
+```
+
+### [15:10 UTC] DUV-002 RESOLVIDA
+
+```
+✅ Decisão registrada: 5 fontes gov brasileiras (DEC-008)
+   - SRC-001: DOU (in.gov.br)
+   - SRC-002: Planalto (planalto.gov.br)
+   - SRC-003: IBGE (ibge.gov.br)
+   - SRC-004: BCB (dadosabertos.bcb.gov.br)
+   - SRC-005: dados.gov.br
+✅ Policy: METADATA_ONLY até licença verificada (fail-closed)
+✅ Backlog.md atualizado: DUV-002 status ✅ RESOLVIDA
+✅ Dúvidas & Decisões.md atualizado: DEC-008 adicionado
+✅ T-004 DESBLOQUEADA
+```
+
+### [15:15 UTC] Arquivos de allowlist criados
+
+```
+✅ configs/sources.yaml (5 fontes com config técnica)
+✅ _OBSIDIAN/Organização do Projeto/Fontes_Licencas.md (documentação auditável)
+✅ _OBSIDIAN/Organização do Projeto/Templates/Template - Source Onboarding Checklist.md
+```
+
+### [15:25 UTC] Onboarding notes criados
+
+```
+✅ _OBSIDIAN/Organização do Projeto/Onboarding/SRC-001 - Diário Oficial da União (DOU).md
+✅ _OBSIDIAN/Organização do Projeto/Onboarding/SRC-002 - Planalto Legislação.md
+✅ _OBSIDIAN/Organização do Projeto/Onboarding/SRC-003 - IBGE APIs.md
+✅ _OBSIDIAN/Organização do Projeto/Onboarding/SRC-004 - Banco Central Dados Abertos.md
+✅ _OBSIDIAN/Organização do Projeto/Onboarding/SRC-005 - dados.gov.br Catálogo.md
+```
+
+### [15:35 UTC] Escopo atualizado
+
+```
+✅ Escopo.md: Nova seção "ALLOWLIST E ONBOARDING DE FONTES — Fonte de Verdade e Governança"
+   - 5 arquivos obrigatórios documentados
+   - Policy Gate (fail-closed) explicitado
+   - Processo de onboarding (9 passos) documentado
+   - Fontes iniciais (MVP - DEC-008) listadas
+   - Revisão e auditoria (checklist trimestral) definida
+```
+
+### [15:45 UTC] Git inicializado + commit realizado
+
+```
+✅ Git init
+✅ Git config (user.name, user.email)
+✅ 47 arquivos staged
+✅ Commit 53a2fe6: "chore: DUV-001/DUV-002 resolvidas + allowlist inicial"
+   - 47 files changed, 7086 insertions(+)
+```
+
+### [15:50 UTC] Roadmap atualizado
+
+```
+✅ Roadmap detalhado do Projeto.md: T-004 status DONE
+✅ 5 novas tarefas adicionadas: T-ONB-SRC-001 a T-ONB-SRC-005 (status READY)
+```
+
+### [15:55 UTC] Heartbeat atualizado
+
+```
+✅ Heartbeat do Orquestrador.md: Rodada #0.1 documentada
+✅ Métricas: 1 tarefa (T-DUV-001-002), ~30 min, 2 dúvidas resolvidas, 47 files changed
+✅ Status: T-001 e T-004 DESBLOQUEADAS
+```
+
+**STATUS RODADA #0.1:** ✅ COMPLETA  
+**RESULTADO:** DUV-001/DUV-002 RESOLVIDAS | Allowlist criada | Git inicializado | T-001 e T-004 desbloqueadas
 
 ---
 

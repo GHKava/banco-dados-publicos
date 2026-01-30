@@ -1,8 +1,59 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 14:35 UTC  
-**Rodada:** #0 (INICIAÇÃO)  
-**Status:** ✅ PREFLIGHT CONCLUÍDO
+**Última atualização:** 2026-01-30 15:30 UTC  
+**Rodada:** #0.1 (RESOLUÇÃO DUV-001/DUV-002)  
+**Status:** ✅ DÚVIDAS RESOLVIDAS + ALLOWLIST CRIADA
+
+---
+
+## Rodada #0.1 — RESOLUÇÃO DUV-001/DUV-002 (2026-01-30)
+
+### Tarefas executadas nesta rodada
+
+- **T-DUV-001-002:** Resolução de DUV-001 e DUV-002 + criação de allowlist completa
+  - Status: ✅ DONE
+  - Tempo: ~30 min
+  - Ações:
+    - DUV-001 RESOLVIDA: GitHub pessoal FREE (DEC-007)
+    - DUV-002 RESOLVIDA: Allowlist com 5 fontes gov (DEC-008)
+    - Criados: configs/sources.yaml, Fontes_Licencas.md
+    - Criado: Template - Source Onboarding Checklist.md
+    - Criados: 5 onboarding notes (SRC-001 a SRC-005)
+    - Atualizados: Backlog.md, Dúvidas & Decisões.md
+    - Atualizado: Escopo.md (nova seção Allowlist e Onboarding)
+    - Git init + commit inicial realizado
+  - Evidence: Commit 53a2fe6 (47 files changed, 7086+ insertions)
+
+### Tarefas do próximo ciclo (READY)
+
+1. **T-001:** Git setup + GitHub remote (DESBLOQUEADA ✅)
+2. **T-002:** Python bootstrap + venv + pre-commit
+3. **T-003:** CI/tests/lint/typecheck
+4. **T-004:** Define allowlist + sources.yaml (✅ DONE)
+5. **T-ONB-SRC-001 a T-ONB-SRC-005:** Onboarding compliance de 5 fontes (READY)
+6. **T-005:** Postgres schema v0
+
+### Dúvidas abertas (SLA 24h)
+
+| ID      | Descrição                     | SLA      | Status       | Resolução                  |
+| ------- | ----------------------------- | -------- | ------------ | -------------------------- |
+| DUV-001 | GitHub org: pessoal ou nova?  | 20260131 | ✅ RESOLVIDA | GitHub pessoal FREE (DEC-007) |
+| DUV-002 | Primeiras 5 fontes allowlist? | 20260131 | ✅ RESOLVIDA | 5 fontes gov (DEC-008)     |
+
+### Métricas da rodada
+
+| Métrica                 | Valor                         |
+| ----------------------- | ----------------------------- |
+| Tarefas completadas     | 1 (T-DUV-001-002)             |
+| Tempo total             | ~30 min                       |
+| Dúvidas resolvidas      | 2 (DUV-001, DUV-002)          |
+| Dependências desbloqueadas | 2 (T-001, T-004)           |
+| Files changed           | 47 (sources.yaml, onboarding notes, templates, Escopo.md, etc.) |
+| Commits                 | 1 (53a2fe6)                   |
+
+### STOP.md status
+
+✅ **Não existe** → Loop continua (próxima rodada autorizada)
 
 ---
 
@@ -17,35 +68,6 @@
   - Evidence: [docs/evidence/T-000/](../../docs/evidence/T-000/)
   - Handoff: [T-000.md](Handoffs/T-000.md)
 
-### Tarefas do próximo ciclo (READY)
-
-1. **T-001:** Git setup + GitHub remote
-2. **T-002:** Python bootstrap + venv + pre-commit
-3. **T-003:** CI/tests/lint/typecheck
-4. **T-004:** Define allowlist + sources.yaml
-5. **T-005:** Postgres schema v0
-
-### Dúvidas abertas (SLA 24h)
-
-| ID      | Descrição                     | SLA      | Status |
-| ------- | ----------------------------- | -------- | ------ |
-| DUV-001 | GitHub org: pessoal ou nova?  | 20260131 | ABERTA |
-| DUV-002 | Primeiras 5 fontes allowlist? | 20260131 | ABERTA |
-
-### Métricas da rodada
-
-| Métrica                 | Valor                      |
-| ----------------------- | -------------------------- |
-| Tarefas completadas     | 1                          |
-| Tempo total             | ~15 min                    |
-| Dúvidas abertas         | 2                          |
-| Dependências bloqueadas | 0                          |
-| Files changed           | 15+ (dirs + Obsidian docs) |
-
-### STOP.md status
-
-✅ **Não existe** → Loop continua (próxima rodada autorizada)
-
 ---
 
 ## Histórico de rodadas anteriores
@@ -58,28 +80,32 @@
 
 1. ✅ Estrutura Obsidian criada completamente
 2. ✅ Documentos mandatórios inicializados
-3. ✅ Personas templates prontos (a preencher)
+3. ✅ Personas templates prontos
 4. ✅ WorkOrders/Handoffs/CRs pastas criadas
-5. ⏳ Próxima: Inicializar Git + GitHub (T-001)
+5. ✅ DUV-001 e DUV-002 RESOLVIDAS
+6. ✅ Allowlist com 5 fontes governamentais criada (policy fail-closed)
+7. ✅ Git inicializado + commit inicial (53a2fe6)
+8. ✅ T-001 e T-004 DESBLOQUEADAS
+9. ⏳ Próxima: T-001 (Git setup + remote GitHub)
 
 ---
 
 ## SLA Tracker (geral)
 
-| Tipo         | Total | Aberto | Vencido | Próx. revisão |
-| ------------ | ----- | ------ | ------- | ------------- |
-| Dúvidas      | 2     | 2      | 0       | 2026-01-31    |
-| Impedimentos | 0     | 0      | 0       | —             |
+| Tipo         | Total | Aberto | Vencido | Resolvido | Próx. revisão |
+| ------------ | ----- | ------ | ------- | --------- | ------------- |
+| Dúvidas      | 2     | 0      | 0       | 2         | —             |
+| Impedimentos | 0     | 0      | 0       | 0         | —             |
 
 ---
 
 ## Proximas ações imediatas
 
-- [ ] Resolver DUV-001 (GitHub org decision)
-- [ ] Resolver DUV-002 (allowlist fontes)
-- [ ] Iniciar T-001 (Git setup)
+- [ ] Iniciar T-001 (Git setup + configurar remote GitHub)
 - [ ] Criar WorkOrder T-001
 - [ ] Assumir persona TL para T-001
+- [ ] Push inicial para GitHub
+- [ ] Opcional: Iniciar T-ONB-SRC-001 (onboarding compliance DOU)
 
 ---
 
