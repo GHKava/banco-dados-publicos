@@ -24,7 +24,7 @@ rq==1.14.1
 rq-scheduler==0.13.1
 
 # ===== Parsing / Extraction =====
-trafilatura==1.6.4
+# trafilatura==1.6.4  # COMMENTED: depends on lxml (will add after lxml works)
 beautifulsoup4==4.12.2
 python-docx==0.8.11
 pypdf==3.17.1

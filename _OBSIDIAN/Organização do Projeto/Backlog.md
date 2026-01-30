@@ -1,7 +1,7 @@
 # Backlog — Banco de Dados Interrelacional
 
 **Data criação:** 2026-01-30
-**Última atualização:** 2026-01-30
+**Última atualização:** 2026-01-30 22:45 UTC
 **SLA padrão de dúvidas:** 24h ou próxima rodada
 
 ---

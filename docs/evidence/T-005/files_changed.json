@@ -1,0 +1,78 @@
+{
+  "task_id": "T-005",
+  "date": "2026-01-30",
+  "files_changed": [
+    {
+      "path": "src/database/schema.sql",
+      "action": "created",
+      "description": "Complete PostgreSQL schema with pgvector support (275 lines)"
+    },
+    {
+      "path": "src/database/models.py",
+      "action": "created",
+      "description": "SQLAlchemy ORM models matching schema (234 lines)"
+    },
+    {
+      "path": "src/database/init.py",
+      "action": "created",
+      "description": "Database initialization and verification utilities (271 lines)"
+    },
+    {
+      "path": "src/database/__init__.py",
+      "action": "created",
+      "description": "Package exports for database module"
+    },
+    {
+      "path": "tests/test_database.py",
+      "action": "created",
+      "description": "Unit tests for database models (85 lines)"
+    },
+    {
+      "path": ".env.example",
+      "action": "modified",
+      "description": "Updated with DATABASE_URL and DB component config"
+    },
+    {
+      "path": "_OBSIDIAN/Organização do Projeto/Roadmap detalhado do Projeto.md",
+      "action": "modified",
+      "description": "Updated T-005 status to IN_PROGRESS"
+    },
+    {
+      "path": "docs/evidence/T-005/",
+      "action": "created",
+      "description": "Evidence pack directory"
+    }
+  ],
+  "tables_created": [
+    "sources",
+    "documents",
+    "chunks",
+    "embeddings",
+    "audit_log"
+  ],
+  "extensions_required": ["uuid-ossp", "pgvector"],
+  "quality_gates": {
+    "sql_syntax": "VALID",
+    "black": "PASS",
+    "flake8": "PASS (after fixing unused imports)",
+    "mypy": "NOT_RUN (deferred)",
+    "tests": "DEFERRED (requires pgvector package)"
+  },
+  "deferred_items": [
+    {
+      "item": "PostgreSQL instance validation",
+      "reason": "Requires Docker or local Postgres running",
+      "action": "Create docker-compose.yml in future task"
+    },
+    {
+      "item": "pgvector Python package",
+      "reason": "Not in requirements.txt yet",
+      "action": "pip install pgvector OR add to requirements.txt"
+    },
+    {
+      "item": "Actual DB initialization",
+      "reason": "No running Postgres instance",
+      "action": "Run 'python -m src.database.init' when Postgres available"
+    }
+  ]
+}
