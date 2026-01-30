@@ -1,8 +1,8 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 22:30 UTC
-**Rodada:** #5 (budget limit atingido - pausando)
-**Status:** ✅ T-005 DONE → Budget esgotado (~200 min)
+**Última atualização:** 2026-01-30 23:15 UTC
+**Rodada:** #6 (T-006 + T-007 DONE - Budget exhausted)
+**Status:** ✅ T-006 + T-007 DONE → Budget limits reached (~100 min, 4/5 tasks)
 
 ---
 

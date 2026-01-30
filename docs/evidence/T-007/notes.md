@@ -1,12 +1,14 @@
 # T-007 Execution Notes
 
 ## Objective
+
 Implement CLI bot for source registry CRUD operations with policy enforcement.
 
 ## Deliverables Completed
+
 - [x] src/bots/validators.py (policy enforcement, 75 LOC)
 - [x] src/bots/registry.py (SourceRegistryBot class, CRUD operations, 129 LOC)
-- [x] src/bots/__init__.py (module exports)
+- [x] src/bots/**init**.py (module exports)
 - [x] tests/test_bot_registry.py (9 unit tests for validators, 100 LOC)
 - [x] pytest: 9/9 tests passed ✅
 - [x] black formatting: all files ✅
@@ -15,6 +17,7 @@ Implement CLI bot for source registry CRUD operations with policy enforcement.
 ## Policy Implementation
 
 ### Validators Module (`validators.py`)
+
 - **validate_source_policy():** Three-rule fail-closed policy
   1. Check allowlist (SRC-001 to SRC-005 only)
   2. Require license metadata
@@ -24,6 +27,7 @@ Implement CLI bot for source registry CRUD operations with policy enforcement.
 - **POLICY_DEFAULTS:** Fail-closed default (METADATA_ONLY)
 
 ### SourceRegistryBot Class (`registry.py`)
+
 - **list_sources():** Display all sources with optional compliance check
 - **get_source():** Retrieve source by ID
 - **add_source():** Register new source with policy validation
@@ -32,6 +36,7 @@ Implement CLI bot for source registry CRUD operations with policy enforcement.
 - **validate_source():** Check compliance for existing source
 
 ### Test Coverage
+
 - **Unit tests (9 tests, 100% coverage):**
   - Allowlist enforcement (pass/fail)
   - License metadata requirement
@@ -46,17 +51,20 @@ Implement CLI bot for source registry CRUD operations with policy enforcement.
 ## Technical Decisions
 
 ### 1. Policy as Code (validators.py)
+
 - Separated policy logic from bot implementation
 - Fail-closed by default (METADATA_ONLY)
 - Allowlist stored in code (source of truth until database)
 - Easy to audit and test independently
 
 ### 2. Source Model Coupling
+
 - SourceRegistryBot requires SQLAlchemy ORM (deferred execution)
 - Validators work with both dicts and objects (duck typing)
 - Avoids circular imports with models
 
 ### 3. Python 3.14 Compatibility
+
 - SQLAlchemy 2.0 has known issues with Python 3.14's `typing.TypingOnly`
 - Workaround: Test validators independently without ORM layer
 - ORM integration tests deferred to T-009 (Integration testing phase)
@@ -64,37 +72,42 @@ Implement CLI bot for source registry CRUD operations with policy enforcement.
 ## Blockers & Resolutions
 
 ### 1. SQLAlchemy + Python 3.14 ✅ RESOLVED
+
 - Issue: SQLAlchemy.sql.elements.SQLCoreOperations conflicts with typing.TypingOnly
 - Solution: Separate validators from registry bot, test validators independently
 - Impact: Validators module is testable without ORM; Registry bot code complete but untested
 
 ### 2. Type Hints (tuple vs Tuple) ✅ RESOLVED
+
 - Updated to use Tuple from typing module (Python 3.11+ compatible)
 
 ## Unblocked Tasks
 
 ### T-008: Bot - Policy Gate (READY)
+
 - Depends on: T-007 ✅
 - Status: **UNBLOCKED**
 - Implements: ALLOW/BLOCK/METADATA_ONLY enforcement logic
 
 ## Quality Gate Summary
 
-| Gate | Status | Details |
-|------|--------|---------|
-| Black formatter | ✅ PASS | All files formatted |
-| Tests | ✅ PASS | 9/9 tests, 94% coverage on validators |
-| Commit | ✅ PASS | Clear commit message, single commit |
-| Git push | ✅ PASS | Pushed to origin/master |
+| Gate            | Status  | Details                               |
+| --------------- | ------- | ------------------------------------- |
+| Black formatter | ✅ PASS | All files formatted                   |
+| Tests           | ✅ PASS | 9/9 tests, 94% coverage on validators |
+| Commit          | ✅ PASS | Clear commit message, single commit   |
+| Git push        | ✅ PASS | Pushed to origin/master               |
 
 ## Budget Assessment
 
 **Status Before T-007:**
+
 - 3/5 tasks complete (T-003, T-005, T-006)
 - ~75 minutes used of 90-minute budget
 - ~15 minutes / 2 task slots remaining
 
 **Status After T-007:**
+
 - 4/5 tasks complete (T-003, T-005, T-006, T-007)
 - ~95-100 minutes estimated
 - **BUDGET NEARLY EXHAUSTED**
@@ -118,6 +131,6 @@ Implement CLI bot for source registry CRUD operations with policy enforcement.
 
 ---
 
-**T-007 Completion Time:** 15-20 minutes (infrastructure only, ORM integration deferred)  
-**All Validators:** TESTED ✅  
+**T-007 Completion Time:** 15-20 minutes (infrastructure only, ORM integration deferred)
+**All Validators:** TESTED ✅
 **Status:** READY FOR HANDOFF - **BUDGET CRITICAL**
