@@ -9,7 +9,7 @@ Fail-closed by default: unclear compliance → METADATA_ONLY
 
 import logging
 from enum import Enum
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Tuple
 
 logger = logging.getLogger(__name__)
 
@@ -115,7 +115,7 @@ class PolicyGate:
         self.logger.info(f"{source_id} → ALLOW (all checks passed)")
         return PolicyDecision.ALLOW
 
-    def _extract_source_fields(self, source: Any) -> tuple[str, Dict, Optional[str]]:
+    def _extract_source_fields(self, source: Any) -> Tuple[str, Dict[str, Any], Optional[str]]:
         """Extract source_id, metadata, base_url from dict or ORM object."""
         if isinstance(source, dict):
             source_id = source.get("source_id", "unknown")
@@ -132,7 +132,7 @@ class PolicyGate:
         """Check if source is in allowlist."""
         return source_id in ALLOWLIST
 
-    def _check_license(self, metadata: Dict, base_url: Optional[str]) -> PolicyDecision:
+    def _check_license(self, metadata: Dict[str, Any], base_url: Optional[str]) -> PolicyDecision:
         """
         Check license compliance.
 
@@ -188,7 +188,7 @@ class PolicyGate:
         else:
             return PolicyDecision.METADATA_ONLY
 
-    def _check_robots(self, metadata: Dict) -> PolicyDecision:
+    def _check_robots(self, metadata: Dict[str, Any]) -> PolicyDecision:
         """
         Check robots.txt compliance.
 
@@ -219,7 +219,7 @@ class PolicyGate:
         # robots.txt allows or missing (typical for gov sites)
         return PolicyDecision.ALLOW
 
-    def _check_tos(self, metadata: Dict) -> PolicyDecision:
+    def _check_tos(self, metadata: Dict[str, Any]) -> PolicyDecision:
         """
         Check Terms of Service restrictions.
 
@@ -252,7 +252,7 @@ class PolicyGate:
         else:
             return PolicyDecision.ALLOW
 
-    def _check_pii(self, metadata: Dict) -> PolicyDecision:
+    def _check_pii(self, metadata: Dict[str, Any]) -> PolicyDecision:
         """
         Check PII risk and mitigation.
 

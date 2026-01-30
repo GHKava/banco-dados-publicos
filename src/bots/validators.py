@@ -63,7 +63,7 @@ def validate_source_policy(source: Any) -> Tuple[bool, str]:
     return True, "Policy compliant"
 
 
-def get_source_policy_level(source_metadata: Dict) -> str:
+def get_source_policy_level(source_metadata: Dict[str, Any]) -> str:
     """
     Determine policy access level for source.
 

@@ -12,6 +12,7 @@
 Realizado compliance check completo para SRC-001 (Diário Oficial da União - in.gov.br) com resultado **BLOCK provisório** devido a proteção anti-bot.
 
 **Artefatos criados:**
+
 1. WorkOrder completo ([T-ONB-SRC-001-WorkOrder.md](../WorkOrders/T-ONB-SRC-001-WorkOrder.md))
 2. Evidence Pack em `docs/evidence/T-ONB-SRC-001/`:
    - `license_analysis.md` (análise de LAI + legislação)
@@ -29,12 +30,14 @@ Realizado compliance check completo para SRC-001 (Diário Oficial da União - in
 ### Policy Gate Decision: BLOCK (fail-closed)
 
 **Justificativa:**
+
 1. **Proteção WAF ativa:** Azion CDN bloqueou fetch de robots.txt com 403 Forbidden
 2. **Robots.txt inacessível:** Não foi possível verificar regras de scraping
 3. **ToS não localizado:** Termos de uso não encontrados em página oficial
 4. **Princípio de precaução:** Dados públicos ≠ scraping permitido
 
 ### Licença identificada (provável)
+
 - **LAI (Lei 12.527/2011):** Garante acesso a informações públicas
 - **Marco Civil (Lei 12.965/2014):** Princípios de abertura
 - **MAS:** Acesso público ≠ autorização para scraping automatizado
@@ -46,6 +49,7 @@ Realizado compliance check completo para SRC-001 (Diário Oficial da União - in
 **DUV-004 criada:** "Como obter dados do DOU sem violar proteção anti-bot?"
 
 **Próximos passos sugeridos:**
+
 1. Verificar se DOU está catalogado em dados.gov.br com API oficial
 2. Pesquisar feeds RSS oficiais (https://www.in.gov.br/rss)
 3. Considerar contato formal com Imprensa Nacional (LAI)
@@ -58,6 +62,7 @@ Realizado compliance check completo para SRC-001 (Diário Oficial da União - in
 **Evidence Pack:** [docs/evidence/T-ONB-SRC-001/](../../docs/evidence/T-ONB-SRC-001/)
 
 **Arquivos criados:**
+
 - [x] `license_analysis.md` (3 seções: robots, ToS, legislação)
 - [x] `fetch_test.log` (erro 403 documentado)
 - [x] `sample_urls.txt` (3 URLs golden)
@@ -66,6 +71,7 @@ Realizado compliance check completo para SRC-001 (Diário Oficial da União - in
 - [ ] `tos_screenshot.png` (não obtido - ToS não localizado)
 
 **Como validar:**
+
 ```powershell
 # Verificar evidence pack
 Test-Path "C:\Dev\banco-dados-publicos\docs\evidence\T-ONB-SRC-001\*.md"
@@ -81,12 +87,12 @@ Select-String -Path "C:\Dev\banco-dados-publicos\_OBSIDIAN\Organização do Proj
 
 ## 🔄 Mudanças nos arquivos
 
-| Arquivo                  | Mudança                                      | Motivo                          |
-| ------------------------ | -------------------------------------------- | ------------------------------- |
-| `sources.yaml`           | SRC-001: default_storage_mode = BLOCK        | Proteção WAF + ToS não verificado |
-| `Fontes_Licencas.md`     | SRC-001 marcado como BLOCKED PROVISORIAMENTE | Policy gate fail-closed         |
-| `Backlog.md`             | DUV-004 criada + T-ONB-SRC-001 DONE          | Documentar impedimento          |
-| `WorkOrders/T-ONB-SRC-001-WorkOrder.md` | Criado                        | DoR + Artefatos + Riscos        |
+| Arquivo                                 | Mudança                                      | Motivo                            |
+| --------------------------------------- | -------------------------------------------- | --------------------------------- |
+| `sources.yaml`                          | SRC-001: default_storage_mode = BLOCK        | Proteção WAF + ToS não verificado |
+| `Fontes_Licencas.md`                    | SRC-001 marcado como BLOCKED PROVISORIAMENTE | Policy gate fail-closed           |
+| `Backlog.md`                            | DUV-004 criada + T-ONB-SRC-001 DONE          | Documentar impedimento            |
+| `WorkOrders/T-ONB-SRC-001-WorkOrder.md` | Criado                                       | DoR + Artefatos + Riscos          |
 
 ---
 

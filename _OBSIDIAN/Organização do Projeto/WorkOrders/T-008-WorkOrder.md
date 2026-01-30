@@ -22,14 +22,14 @@ Implement policy gate logic to automatically determine access level for each sou
 
 ## Deliverables
 
-| Deliverable        | File Path                       | Purpose                                            |
-| ------------------ | ------------------------------- | -------------------------------------------------- |
-| Policy gate module | `src/bots/policy_gate.py`       | PolicyGate class with decision logic               |
-| Enums/types        | `src/bots/policy_gate.py`       | PolicyDecision enum (ALLOW/METADATA_ONLY/BLOCK)    |
-| Tests              | `tests/test_policy_gate.py`     | Unit tests for policy gate decisions               |
-| Integration job    | `src/jobs/policy_gate_job.py`   | RQ task for async policy gate evaluation           |
-| Evidence pack      | `docs/evidence/T-008/`          | Commands, notes, files_changed.json, tests.log     |
-| Handoff            | `_OBSIDIAN/.../Handoffs/T-008.md` | What changed, decisions, validation steps          |
+| Deliverable        | File Path                         | Purpose                                         |
+| ------------------ | --------------------------------- | ----------------------------------------------- |
+| Policy gate module | `src/bots/policy_gate.py`         | PolicyGate class with decision logic            |
+| Enums/types        | `src/bots/policy_gate.py`         | PolicyDecision enum (ALLOW/METADATA_ONLY/BLOCK) |
+| Tests              | `tests/test_policy_gate.py`       | Unit tests for policy gate decisions            |
+| Integration job    | `src/jobs/policy_gate_job.py`     | RQ task for async policy gate evaluation        |
+| Evidence pack      | `docs/evidence/T-008/`            | Commands, notes, files_changed.json, tests.log  |
+| Handoff            | `_OBSIDIAN/.../Handoffs/T-008.md` | What changed, decisions, validation steps       |
 
 ---
 
@@ -96,12 +96,12 @@ Implement policy gate logic to automatically determine access level for each sou
 
 ## Quality Gates
 
-| Gate   | Command                                                       | Expectation         |
-| ------ | ------------------------------------------------------------- | ------------------- |
-| Black  | `black --line-length=100 src/bots/ tests/`                    | All files formatted |
-| Flake8 | `flake8 src/bots/policy_gate.py tests/test_policy_gate.py`   | 0 issues            |
-| Isort  | `isort src/bots/ tests/`                                      | Imports organized   |
-| Mypy   | `mypy src/bots/policy_gate.py`                                | Type hints valid    |
+| Gate   | Command                                                          | Expectation                   |
+| ------ | ---------------------------------------------------------------- | ----------------------------- |
+| Black  | `black --line-length=100 src/bots/ tests/`                       | All files formatted           |
+| Flake8 | `flake8 src/bots/policy_gate.py tests/test_policy_gate.py`       | 0 issues                      |
+| Isort  | `isort src/bots/ tests/`                                         | Imports organized             |
+| Mypy   | `mypy src/bots/policy_gate.py`                                   | Type hints valid              |
 | Pytest | `pytest tests/test_policy_gate.py -v --cov=src/bots/policy_gate` | 100% pass rate, >80% coverage |
 
 ---
