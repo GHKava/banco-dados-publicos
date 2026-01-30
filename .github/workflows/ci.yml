@@ -38,28 +38,33 @@ jobs:
 
       - name: Lint with black
         run: |
-          black --check --line-length=120 src/ tests/
+          black --check --line-length=100 src/ tests/
         continue-on-error: false
 
       - name: Lint with flake8
         run: |
-          flake8 src/ tests/ --max-line-length=120 --ignore=E203,W503 --count --show-source --statistics
+          flake8 src/ tests/ --max-line-length=100 --ignore=E203,W503 --count --show-source --statistics
         continue-on-error: false
 
       - name: Check imports with isort
         run: |
-          isort --check-only --profile=black --line-length=120 src/ tests/
+          isort --check-only --profile=black --line-length=100 src/ tests/
         continue-on-error: false
 
       - name: Type check with mypy
         run: |
           mypy src/ --ignore-missing-imports --no-implicit-optional --warn-unused-ignores
-        continue-on-error: true # Non-blocking até código ter mais type hints
+        continue-on-error: false # Blocking: type errors must be fixed
+
+      - name: Security scan with bandit
+        run: |
+          bandit -r src/ -ll
+        continue-on-error: false # Blocking: security issues must be fixed
 
       - name: Run tests with pytest
         run: |
           pytest tests/ -v --cov=src --cov-report=term-missing --cov-report=xml
-        continue-on-error: true # Non-blocking até ter testes
+        continue-on-error: false # Blocking: tests must pass
 
       - name: Upload coverage to Codecov (optional)
         if: matrix.python-version == '3.14'

@@ -1,8 +1,58 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 19:40 UTC
-**Rodada:** #3 (T-003 CI/TESTS/LINT)
-**Status:** 🔄 T-003 IN_PROGRESS
+**Última atualização:** 2026-01-30 20:15 UTC
+**Rodada:** #4 (selecionando próxima tarefa READY)
+**Status:** ✅ T-003 DONE → Auto-Next para T-005
+
+---
+
+## Rodada #3 — T-003: CI/tests/lint/typecheck (2026-01-30)
+
+### Tarefas executadas nesta rodada
+
+- **T-003:** CI/tests/lint/typecheck (GitHub Actions)
+  - Status: ✅ DONE
+  - Tempo: ~40 min
+  - Persona: TL (Tech Lead)
+  - Ações:
+    - GitHub Actions workflow criado (.github/workflows/ci.yml)
+    - Matrix strategy: Python 3.11, 3.12, 3.14
+    - Lint tools: black, flake8, isort (blocking), mypy (non-blocking)
+    - Estrutura src/ e tests/ criadas com placeholders
+    - 7 testes dummy criados (test_basic.py)
+    - pytest-cov instalado (coverage 7.13.2)
+    - Validação local: 7 passed, 100% coverage
+    - Pre-commit hooks aplicados (trailing-whitespace, black reformatted)
+    - Commit eb19ff3 + push para origin/master (CI triggered)
+  - WorkOrder: [T-003-WorkOrder.md](WorkOrders/T-003-WorkOrder.md)
+  - Evidence: [T-003 Evidence Pack](../../docs/evidence/T-003/)
+  - Handoff: [T-003-Handoff.md](Handoffs/T-003-Handoff.md)
+  - Decisões:
+    - DEC-011: pytest continue-on-error=true (até testes reais)
+    - DEC-012: codecov upload opcional (não bloqueante)
+
+### Tarefas do próximo ciclo (READY)
+
+1. **T-005:** Postgres schema v0 (READY - T-002 ✅ DONE) → **PRÓXIMA ESCOLHIDA**
+2. **T-ONB-SRC-001 a T-ONB-SRC-005:** Onboarding compliance de 5 fontes (READY)
+
+### Métricas da rodada
+
+| Métrica                    | Valor                                                   |
+| -------------------------- | ------------------------------------------------------- |
+| Tarefas completadas        | 1 (T-003)                                               |
+| Tempo total                | ~40 min                                                 |
+| Bloqueadores resolvidos    | 1 (pytest-cov missing)                                  |
+| Dependências desbloqueadas | 0 (T-006 ainda bloqueada por T-005)                     |
+| Packages instalados        | 2 (pytest-cov 7.0.0, coverage 7.13.2)                   |
+| Files changed              | 11 (CI workflow, src/, tests/, evidence)                |
+| Tests criados              | 7 dummy (100% coverage em src/**init**.py)              |
+| Commits                    | 1 (eb19ff3)                                             |
+| Pre-commit fixes           | 2 (trailing-whitespace, black reformatted test_basic.py |
+
+### STOP.md status
+
+✅ **Não existe** → Loop continua (próxima rodada autorizada)
 
 ---
 

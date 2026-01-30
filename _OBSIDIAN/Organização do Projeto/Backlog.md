@@ -1,7 +1,7 @@
 # Backlog — Banco de Dados Interrelacional
 
-**Data criação:** 2026-01-30  
-**Última atualização:** 2026-01-30  
+**Data criação:** 2026-01-30
+**Última atualização:** 2026-01-30
 **SLA padrão de dúvidas:** 24h ou próxima rodada
 
 ---
@@ -10,34 +10,20 @@
 
 ### READY (próximas tarefas a executar)
 
-- **T-002:** Python bootstrap + venv + pre-commit
-  - Descrição: Executar `bootstrap.ps1`, criar venv, instalar deps base, pre-commit hooks.
-  - Persona: TL
-  - DoR: [x] T-001 concluído; [x] DUV-003 resolvida (path curto)
-  - Dependências: T-001 ✅ DONE
-  - Link WorkOrder: `_OBSIDIAN/Organização do Projeto/WorkOrders/T-002-WorkOrder.md`
-  - Status: DESBLOQUEADA (DUV-003 resolvida)
-
-- **T-003:** CI/tests/lint/typecheck (GitHub Actions)
-  - Descrição: Configurar `.github/workflows/` (lint, pytest, mypy, security scan).
-  - Persona: TL
-  - DoR: [ ] T-002 concluído
-  - Dependências: T-002
-  - Link WorkOrder: (será criado ao iniciar)
-
-- **T-004:** Define allowlist + sources.yaml template
-  - Descrição: Criar `configs/sources.yaml` com template de fonte permitida, registro de licença, regras robots/ToS.
-  - Persona: PM (Product Manager) + LEGAL (se houver)
-  - DoR: [ ] Escopo de compliance definido
-  - Dependências: Nenhuma (paralela com T-003)
-  - Link WorkOrder: (será criado ao iniciar)
-
 - **T-005:** Postgres schema v0 (metadata + pgvector)
   - Descrição: Criar schema Postgres: sources, docs, chunks, embeddings, audit log. Instalar pgvector extension.
   - Persona: DE (Data Engineer)
-  - DoR: [ ] T-002 concluído; DB acessível
-  - Dependências: T-002
-  - Link WorkOrder: (será criado ao iniciar)
+  - DoR: [x] T-002 concluído; DB acessível
+  - Dependências: T-002 ✅ DONE
+  - Link WorkOrder: `_OBSIDIAN/Organização do Projeto/WorkOrders/T-005.md`
+  - Status: READY
+
+- **T-ONB-SRC-001 a T-ONB-SRC-005:** Onboarding de fontes (compliance check)
+  - Descrição: Verificar robots.txt, ToS, licenças para DOU, Planalto, IBGE, BCB, dados.gov.br
+  - Persona: PM + LEGAL
+  - DoR: [x] T-004 concluído (sources.yaml)
+  - Dependências: T-004 ✅ DONE
+  - Link WorkOrders: (serão criados ao iniciar)
 
 ### IN_PROGRESS
 
@@ -64,6 +50,15 @@
   - Evidence: [T-002 Evidence Pack](../../docs/evidence/T-002/)
   - Handoff: [T-002-Handoff.md](Handoffs/T-002-Handoff.md)
   - Commit: d0c256b
+
+- **T-003:** CI/tests/lint/typecheck
+  - Data: 2026-01-30
+  - Tempo: ~40 min
+  - Resultado: GitHub Actions CI configurado (matrix 3.11/3.12/3.14), 7 testes dummy (100% coverage)
+  - Correções: pytest-cov instalado, pre-commit fixes aplicados
+  - Evidence: [T-003 Evidence Pack](../../docs/evidence/T-003/)
+  - Handoff: [T-003-Handoff.md](Handoffs/T-003-Handoff.md)
+  - Commit: eb19ff3
 
 - **T-004:** Define allowlist + sources.yaml
   - Data: 2026-01-30
