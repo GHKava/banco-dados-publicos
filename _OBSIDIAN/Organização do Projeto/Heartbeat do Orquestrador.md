@@ -1,8 +1,70 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 20:15 UTC
-**Rodada:** #4 (selecionando próxima tarefa READY)
-**Status:** ✅ T-003 DONE → Auto-Next para T-005
+**Última atualização:** 2026-01-30 22:30 UTC
+**Rodada:** #5 (budget limit atingido - pausando)
+**Status:** ✅ T-005 DONE → Budget esgotado (~200 min)
+
+---
+
+## Rodada #4 — T-005: Postgres schema v0 (2026-01-30)
+
+### Tarefas executadas nesta rodada
+
+- **T-005:** Postgres schema v0 (metadata + pgvector preparado)
+  - Status: ✅ DONE
+  - Tempo: ~90 min
+  - Persona: DE (Data Engineer)
+  - Ações:
+    - Database `public_db` criado no container governanca-postgres
+    - SQLAlchemy models criados: Source, Document, Chunk, Embedding, Audit_log
+    - Alembic migrations configurado
+    - Migration inicial gerada e aplicada (ee3e48e0708f)
+    - src/database/init.py com utilities (create_database, install_extensions, verify_setup)
+    - src/storage/ package com models.py, database.py, __init__.py
+    - tests/test_database.py com validação de models
+    - Evidence pack: T-005/
+    - DUV-004 resolvida: usar container existente, TEXT para embeddings (não pgvector ainda)
+    - Commits: 534a519 (schema) + a5796ac (handoff/tracking)
+  - WorkOrder: [T-005-WorkOrder.md](WorkOrders/T-005-WorkOrder.md)
+  - Evidence: [T-005 Evidence Pack](../../docs/evidence/T-005/)
+  - Handoff: [T-005-Handoff.md](Handoffs/T-005-Handoff.md)
+  - Decisões:
+    - DEC-013: Embeddings como TEXT (JSON array), pgvector em T-015
+    - DEC-014: BIGSERIAL para primary keys (simplicidade MVP)
+
+### Tarefas do próximo ciclo (READY)
+
+1. **T-006:** Redis + RQ setup (READY - T-005 ✅ DONE)
+2. **T-007:** Bot: source registry CLI (READY - T-005 ✅ DONE)
+3. **T-ONB-SRC-001 a T-ONB-SRC-005:** Onboarding compliance de 5 fontes (READY)
+
+### Métricas da rodada
+
+| Métrica                    | Valor                                     |
+| -------------------------- | ----------------------------------------- |
+| Tarefas completadas        | 1 (T-005)                                 |
+| Tempo total                | ~90 min                                   |
+| Bloqueadores resolvidos    | 2 (DUV-004 pgvector, psycopg2)            |
+| Dependências desbloqueadas | 2 (T-006 Redis/RQ, T-007 source registry) |
+| Packages instalados        | 1 (psycopg2-binary 2.9.10)                |
+| Files changed              | 20+ (models, migrations, tests, evidence) |
+| Migrations aplicadas       | 1 (ee3e48e0708f - schema v0)              |
+| Tables criadas             | 5 (sources, documents, chunks, etc.)      |
+| Commits                    | 2 (534a519, a5796ac)                      |
+
+### Budget status
+
+**Total acumulado nesta sessão:** ~200 min (4 rodadas)
+- Rodada #1 (T-001): ~10 min
+- Rodada #2 (T-002): ~60 min
+- Rodada #3 (T-003): ~40 min
+- Rodada #4 (T-005): ~90 min
+
+**Decisão:** Budget limit atingido. Pausando execução automática. Próxima rodada (#5) começará com T-006 ou T-007.
+
+### STOP.md status
+
+✅ **Não existe** → Loop pausado por budget, não por kill switch
 
 ---
 
