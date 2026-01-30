@@ -1,0 +1,34 @@
+{
+  "workorder_id": "T-001",
+  "timestamp": "2026-01-30T19:45:00Z",
+  "task": "Git setup + GitHub remote",
+  "branch": "feature/T-001",
+  "files_created": [
+    "LOCKS/T-001.lock",
+    "docs/evidence/T-001/commands.log",
+    "docs/evidence/T-001/outputs.log",
+    "docs/evidence/T-001/tests.log",
+    "docs/evidence/T-001/notes.md",
+    "docs/evidence/T-001/files_changed.json"
+  ],
+  "files_modified": [],
+  "files_deleted": [],
+  "commits_created": [],
+  "git_operations": {
+    "repository_created": true,
+    "remote_configured": true,
+    "repository_url": "https://github.com/GHKava/banco-dados-publicos",
+    "commits_pushed": 3,
+    "commit_hashes": [
+      "53a2fe6",
+      "d411ce9",
+      "defa893"
+    ]
+  },
+  "validation": {
+    "remote_configured": true,
+    "commits_on_github": true,
+    "readme_visible": true,
+    "allowlist_compliance": true
+  }
+}
