@@ -1,8 +1,50 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 15:30 UTC  
-**Rodada:** #0.1 (RESOLUÇÃO DUV-001/DUV-002)  
-**Status:** ✅ DÚVIDAS RESOLVIDAS + ALLOWLIST CRIADA
+**Última atualização:** 2026-01-30 16:10 UTC  
+**Rodada:** #1 (T-001 GIT SETUP)  
+**Status:** ✅ T-001 CONCLUÍDA
+
+---
+
+## Rodada #1 — T-001: Git setup + GitHub remote (2026-01-30)
+
+### Tarefas executadas nesta rodada
+
+- **T-001:** Git setup + GitHub remote
+  - Status: ✅ DONE
+  - Tempo: ~10 min
+  - Persona: TL (Tech Lead)
+  - Ações:
+    - Repositório GitHub criado: https://github.com/GHKava/banco-dados-publicos
+    - Remote `origin` configurado e testado
+    - Branch `master` com tracking para `origin/master`
+    - Push inicial completo (3 commits: 53a2fe6, d411ce9, defa893)
+    - 47+ arquivos sincronizados
+  - WorkOrder: [T-001-WorkOrder.md](WorkOrders/T-001-WorkOrder.md)
+  - Evidence: [T-001-notes.md](../../docs/evidence/T-001-notes.md)
+  - Handoff: [T-001-Handoff.md](Handoffs/T-001-Handoff.md)
+
+### Tarefas do próximo ciclo (READY)
+
+1. **T-002:** Python bootstrap + venv + pre-commit (READY - T-001 DONE)
+2. **T-003:** CI/tests/lint/typecheck (BLOCKED - aguarda T-002)
+3. **T-ONB-SRC-001 a T-ONB-SRC-005:** Onboarding compliance de 5 fontes (READY)
+4. **T-005:** Postgres schema v0 (READY - pode executar após T-002)
+
+### Métricas da rodada
+
+| Métrica                 | Valor                         |
+| ----------------------- | ----------------------------- |
+| Tarefas completadas     | 1 (T-001)                     |
+| Tempo total             | ~10 min                       |
+| Bloqueadores resolvidos | 0                             |
+| Dependências desbloqueadas | 1 (T-002)                  |
+| Files changed           | 3 (WorkOrder, Evidence, Handoff) |
+| Repos criados           | 1 (GitHub)                    |
+
+### STOP.md status
+
+✅ **Não existe** → Loop continua (próxima rodada autorizada)
 
 ---
 
@@ -35,21 +77,21 @@
 
 ### Dúvidas abertas (SLA 24h)
 
-| ID      | Descrição                     | SLA      | Status       | Resolução                  |
-| ------- | ----------------------------- | -------- | ------------ | -------------------------- |
+| ID      | Descrição                     | SLA      | Status       | Resolução                     |
+| ------- | ----------------------------- | -------- | ------------ | ----------------------------- |
 | DUV-001 | GitHub org: pessoal ou nova?  | 20260131 | ✅ RESOLVIDA | GitHub pessoal FREE (DEC-007) |
-| DUV-002 | Primeiras 5 fontes allowlist? | 20260131 | ✅ RESOLVIDA | 5 fontes gov (DEC-008)     |
+| DUV-002 | Primeiras 5 fontes allowlist? | 20260131 | ✅ RESOLVIDA | 5 fontes gov (DEC-008)        |
 
 ### Métricas da rodada
 
-| Métrica                 | Valor                         |
-| ----------------------- | ----------------------------- |
-| Tarefas completadas     | 1 (T-DUV-001-002)             |
-| Tempo total             | ~30 min                       |
-| Dúvidas resolvidas      | 2 (DUV-001, DUV-002)          |
-| Dependências desbloqueadas | 2 (T-001, T-004)           |
-| Files changed           | 47 (sources.yaml, onboarding notes, templates, Escopo.md, etc.) |
-| Commits                 | 1 (53a2fe6)                   |
+| Métrica                    | Valor                                                           |
+| -------------------------- | --------------------------------------------------------------- |
+| Tarefas completadas        | 1 (T-DUV-001-002)                                               |
+| Tempo total                | ~30 min                                                         |
+| Dúvidas resolvidas         | 2 (DUV-001, DUV-002)                                            |
+| Dependências desbloqueadas | 2 (T-001, T-004)                                                |
+| Files changed              | 47 (sources.yaml, onboarding notes, templates, Escopo.md, etc.) |
+| Commits                    | 1 (53a2fe6)                                                     |
 
 ### STOP.md status
 

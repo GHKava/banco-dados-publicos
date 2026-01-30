@@ -1,0 +1,7 @@
+{
+  "workorder_id": "T-001",
+  "locked_by": "WORKER_AGENT",
+  "locked_at": "2026-01-30T19:45:00Z",
+  "task": "Git setup + GitHub remote",
+  "branch": "feature/T-001"
+}
