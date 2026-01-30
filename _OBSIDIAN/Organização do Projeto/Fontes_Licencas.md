@@ -72,14 +72,14 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 **Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)
 **Domínio:** bcb.gov.br / dadosabertos.bcb.gov.br
 **Discovery:** API oficial (https://dadosabertos.bcb.gov.br/dataset)
-**Robots.txt:** [PENDENTE verificação]
-**ToS:** [PENDENTE — verificar termos "dados abertos"]
-**Licença:** [PENDENTE — BCB frequentemente libera dados abertos; confirmar licença]
+**Robots.txt:** ✅ 200 OK (dadosabertos) — Disallow: /api/; Crawl-Delay: 10
+**ToS:** ✅ Política de Privacidade e Termos de Uso (https://www.bcb.gov.br/acessoinformacao/politicaprivacidade)
+**Licença:** ❌ NÃO ESPECIFICADA por dataset (FAQ menciona licença aberta sem detalhar)
 **Policy Gate:** METADATA_ONLY (fail-closed)
-**PII esperado:** Não
+**PII esperado:** Baixo
 **Rate limit:** 0.5 rps
 **Budget:** 1000 URLs/dia, 100 MB/dia
-**Observações:** Dados abertos BCB. Confirmar licença explícita (CC-BY ou LAI). Onboarding em T-ONB-SRC-004.
+**Observações:** Robots restringe /api/ e exige crawl-delay 10s. Licença aberta não explícita por dataset. Onboarding em T-ONB-SRC-004.
 
 ---
 

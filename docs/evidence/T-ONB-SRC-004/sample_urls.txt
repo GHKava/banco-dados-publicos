@@ -1,0 +1,26 @@
+# Sample URLs — SRC-004 (BCB Dados Abertos)
+
+## Golden URLs para testes
+
+1. https://dadosabertos.bcb.gov.br/dataset/pix
+   - Descrição: Estatísticas do Pix (dataset)
+   - Tipo: HTML
+
+2. https://dadosabertos.bcb.gov.br/dataset/estatisticas-meios-pagamentos
+   - Descrição: Estatísticas de meios de pagamentos
+   - Tipo: HTML
+
+3. https://dadosabertos.bcb.gov.br/dataset/11-taxa-de-juros---selic
+   - Descrição: Série Selic (dataset)
+   - Tipo: HTML
+
+---
+
+## URLs institucionais
+
+- https://www.bcb.gov.br/acessoinformacao/politicaprivacidade
+- https://www.bcb.gov.br/acessoinformacao/direitosautorais
+- https://dadosabertos.bcb.gov.br/pages/perguntas-frequentes
+- https://dadosabertos.bcb.gov.br/pages/sobre-o-portal
+
+---
