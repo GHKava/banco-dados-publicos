@@ -56,14 +56,14 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 **Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença CC)
 **Domínio:** ibge.gov.br / servicodados.ibge.gov.br
 **Discovery:** API oficial (https://servicodados.ibge.gov.br/api/docs)
-**Robots.txt:** [PENDENTE verificação]
-**ToS:** [PENDENTE — verificar termos de uso de APIs]
-**Licença:** [PENDENTE — IBGE frequentemente usa CC-BY; confirmar]
-**Policy Gate:** METADATA_ONLY (fail-closed até evidência CC-BY ou similar)
+**Robots.txt:** ❌ Indisponível (503) — ver evidence pack
+**ToS:** ❌ NÃO LOCALIZADO (não verificado)
+**Licença:** ❌ NÃO VERIFICADA (sem evidência oficial)
+**Policy Gate:** METADATA_ONLY (fail-closed até evidência de licença)
 **PII esperado:** Não
 **Rate limit:** 1.0 rps
 **Budget:** 2000 URLs/dia, 200 MB/dia
-**Observações:** IBGE APIs públicas, mas precisamos confirmar licença CC-BY explícita. Se confirmado, upgrade para ALLOW_FULLTEXT. Onboarding em T-ONB-SRC-003.
+**Observações:** Robots.txt retornou 503 e API root indisponível. Manter METADATA_ONLY até verificação de ToS/licença. Onboarding em T-ONB-SRC-003.
 
 ---
 

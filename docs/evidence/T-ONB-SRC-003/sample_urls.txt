@@ -1,0 +1,24 @@
+# Sample URLs — SRC-003 (IBGE APIs)
+
+## Golden URLs para testes (API)
+
+1. https://servicodados.ibge.gov.br/api/v1/localidades/estados
+   - Descrição: Lista de estados (API Localidades)
+   - Tipo: JSON
+
+2. https://servicodados.ibge.gov.br/api/v1/paises
+   - Descrição: Lista de países
+   - Tipo: JSON
+
+3. https://servicodados.ibge.gov.br/api/v1/produtos
+   - Descrição: Produtos estatísticos IBGE
+   - Tipo: JSON
+
+---
+
+## URLs de documentação
+
+- https://servicodados.ibge.gov.br/api/docs
+- https://servicodados.ibge.gov.br/api/docs/localidades
+
+---

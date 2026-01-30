@@ -1,0 +1,27 @@
+{
+  "task": "T-ONB-SRC-003",
+  "date": "2026-01-31",
+  "status": "DONE",
+  "created": [
+    "_OBSIDIAN/Organização do Projeto/WorkOrders/T-ONB-SRC-003-WorkOrder.md",
+    "_OBSIDIAN/Organização do Projeto/Onboarding/SRC-003 - IBGE.md",
+    "_OBSIDIAN/Organização do Projeto/Handoffs/T-ONB-SRC-003.md",
+    "docs/evidence/T-ONB-SRC-003/commands.log",
+    "docs/evidence/T-ONB-SRC-003/outputs.log",
+    "docs/evidence/T-ONB-SRC-003/fetch_test.log",
+    "docs/evidence/T-ONB-SRC-003/robots.txt",
+    "docs/evidence/T-ONB-SRC-003/sample_urls.txt",
+    "docs/evidence/T-ONB-SRC-003/license_analysis.md",
+    "docs/evidence/T-ONB-SRC-003/notes.md",
+    "docs/evidence/T-ONB-SRC-003/files_changed.json"
+  ],
+  "modified": [
+    "_OBSIDIAN/Organização do Projeto/Heartbeat do Orquestrador.md",
+    "_OBSIDIAN/Organização do Projeto/Roadmap detalhado do Projeto.md",
+    "_OBSIDIAN/Organização do Projeto/Backlog.md",
+    "_OBSIDIAN/Organização do Projeto/Fontes_Licencas.md",
+    "configs/sources.yaml",
+    "docs/evidence/T-ONB-SRC-003/notes.md"
+  ],
+  "deleted": []
+}

@@ -96,18 +96,29 @@
   - Handoff: [T-ONB-SRC-002-Handoff.md](Handoffs/T-ONB-SRC-002.md)
   - DUV relacionada: DUV-005
 
+- **T-ONB-SRC-003:** Onboarding SRC-003 (IBGE)
+  - Data: 2026-01-31
+  - Tempo: ~15 min
+  - Resultado: METADATA_ONLY (fail-closed — robots/ToS/licença não verificados)
+  - Deliverables: WorkOrder, license_analysis.md, fetch_test.log, sample_urls.txt, notes.md, robots.txt
+  - Decision: default_storage_mode = METADATA_ONLY (fail-closed)
+  - Evidence: [T-ONB-SRC-003 Evidence Pack](../../docs/evidence/T-ONB-SRC-003/)
+  - Handoff: [T-ONB-SRC-003-Handoff.md](Handoffs/T-ONB-SRC-003.md)
+  - DUV relacionada: DUV-006
+
 ---
 
 ## 2. DÚVIDAS / IMPEDIMENTOS (SLA 24h)
 
-| ID          | Data         | Tarefa            | Descrição                                     | SLA          | Status           | Resolução                                                                                                                                                                                                                                                                                                  |
-| ----------- | ------------ | ----------------- | --------------------------------------------- | ------------ | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| DUV-001     | 20260130     | Geral             | GitHub remoto: usar org pessoal ou novo?      | 20260131     | ✅ RESOLVIDA     | Decisão: GitHub pessoal FREE. Registrado em DEC-007. (2026-01-30)                                                                                                                                                                                                                                          |
-| DUV-002     | 20260130     | T-004             | Quais fontes incluir na allowlist inicial?    | 20260131     | ✅ RESOLVIDA     | Decisão: 5 fontes gov brasileiras (DOU, Planalto, IBGE, BCB, dados.gov.br). Registrado em DEC-008. (2026-01-30)                                                                                                                                                                                            |
-| **DUV-003** | **20260130** | **T-002**         | **Windows path limit (260 caracteres)**       | **20260131** | **✅ RESOLVIDA** | **Resolução**: Projeto movido para C:\Dev\banco-dados-publicos (path curto). robocopy completado com sucesso. (2026-01-30)                                                                                                                                                                                 |
-| DUV-002     | 20260130     | T-004             | Quais são as primeiras 5 fontes da allowlist? | 20260131     | ✅ RESOLVIDA     | Decisão: SRC-001 (DOU), SRC-002 (Planalto), SRC-003 (IBGE), SRC-004 (BCB), SRC-005 (dados.gov.br). Registrado em DEC-008. (2026-01-30)                                                                                                                                                                     |
-| **DUV-004** | **20260130** | **T-ONB-SRC-001** | **DOU bloqueado por WAF - Como obter dados?** | **20260201** | **🔴 ABERTA**    | **Contexto**: in.gov.br protegido por Azion WAF (403 em robots.txt). Scraping não permitido. **Próximos passos**: (1) Verificar API oficial em dados.gov.br, (2) Pesquisar feeds RSS oficiais, (3) Considerar contato formal com Imprensa Nacional. **Impacto**: SRC-001 marcado como BLOCK até resolução. |
-| **DUV-005** | **20260130** | **T-ONB-SRC-002** | **Falha de conectividade impede verificação de robots/ToS** | **20260201** | **🔴 ABERTA**    | **Contexto**: fetch para planalto.gov.br falhou (erro de conexão). Sem robots/ToS/licença verificáveis. **Impacto**: SRC-002 permanece METADATA_ONLY (fail-closed) até verificação em ambiente com conectividade estável. |
+| ID          | Data         | Tarefa            | Descrição                                                   | SLA          | Status           | Resolução                                                                                                                                                                                                                                                                                                  |
+| ----------- | ------------ | ----------------- | ----------------------------------------------------------- | ------------ | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| DUV-001     | 20260130     | Geral             | GitHub remoto: usar org pessoal ou novo?                    | 20260131     | ✅ RESOLVIDA     | Decisão: GitHub pessoal FREE. Registrado em DEC-007. (2026-01-30)                                                                                                                                                                                                                                          |
+| DUV-002     | 20260130     | T-004             | Quais fontes incluir na allowlist inicial?                  | 20260131     | ✅ RESOLVIDA     | Decisão: 5 fontes gov brasileiras (DOU, Planalto, IBGE, BCB, dados.gov.br). Registrado em DEC-008. (2026-01-30)                                                                                                                                                                                            |
+| **DUV-003** | **20260130** | **T-002**         | **Windows path limit (260 caracteres)**                     | **20260131** | **✅ RESOLVIDA** | **Resolução**: Projeto movido para C:\Dev\banco-dados-publicos (path curto). robocopy completado com sucesso. (2026-01-30)                                                                                                                                                                                 |
+| DUV-002     | 20260130     | T-004             | Quais são as primeiras 5 fontes da allowlist?               | 20260131     | ✅ RESOLVIDA     | Decisão: SRC-001 (DOU), SRC-002 (Planalto), SRC-003 (IBGE), SRC-004 (BCB), SRC-005 (dados.gov.br). Registrado em DEC-008. (2026-01-30)                                                                                                                                                                     |
+| **DUV-004** | **20260130** | **T-ONB-SRC-001** | **DOU bloqueado por WAF - Como obter dados?**               | **20260201** | **🔴 ABERTA**    | **Contexto**: in.gov.br protegido por Azion WAF (403 em robots.txt). Scraping não permitido. **Próximos passos**: (1) Verificar API oficial em dados.gov.br, (2) Pesquisar feeds RSS oficiais, (3) Considerar contato formal com Imprensa Nacional. **Impacto**: SRC-001 marcado como BLOCK até resolução. |
+| **DUV-005** | **20260130** | **T-ONB-SRC-002** | **Falha de conectividade impede verificação de robots/ToS** | **20260201** | **🔴 ABERTA**    | **Contexto**: fetch para planalto.gov.br falhou (erro de conexão). Sem robots/ToS/licença verificáveis. **Impacto**: SRC-002 permanece METADATA_ONLY (fail-closed) até verificação em ambiente com conectividade estável.                                                                                  |
+| **DUV-006** | **20260131** | **T-ONB-SRC-003** | **Robots.txt 503 e ToS/licença não verificáveis (IBGE)**    | **20260201** | **🔴 ABERTA**    | **Contexto**: robots.txt em servicodados.ibge.gov.br retornou 503; API root também 503. ToS/licença não localizadas com evidência. **Impacto**: SRC-003 permanece METADATA_ONLY (fail-closed) até verificação.                                                                                             |
 
 ---
 
@@ -147,7 +158,7 @@
 
 | Tipo         | Total | Aberto | Vencido | Resolvido |
 | ------------ | ----- | ------ | ------- | --------- |
-| Dúvidas      | 5     | 2      | 0       | 3         |
+| Dúvidas      | 6     | 3      | 0       | 3         |
 | Impedimentos | 0     | 0      | 0       | 0         |
 
 **Próxima revisão:** 2026-01-31 (fim de rodada)

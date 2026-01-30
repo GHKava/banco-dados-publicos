@@ -79,7 +79,7 @@ sources:
     license_policy:
       license_status: "unknown"
       license_evidence: "Registrar termos de uso/licença em Fontes_Licencas.md"
-      default_storage_mode: "ALLOW_FULLTEXT"
+      default_storage_mode: "METADATA_ONLY"
     data_handling:
       pii_expected: "low"
       pii_actions: ["detect"]
