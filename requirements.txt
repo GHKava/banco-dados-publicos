@@ -18,7 +18,7 @@ aiohttp==3.9.1
 # ===== Database =====
 sqlalchemy==2.0.23
 alembic==1.13.1
-psycopg2-binary==2.9.9  # PostgreSQL driver
+psycopg[binary]==3.1.18  # PostgreSQL driver (Python 3.14+ compatible)
 pgvector==0.2.4
 
 # ===== Redis / Job Queue =====
