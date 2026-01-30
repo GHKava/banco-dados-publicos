@@ -3,10 +3,15 @@
 import argparse
 import logging
 import sys
+from pathlib import Path
 
 from rq import Worker
 
-from src.jobs.redis_client import get_redis_connection
+# Add project root to path
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
+from src.jobs.redis_client import get_redis_connection  # noqa: E402
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger(__name__)
