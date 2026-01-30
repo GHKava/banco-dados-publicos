@@ -12,6 +12,7 @@
 **Decisão:** GitHub pessoal FREE (DEC-007)
 
 **Ações realizadas:**
+
 - ✅ Registrado em Backlog.md (status: RESOLVIDA)
 - ✅ Registrado em Dúvidas & Decisões.md (DEC-007 criado)
 - ✅ Assunção ASS-GIT-001: usuário GitHub será configurado em T-001
@@ -26,6 +27,7 @@
 **Decisão:** 5 fontes governamentais brasileiras com policy fail-closed (DEC-008)
 
 **Fontes definidas:**
+
 1. **SRC-001:** Diário Oficial da União (DOU) - in.gov.br
 2. **SRC-002:** Planalto - Legislação - planalto.gov.br
 3. **SRC-003:** IBGE - APIs e Dados - ibge.gov.br / servicodados.ibge.gov.br
@@ -35,6 +37,7 @@
 **Política obrigatória:** METADATA_ONLY até licença verificada com evidência (fail-closed).
 
 **Ações realizadas:**
+
 - ✅ Criado: `configs/sources.yaml` (config técnica de 5 fontes)
 - ✅ Criado: `_OBSIDIAN/Organização do Projeto/Fontes_Licencas.md` (registro auditável)
 - ✅ Criado: `_OBSIDIAN/Organização do Projeto/Templates/Template - Source Onboarding Checklist.md`
@@ -50,6 +53,7 @@
 ## 📦 Arquivos criados/atualizados (47 total)
 
 ### Novos arquivos (10):
+
 1. `configs/sources.yaml` (138 linhas, 5 fontes com config completa)
 2. `_OBSIDIAN/Organização do Projeto/Fontes_Licencas.md` (200+ linhas, documentação auditável)
 3. `_OBSIDIAN/Organização do Projeto/Templates/Template - Source Onboarding Checklist.md` (250+ linhas)
@@ -60,6 +64,7 @@
 8. `_OBSIDIAN/Organização do Projeto/Onboarding/SRC-005 - dados.gov.br Catálogo.md`
 
 ### Atualizados (4):
+
 1. `_OBSIDIAN/Organização do Projeto/Escopo.md` (+100 linhas, nova seção Allowlist)
 2. `_OBSIDIAN/Organização do Projeto/Backlog.md` (DUV-001/002 resolvidas)
 3. `_OBSIDIAN/Organização do Projeto/Dúvidas & Decisões.md` (DEC-007, DEC-008)
@@ -72,9 +77,11 @@
 ## 🔄 Git commits
 
 **Commit 1 (53a2fe6):** `chore: DUV-001/DUV-002 resolvidas + allowlist inicial (SRC-001 a SRC-005) + templates + sources.yaml`
+
 - 47 files changed, 7086 insertions(+)
 
 **Commit 2 (d411ce9):** `docs: atualizar Escopo + Heartbeat + Log + Roadmap após resolução DUV-001/DUV-002`
+
 - 4 files changed, 321 insertions(+), 362 deletions(-)
 
 ---
@@ -82,10 +89,12 @@
 ## 📊 Impacto
 
 **Tarefas desbloqueadas:**
+
 - ✅ T-001 (Git setup + GitHub remote) — DUV-001 resolvida
 - ✅ T-004 (Allowlist + sources.yaml) — DUV-002 resolvida → DONE
 
 **Novas tarefas criadas:**
+
 - T-ONB-SRC-001: Onboarding compliance DOU (READY)
 - T-ONB-SRC-002: Onboarding compliance Planalto (READY)
 - T-ONB-SRC-003: Onboarding compliance IBGE (READY)
@@ -93,6 +102,7 @@
 - T-ONB-SRC-005: Onboarding compliance dados.gov.br (READY)
 
 **SLA status:**
+
 - Dúvidas abertas: 0 (de 2)
 - Dúvidas resolvidas: 2 (DUV-001, DUV-002)
 - SLA respeitado: ✅ (resolução em <24h)
@@ -135,7 +145,7 @@
 **Bloqueadores resolvidos:** 2 (DUV-001, DUV-002)  
 **Tarefas desbloqueadas:** 2 (T-001, T-004)  
 **Tarefas criadas:** 5 (T-ONB-SRC-001 a T-ONB-SRC-005)  
-**Commits:** 2  
+**Commits:** 2
 
 **Próxima rodada:** T-001 (Git remote) ou T-ONB-SRC-001 (onboarding compliance)
 

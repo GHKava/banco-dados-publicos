@@ -10,18 +10,11 @@
 
 ### READY (próximas tarefas a executar)
 
-- **T-001:** Git setup + GitHub remote
-  - Descrição: Inicializar repo Git local, configurar .gitignore, conectar remote GitHub.
-  - Persona: TL (Tech Lead)
-  - DoR: [ ] Nenhuma dependência
-  - Dependências: Nenhuma
-  - Link WorkOrder: (será criado ao iniciar)
-
 - **T-002:** Python bootstrap + venv + pre-commit
-  - Descrição: Criar `scripts/setup/bootstrap.ps1`, venv, instalar deps base, pre-commit hooks.
+  - Descrição: Executar `bootstrap.ps1`, criar venv, instalar deps base, pre-commit hooks.
   - Persona: TL
-  - DoR: [ ] T-001 concluído
-  - Dependências: T-001
+  - DoR: [x] T-001 concluído
+  - Dependências: T-001 ✅ DONE
   - Link WorkOrder: (será criado ao iniciar)
 
 - **T-003:** CI/tests/lint/typecheck (GitHub Actions)
@@ -55,7 +48,18 @@
 
 ### DONE
 
-(Nenhuma no momento)
+- **T-001:** Git setup + GitHub remote
+  - Data: 2026-01-30
+  - Tempo: ~10 min
+  - Resultado: Repo criado (https://github.com/GHKava/banco-dados-publicos), push inicial completo
+  - Evidence: [T-001-notes.md](../../docs/evidence/T-001-notes.md)
+  - Handoff: [T-001-Handoff.md](Handoffs/T-001-Handoff.md)
+
+- **T-004:** Define allowlist + sources.yaml
+  - Data: 2026-01-30
+  - Tempo: ~30 min (incluído em DUV-002)
+  - Resultado: 5 fontes gov brasileiras + policy fail-closed
+  - Evidence: Commit d411ce9
 
 ---
 
