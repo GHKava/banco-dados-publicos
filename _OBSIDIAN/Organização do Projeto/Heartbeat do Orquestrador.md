@@ -20,7 +20,7 @@
     - Alembic migrations configurado
     - Migration inicial gerada e aplicada (ee3e48e0708f)
     - src/database/init.py com utilities (create_database, install_extensions, verify_setup)
-    - src/storage/ package com models.py, database.py, __init__.py
+    - src/storage/ package com models.py, database.py, **init**.py
     - tests/test_database.py com validação de models
     - Evidence pack: T-005/
     - DUV-004 resolvida: usar container existente, TEXT para embeddings (não pgvector ainda)
@@ -55,6 +55,7 @@
 ### Budget status
 
 **Total acumulado nesta sessão:** ~200 min (4 rodadas)
+
 - Rodada #1 (T-001): ~10 min
 - Rodada #2 (T-002): ~60 min
 - Rodada #3 (T-003): ~40 min

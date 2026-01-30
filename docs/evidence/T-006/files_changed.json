@@ -1,0 +1,15 @@
+{
+  "task": "T-006",
+  "title": "Redis + RQ Setup",
+  "files_created": [
+    "src/jobs/__init__.py",
+    "src/jobs/tasks.py",
+    "src/jobs/worker.py",
+    "tests/test_jobs.py"
+  ],
+  "total_lines_added": 235,
+  "quality_gates": {
+    "pytest": "6/6 PASSED",
+    "black": "4 files PASSED"
+  }
+}
