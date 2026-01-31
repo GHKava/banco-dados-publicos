@@ -1,16 +1,22 @@
 """
 Audit logging for compliance tracking.
 
-Uses existing AuditLog model from models.py.
+Provides structured logging of policy decisions, source updates, and fetch attempts.
 """
 
+from __future__ import annotations
+
+import logging
+from datetime import datetime
 from typing import Any, Dict, List, Optional
 from uuid import UUID
 
 from sqlalchemy import func, select
 
-from src.database.database import get_session
+from src.database import get_session
 from src.database.models import AuditLog
+
+logger = logging.getLogger(__name__)
 
 
 def log_event(
@@ -21,6 +27,9 @@ def log_event(
     actor: Optional[str] = None,
     doc_id: Optional[UUID] = None,
     result: Optional[str] = "success",
+    error_message: Optional[str] = None,
+    run_id: Optional[UUID] = None,
+    job_id: Optional[UUID] = None,
 ) -> UUID:
     """
     Log an audit event.
@@ -37,19 +46,31 @@ def log_event(
     Returns:
         UUID of created audit log entry
     """
-    with get_session() as session:
+    session = get_session()
+    try:
         audit_entry = AuditLog(
             event_type=event_type,
+            event_timestamp=datetime.utcnow(),
             source_id=source_id,
-            action=action,
-            details=details or {},
-            actor=actor,
             doc_id=doc_id,
+            actor=actor,
+            action=action,
+            details=details,
             result=result,
+            error_message=error_message,
+            run_id=run_id,
+            job_id=job_id,
         )
         session.add(audit_entry)
         session.commit()
+        session.refresh(audit_entry)
         return audit_entry.log_id
+    except Exception as exc:  # pragma: no cover - DB failure path
+        session.rollback()
+        logger.exception("Audit log failed: %s", exc)
+        raise
+    finally:
+        session.close()
 
 
 def query_audit_log(
@@ -70,7 +91,8 @@ def query_audit_log(
     Returns:
         List of AuditLog objects ordered by timestamp DESC
     """
-    with get_session() as session:
+    session = get_session()
+    try:
         stmt = select(AuditLog).order_by(AuditLog.event_timestamp.desc()).limit(limit)
 
         if event_type:
@@ -81,6 +103,8 @@ def query_audit_log(
             stmt = stmt.where(AuditLog.actor == actor)
 
         return list(session.execute(stmt).scalars().all())
+    finally:
+        session.close()
 
 
 def get_audit_stats() -> Dict[str, Any]:
@@ -90,15 +114,14 @@ def get_audit_stats() -> Dict[str, Any]:
     Returns:
         dict with total_events, events_by_type, latest_timestamp
     """
-    with get_session() as session:
-        # Total events
+    session = get_session()
+    try:
         total = session.execute(select(func.count(AuditLog.log_id))).scalar()
-
-        # Events by type
-        events_by_type_query = select(AuditLog.event_type, func.count(AuditLog.log_id)).group_by(AuditLog.event_type)
+        events_by_type_query = (
+            select(AuditLog.event_type, func.count(AuditLog.log_id))
+            .group_by(AuditLog.event_type)
+        )
         events_by_type = {row[0]: row[1] for row in session.execute(events_by_type_query)}
-
-        # Latest timestamp
         latest_ts = session.execute(select(func.max(AuditLog.event_timestamp))).scalar()
 
         return {
@@ -106,3 +129,5 @@ def get_audit_stats() -> Dict[str, Any]:
             "events_by_type": events_by_type,
             "latest_timestamp": latest_ts,
         }
+    finally:
+        session.close()

@@ -9,7 +9,8 @@ Fail-closed by default: unclear compliance → METADATA_ONLY
 
 import logging
 from enum import Enum
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Callable, Dict, Optional, Tuple
+from uuid import UUID
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +51,7 @@ class PolicyGate:
     - PII risk level
     """
 
-    def __init__(self, fail_closed: bool = True):
+    def __init__(self, fail_closed: bool = True, audit_logger: Optional[Callable[..., UUID]] = None):
         """
         Initialize policy gate.
 
@@ -58,6 +59,7 @@ class PolicyGate:
             fail_closed: If True, default to METADATA_ONLY on ambiguity (recommended)
         """
         self.fail_closed = fail_closed
+        self.audit_logger = audit_logger
         self.logger = logging.getLogger(f"{__name__}.PolicyGate")
 
     def evaluate(self, source: Any) -> PolicyDecision:
@@ -78,42 +80,77 @@ class PolicyGate:
         # Rule 1: Check allowlist (mandatory)
         if not self._check_allowlist(source_id):
             self.logger.warning(f"{source_id} not in allowlist → BLOCK")
-            return PolicyDecision.BLOCK
+            decision = PolicyDecision.BLOCK
+            self._log_decision(source_id, decision, metadata)
+            return decision
 
         # Rule 2: Check robots.txt compliance
         robots_decision = self._check_robots(metadata)
         if robots_decision == PolicyDecision.BLOCK:
             self.logger.warning(f"{source_id} blocked by robots.txt → BLOCK")
-            return PolicyDecision.BLOCK
+            decision = PolicyDecision.BLOCK
+            self._log_decision(source_id, decision, metadata)
+            return decision
 
         # Rule 3: Check license
         license_decision = self._check_license(metadata, base_url)
         if license_decision == PolicyDecision.BLOCK:
             self.logger.warning(f"{source_id} license prohibits access → BLOCK")
-            return PolicyDecision.BLOCK
+            decision = PolicyDecision.BLOCK
+            self._log_decision(source_id, decision, metadata)
+            return decision
 
         # Rule 4: Check ToS (if available)
         tos_decision = self._check_tos(metadata)
         if tos_decision == PolicyDecision.BLOCK:
             self.logger.warning(f"{source_id} ToS prohibits scraping → BLOCK")
-            return PolicyDecision.BLOCK
+            decision = PolicyDecision.BLOCK
+            self._log_decision(source_id, decision, metadata)
+            return decision
 
         # Rule 5: Check PII risk
         pii_decision = self._check_pii(metadata)
         if pii_decision == PolicyDecision.BLOCK:
             self.logger.warning(f"{source_id} PII risk too high → BLOCK")
-            return PolicyDecision.BLOCK
+            decision = PolicyDecision.BLOCK
+            self._log_decision(source_id, decision, metadata)
+            return decision
 
         # Aggregate decisions (most restrictive wins)
         decisions = [license_decision, robots_decision, tos_decision, pii_decision]
 
         if PolicyDecision.METADATA_ONLY in decisions:
             self.logger.info(f"{source_id} → METADATA_ONLY (restrictive condition)")
-            return PolicyDecision.METADATA_ONLY
+            decision = PolicyDecision.METADATA_ONLY
+            self._log_decision(source_id, decision, metadata)
+            return decision
 
         # All checks passed → ALLOW
         self.logger.info(f"{source_id} → ALLOW (all checks passed)")
-        return PolicyDecision.ALLOW
+        decision = PolicyDecision.ALLOW
+        self._log_decision(source_id, decision, metadata)
+        return decision
+
+    def _log_decision(self, source_id: str, decision: PolicyDecision, metadata: Dict[str, Any]) -> None:
+        """Emit audit log entry for policy decisions (best-effort)."""
+        if not self.audit_logger:
+            return
+
+        try:
+            self.audit_logger(
+                event_type="policy_check",
+                source_id=source_id,
+                action="evaluate",
+                details={
+                    "decision": decision.value,
+                    "license_status": (metadata.get("license_policy") or {}).get("license_status"),
+                    "robots_respect": (metadata.get("crawl_policy") or {}).get("robots_respect"),
+                },
+                actor="policy_gate",
+                result="success",
+            )
+        except Exception as exc:  # pragma: no cover - best-effort logging
+            self.logger.warning("Audit logger failed: %s", exc)
 
     def _extract_source_fields(self, source: Any) -> Tuple[str, Dict[str, Any], Optional[str]]:
         """Extract source_id, metadata, base_url from dict or ORM object."""

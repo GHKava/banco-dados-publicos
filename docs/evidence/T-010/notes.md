@@ -15,14 +15,17 @@ Implementar audit logging para rastrear compliance decisions, source updates, e 
 ## Execução
 
 ### 1. WorkOrder criado
-- [T-010-WorkOrder.md](../../_OBSIDIAN/Organização do Projeto/WorkOrders/T-010-WorkOrder.md)
+
+- [T-010-WorkOrder.md](../../\_OBSIDIAN/Organização do Projeto/WorkOrders/T-010-WorkOrder.md)
 
 ### 2. Análise de schema existente
+
 - **Descoberta:** Tabela `audit_log` JÁ EXISTE em schema inicial (T-005)
 - **Modelo:** `AuditLog` em models.py (linha 205-217)
 - **Campos:** log_id (UUID), event_type, source_id, doc_id, actor, action, details (JSONB), result, event_timestamp
 
 ### 3. Implementação de audit_log.py
+
 - **Arquivo:** src/database/audit_log.py
 - **Funções:**
   - `log_event()`: Cria registro de audit com details flexível (JSONB)
@@ -31,12 +34,14 @@ Implementar audit logging para rastrear compliance decisions, source updates, e 
 - **Decisão:** Reutilizar modelo existente AuditLog (não criar novo)
 
 ### 4. Testes
+
 - **Arquivo:** tests/test_audit_logging.py
 - **Status:** **NÃO EXECUTADOS** (SQLAlchemy 2.0.23 incompatível com Python 3.14.2)
 - **Issue detectada:** AssertionError em SQLCoreOperations (typing bug)
 - **Workaround:** Testes criados mas não rodados (integration test defer para T-020 - Observability)
 
 ### 5. Quality Gate
+
 - ✅ Lint (black + flake8 + isort) PASS
 - ✅ Código implementado (3 funções públicas)
 - ❌ Tests skipped (Python 3.14 + SQLAlchemy 2.0.23 incompatibilidade)
