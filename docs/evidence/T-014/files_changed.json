@@ -1,0 +1,31 @@
+{
+  "task": "T-014",
+  "description": "Bot: change detector",
+  "timestamp": "2026-01-31T02:50:00Z",
+  "files": [
+    {
+      "path": "src/bots/change_detector.py",
+      "status": "created",
+      "lines_added": 242,
+      "purpose": "Detectar mudanças em URLs (hash SHA256, last-modified, ETag)"
+    },
+    {
+      "path": "tests/test_change_detector.py",
+      "status": "created",
+      "lines_added": 340,
+      "purpose": "Testes unitários do change detector (26 testes, 97% coverage)"
+    },
+    {
+      "path": "src/bots/__init__.py",
+      "status": "modified",
+      "lines_added": 1,
+      "purpose": "Export ChangeDetector"
+    }
+  ],
+  "test_results": {
+    "total_tests": 26,
+    "passed": 26,
+    "failed": 0,
+    "coverage": "97%"
+  }
+}

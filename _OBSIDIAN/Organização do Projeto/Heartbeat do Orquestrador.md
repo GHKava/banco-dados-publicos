@@ -1,9 +1,9 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-31 02:45 UTC
+**Última atualização:** 2026-01-31 02:55 UTC
 **Rodada:** #10 (em andamento - loop contínuo ativo)
-**Status:** ✅ T-010 DONE
-**Budget Rodada #10:** 3/5 tarefas, ~75/90 min
+**Status:** ✅ T-014 DONE
+**Budget Rodada #10:** 4/5 tarefas, ~80/90 min
 
 ---
 
@@ -55,7 +55,21 @@
   4. Testes unitários com stubs de sessão (pytest)
   5. Evidence pack criado (commands.log, tests.log, notes, files_changed.json)
   6. Handoff criado ([T-010.md](Handoffs/T-010.md))
-- **Próximo passo:** T-011 (Bot — URL frontier)
+- **Próximo passo:** T-014 (Bot — change detector)
+
+### T-014: Bot — change detector (DONE)
+
+- **Status:** ✅ DONE
+- **Início:** 2026-01-31 02:45 UTC
+- **Fim:** 2026-01-31 02:55 UTC
+- **Persona:** DE
+- **Ações realizadas:**
+  1. WorkOrder já existia (código/testes já implementados)
+  2. Verificação de testes (26/26 pass, 97% coverage)
+  3. Evidence pack completado (commands.log, tests.log, files_changed.json)
+  4. Handoff criado ([T-014.md](Handoffs/T-014.md))
+  5. WorkOrder atualizado (status DONE, checkboxes marcados)
+- **Próximo passo:** T-015 (Frontier scheduler)
 
 ---
 

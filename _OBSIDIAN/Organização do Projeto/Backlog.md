@@ -1,7 +1,7 @@
 # Backlog — Banco de Dados Interrelacional
 
 **Data criação:** 2026-01-30
-**Última atualização:** 2026-01-31 02:45 UTC
+**Última atualização:** 2026-01-31 02:55 UTC
 **SLA padrão de dúvidas:** 24h ou próxima rodada
 
 ---
@@ -152,6 +152,14 @@
   - Deliverables: src/database/audit_log.py, tests/test_audit_log.py, WorkOrder, evidence pack
   - Evidence: [T-010 Evidence Pack](../../docs/evidence/T-010/)
   - Handoff: [T-010.md](Handoffs/T-010.md)
+
+- **T-014:** Bot: change detector
+  - Data: 2026-01-31
+  - Tempo: ~10 min
+  - Resultado: Change detector com hash SHA256, Last-Modified, ETag + 26 testes (97% coverage)
+  - Deliverables: src/bots/change_detector.py, tests/test_change_detector.py, WorkOrder, evidence pack
+  - Evidence: [T-014 Evidence Pack](../../docs/evidence/T-014/)
+  - Handoff: [T-014.md](Handoffs/T-014.md)
 
 ---
 

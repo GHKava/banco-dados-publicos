@@ -1,8 +1,8 @@
 # WorkOrder — T-014 (Bot: Change Detector)
 
-**Data de criação:** 2026-01-31  
-**Persona responsável:** DE (Data Engineer)  
-**Status:** IN_PROGRESS  
+**Data de criação:** 2026-01-31
+**Persona responsável:** DE (Data Engineer)
+**Status:** DONE
 **Prioridade:** Alta
 
 ---
@@ -44,12 +44,12 @@ Implementar bot para detectar mudanças em URLs já crawlados (hash comparison, 
 
 ## Critérios de Aceitação
 
-- [ ] Função `compute_content_hash(content: bytes) -> str` (SHA256)
-- [ ] Função `has_content_changed(old_hash: str, new_content: bytes) -> bool`
-- [ ] Função `check_last_modified(url: str, last_known_date: datetime) -> bool`
-- [ ] Função `detect_change(url, old_hash, new_content, headers) -> ChangeResult`
-- [ ] Testes: 8+ tests, 90%+ coverage
-- [ ] Lint: black, flake8, isort PASS
+- [x] Função `compute_content_hash(content: bytes) -> str` (SHA256)
+- [x] Função `has_content_changed(old_hash: str, new_content: bytes) -> bool`
+- [x] Função `check_last_modified(url: str, last_known_date: datetime) -> bool`
+- [x] Função `detect_change(url, old_hash, new_content, headers) -> ChangeResult`
+- [x] Testes: 26 tests, 97% coverage
+- [x] Lint: black, flake8, isort PASS
 
 ---
 
@@ -73,9 +73,9 @@ Implementar bot para detectar mudanças em URLs já crawlados (hash comparison, 
 
 ## Checklist de Execução
 
-- [ ] WorkOrder criado
-- [ ] Implementação (src/bots/change_detector.py)
-- [ ] Testes (tests/test_change_detector.py)
-- [ ] Lint PASS (black, flake8, isort)
-- [ ] Evidence Pack (docs/evidence/T-014/notes.md)
-- [ ] Commit + Push
+- [x] WorkOrder criado
+- [x] Implementação (src/bots/change_detector.py)
+- [x] Testes (tests/test_change_detector.py)
+- [x] Lint PASS (black, flake8, isort)
+- [x] Evidence Pack (docs/evidence/T-014/notes.md)
+- [x] Commit + Push
