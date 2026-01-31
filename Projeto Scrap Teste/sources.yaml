@@ -1,0 +1,6728 @@
+- source_id: SRC-001
+  name: Portal da Transparência Federal
+  owner_org: Controladoria-Geral da União (CGU)
+  base_domains:
+  - portaldatransparencia.gov.br
+  entrypoints: &id001
+  - https://portaldatransparencia.gov.br/
+  discovery:
+    method: api index
+    urls: *id001
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://portaldatransparencia.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: API oficial de dados abertos; dados agregados; limitar ingestão de identificadores
+    pessoais.
+- source_id: SRC-002
+  name: DataSUS - Ministério da Saúde
+  owner_org: Ministério da Saúde
+  base_domains:
+  - datasus.saude.gov.br
+  entrypoints:
+  - https://datasus.saude.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://datasus.saude.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Banco de dados de saúde; contém informações sensíveis; redigir ou bloquear
+    CPFs.
+- source_id: SRC-003
+  name: IBGE Séries Temporais (SIDRA)
+  owner_org: Instituto Brasileiro de Geografia e Estatística (IBGE)
+  base_domains:
+  - api.sidra.ibge.gov.br
+  entrypoints: &id002
+  - https://api.sidra.ibge.gov.br/
+  discovery:
+    method: api index
+    urls: *id002
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 1.0
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://ibge.gov.br/robots.txt
+    default_storage_mode: ALLOW_FULLTEXT
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Séries econômicas e demográficas; sem PII.
+- source_id: SRC-004
+  name: Banco Central – Sistema de Séries Temporais (SGS)
+  owner_org: Banco Central do Brasil
+  base_domains:
+  - api.bcb.gov.br
+  entrypoints: &id003
+  - https://api.bcb.gov.br/dados/serie/bcdata.sgs
+  discovery:
+    method: api index
+    urls: *id003
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 1.0
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: unknown
+    default_storage_mode: ALLOW_FULLTEXT
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Séries econômicas; acesso público.
+- source_id: SRC-005
+  name: Portal Brasileiro de Dados Abertos
+  owner_org: Ministério da Gestão e da Inovação em Serviços Públicos
+  base_domains:
+  - dados.gov.br
+  entrypoints: &id004
+  - https://dados.gov.br/
+  discovery:
+    method: api index
+    urls: *id004
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos federais; alguns recursos exigem chave de API.
+- source_id: SRC-006
+  name: Portal ComprasNet
+  owner_org: Ministério da Economia
+  base_domains:
+  - www.gov.br/compras
+  entrypoints: &id005
+  - https://www.gov.br/compras/
+  discovery:
+    method: sitemap
+    urls: *id005
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal nacional de compras públicas; contém licitações, contratos e atas
+    de registro de preços.
+- source_id: SRC-007
+  name: Diário Oficial da União (DOU)
+  owner_org: Imprensa Nacional
+  base_domains:
+  - in.gov.br
+  entrypoints:
+  - https://www.in.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.in.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial de publicações federais; pode conter nomes de pessoas e números
+    de CPF.
+- source_id: SRC-008
+  name: Superior Tribunal de Justiça (STJ) – consultas processuais
+  owner_org: Superior Tribunal de Justiça
+  base_domains:
+  - stj.jus.br
+  entrypoints:
+  - https://processo.stj.jus.br/consultas/processo/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.stj.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; inclui dados de partes e advogados; atenção à LGPD.
+- source_id: SRC-009
+  name: Supremo Tribunal Federal (STF) – consultas processuais
+  owner_org: Supremo Tribunal Federal
+  base_domains:
+  - stf.jus.br
+  entrypoints:
+  - https://portal.stf.jus.br/processos/listarProcessos.asp
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.stf.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; dados sensíveis; restringir coleta de conteúdo completo.
+- source_id: SRC-010
+  name: CNJ DataJud
+  owner_org: Conselho Nacional de Justiça
+  base_domains:
+  - dados.cnj.jus.br
+  entrypoints: &id006
+  - https://dados.cnj.jus.br/
+  discovery:
+    method: api index
+    urls: *id006
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://cnj.jus.br/robots.txt
+    default_storage_mode: ALLOW_SNIPPETS
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Base estatística do Judiciário; não contém dados pessoais; boa para indicadores.
+- source_id: SRC-011
+  name: Portal da Transparência AC
+  owner_org: Governo do Estado de AC
+  base_domains:
+  - transparencia.ac.gov.br
+  entrypoints: &id007
+  - https://transparencia.ac.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id007
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.ac.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado AC; inclui contratos e licitações.
+- source_id: SRC-012
+  name: Portal de Dados Abertos AC
+  owner_org: Governo do Estado de AC
+  base_domains:
+  - dados.ac.gov.br
+  entrypoints: &id008
+  - https://dados.ac.gov.br/
+  discovery:
+    method: api index
+    urls: *id008
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ac.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado AC; contém conjuntos variados.
+- source_id: SRC-013
+  name: Tribunal de Justiça AC
+  owner_org: Tribunal de Justiça do Estado de AC
+  base_domains:
+  - tjac.jus.br
+  entrypoints:
+  - https://www.tjac.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjac.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-014
+  name: Diário Oficial AC
+  owner_org: Imprensa Oficial do Estado de AC
+  base_domains:
+  - diariooficial.ac.gov.br
+  entrypoints:
+  - https://diariooficial.ac.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.ac.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado AC; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-015
+  name: Portal da Transparência AL
+  owner_org: Governo do Estado de AL
+  base_domains:
+  - transparencia.al.gov.br
+  entrypoints: &id009
+  - https://transparencia.al.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id009
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.al.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado AL; inclui contratos e licitações.
+- source_id: SRC-016
+  name: Portal de Dados Abertos AL
+  owner_org: Governo do Estado de AL
+  base_domains:
+  - dados.al.gov.br
+  entrypoints: &id010
+  - https://dados.al.gov.br/
+  discovery:
+    method: api index
+    urls: *id010
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.al.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado AL; contém conjuntos variados.
+- source_id: SRC-017
+  name: Tribunal de Justiça AL
+  owner_org: Tribunal de Justiça do Estado de AL
+  base_domains:
+  - tjal.jus.br
+  entrypoints:
+  - https://www.tjal.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjal.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-018
+  name: Diário Oficial AL
+  owner_org: Imprensa Oficial do Estado de AL
+  base_domains:
+  - diariooficial.al.gov.br
+  entrypoints:
+  - https://diariooficial.al.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.al.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado AL; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-019
+  name: Portal da Transparência AP
+  owner_org: Governo do Estado de AP
+  base_domains:
+  - transparencia.ap.gov.br
+  entrypoints: &id011
+  - https://transparencia.ap.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id011
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.ap.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado AP; inclui contratos e licitações.
+- source_id: SRC-020
+  name: Portal de Dados Abertos AP
+  owner_org: Governo do Estado de AP
+  base_domains:
+  - dados.ap.gov.br
+  entrypoints: &id012
+  - https://dados.ap.gov.br/
+  discovery:
+    method: api index
+    urls: *id012
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ap.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado AP; contém conjuntos variados.
+- source_id: SRC-021
+  name: Tribunal de Justiça AP
+  owner_org: Tribunal de Justiça do Estado de AP
+  base_domains:
+  - tjap.jus.br
+  entrypoints:
+  - https://www.tjap.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjap.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-022
+  name: Diário Oficial AP
+  owner_org: Imprensa Oficial do Estado de AP
+  base_domains:
+  - diariooficial.ap.gov.br
+  entrypoints:
+  - https://diariooficial.ap.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.ap.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado AP; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-023
+  name: Portal da Transparência AM
+  owner_org: Governo do Estado de AM
+  base_domains:
+  - transparencia.am.gov.br
+  entrypoints: &id013
+  - https://transparencia.am.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id013
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.am.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado AM; inclui contratos e licitações.
+- source_id: SRC-024
+  name: Portal de Dados Abertos AM
+  owner_org: Governo do Estado de AM
+  base_domains:
+  - dados.am.gov.br
+  entrypoints: &id014
+  - https://dados.am.gov.br/
+  discovery:
+    method: api index
+    urls: *id014
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.am.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado AM; contém conjuntos variados.
+- source_id: SRC-025
+  name: Tribunal de Justiça AM
+  owner_org: Tribunal de Justiça do Estado de AM
+  base_domains:
+  - tjam.jus.br
+  entrypoints:
+  - https://www.tjam.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjam.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-026
+  name: Diário Oficial AM
+  owner_org: Imprensa Oficial do Estado de AM
+  base_domains:
+  - diariooficial.am.gov.br
+  entrypoints:
+  - https://diariooficial.am.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.am.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado AM; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-027
+  name: Portal da Transparência BA
+  owner_org: Governo do Estado de BA
+  base_domains:
+  - transparencia.ba.gov.br
+  entrypoints: &id015
+  - https://transparencia.ba.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id015
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.ba.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado BA; inclui contratos e licitações.
+- source_id: SRC-028
+  name: Portal de Dados Abertos BA
+  owner_org: Governo do Estado de BA
+  base_domains:
+  - dados.ba.gov.br
+  entrypoints: &id016
+  - https://dados.ba.gov.br/
+  discovery:
+    method: api index
+    urls: *id016
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ba.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado BA; contém conjuntos variados.
+- source_id: SRC-029
+  name: Tribunal de Justiça BA
+  owner_org: Tribunal de Justiça do Estado de BA
+  base_domains:
+  - tjba.jus.br
+  entrypoints:
+  - https://www.tjba.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjba.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-030
+  name: Diário Oficial BA
+  owner_org: Imprensa Oficial do Estado de BA
+  base_domains:
+  - diariooficial.ba.gov.br
+  entrypoints:
+  - https://diariooficial.ba.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.ba.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado BA; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-031
+  name: Portal da Transparência CE
+  owner_org: Governo do Estado de CE
+  base_domains:
+  - transparencia.ce.gov.br
+  entrypoints: &id017
+  - https://transparencia.ce.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id017
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.ce.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado CE; inclui contratos e licitações.
+- source_id: SRC-032
+  name: Portal de Dados Abertos CE
+  owner_org: Governo do Estado de CE
+  base_domains:
+  - dados.ce.gov.br
+  entrypoints: &id018
+  - https://dados.ce.gov.br/
+  discovery:
+    method: api index
+    urls: *id018
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ce.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado CE; contém conjuntos variados.
+- source_id: SRC-033
+  name: Tribunal de Justiça CE
+  owner_org: Tribunal de Justiça do Estado de CE
+  base_domains:
+  - tjce.jus.br
+  entrypoints:
+  - https://www.tjce.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjce.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-034
+  name: Diário Oficial CE
+  owner_org: Imprensa Oficial do Estado de CE
+  base_domains:
+  - diariooficial.ce.gov.br
+  entrypoints:
+  - https://diariooficial.ce.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.ce.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado CE; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-035
+  name: Portal da Transparência DF
+  owner_org: Governo do Estado de DF
+  base_domains:
+  - transparencia.df.gov.br
+  entrypoints: &id019
+  - https://transparencia.df.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id019
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.df.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado DF; inclui contratos e licitações.
+- source_id: SRC-036
+  name: Portal de Dados Abertos DF
+  owner_org: Governo do Estado de DF
+  base_domains:
+  - dados.df.gov.br
+  entrypoints: &id020
+  - https://dados.df.gov.br/
+  discovery:
+    method: api index
+    urls: *id020
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.df.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado DF; contém conjuntos variados.
+- source_id: SRC-037
+  name: Tribunal de Justiça DF
+  owner_org: Tribunal de Justiça do Estado de DF
+  base_domains:
+  - tjdf.jus.br
+  entrypoints:
+  - https://www.tjdf.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjdf.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-038
+  name: Diário Oficial DF
+  owner_org: Imprensa Oficial do Estado de DF
+  base_domains:
+  - diariooficial.df.gov.br
+  entrypoints:
+  - https://diariooficial.df.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.df.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado DF; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-039
+  name: Portal da Transparência ES
+  owner_org: Governo do Estado de ES
+  base_domains:
+  - transparencia.es.gov.br
+  entrypoints: &id021
+  - https://transparencia.es.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id021
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.es.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado ES; inclui contratos e licitações.
+- source_id: SRC-040
+  name: Portal de Dados Abertos ES
+  owner_org: Governo do Estado de ES
+  base_domains:
+  - dados.es.gov.br
+  entrypoints: &id022
+  - https://dados.es.gov.br/
+  discovery:
+    method: api index
+    urls: *id022
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.es.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado ES; contém conjuntos variados.
+- source_id: SRC-041
+  name: Tribunal de Justiça ES
+  owner_org: Tribunal de Justiça do Estado de ES
+  base_domains:
+  - tjes.jus.br
+  entrypoints:
+  - https://www.tjes.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjes.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-042
+  name: Diário Oficial ES
+  owner_org: Imprensa Oficial do Estado de ES
+  base_domains:
+  - diariooficial.es.gov.br
+  entrypoints:
+  - https://diariooficial.es.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.es.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado ES; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-043
+  name: Portal da Transparência GO
+  owner_org: Governo do Estado de GO
+  base_domains:
+  - transparencia.go.gov.br
+  entrypoints: &id023
+  - https://transparencia.go.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id023
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.go.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado GO; inclui contratos e licitações.
+- source_id: SRC-044
+  name: Portal de Dados Abertos GO
+  owner_org: Governo do Estado de GO
+  base_domains:
+  - dados.go.gov.br
+  entrypoints: &id024
+  - https://dados.go.gov.br/
+  discovery:
+    method: api index
+    urls: *id024
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.go.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado GO; contém conjuntos variados.
+- source_id: SRC-045
+  name: Tribunal de Justiça GO
+  owner_org: Tribunal de Justiça do Estado de GO
+  base_domains:
+  - tjgo.jus.br
+  entrypoints:
+  - https://www.tjgo.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjgo.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-046
+  name: Diário Oficial GO
+  owner_org: Imprensa Oficial do Estado de GO
+  base_domains:
+  - diariooficial.go.gov.br
+  entrypoints:
+  - https://diariooficial.go.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.go.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado GO; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-047
+  name: Portal da Transparência MA
+  owner_org: Governo do Estado de MA
+  base_domains:
+  - transparencia.ma.gov.br
+  entrypoints: &id025
+  - https://transparencia.ma.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id025
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.ma.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado MA; inclui contratos e licitações.
+- source_id: SRC-048
+  name: Portal de Dados Abertos MA
+  owner_org: Governo do Estado de MA
+  base_domains:
+  - dados.ma.gov.br
+  entrypoints: &id026
+  - https://dados.ma.gov.br/
+  discovery:
+    method: api index
+    urls: *id026
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ma.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado MA; contém conjuntos variados.
+- source_id: SRC-049
+  name: Tribunal de Justiça MA
+  owner_org: Tribunal de Justiça do Estado de MA
+  base_domains:
+  - tjma.jus.br
+  entrypoints:
+  - https://www.tjma.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjma.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-050
+  name: Diário Oficial MA
+  owner_org: Imprensa Oficial do Estado de MA
+  base_domains:
+  - diariooficial.ma.gov.br
+  entrypoints:
+  - https://diariooficial.ma.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.ma.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado MA; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-051
+  name: Portal da Transparência MT
+  owner_org: Governo do Estado de MT
+  base_domains:
+  - transparencia.mt.gov.br
+  entrypoints: &id027
+  - https://transparencia.mt.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id027
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.mt.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado MT; inclui contratos e licitações.
+- source_id: SRC-052
+  name: Portal de Dados Abertos MT
+  owner_org: Governo do Estado de MT
+  base_domains:
+  - dados.mt.gov.br
+  entrypoints: &id028
+  - https://dados.mt.gov.br/
+  discovery:
+    method: api index
+    urls: *id028
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.mt.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado MT; contém conjuntos variados.
+- source_id: SRC-053
+  name: Tribunal de Justiça MT
+  owner_org: Tribunal de Justiça do Estado de MT
+  base_domains:
+  - tjmt.jus.br
+  entrypoints:
+  - https://www.tjmt.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjmt.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-054
+  name: Diário Oficial MT
+  owner_org: Imprensa Oficial do Estado de MT
+  base_domains:
+  - diariooficial.mt.gov.br
+  entrypoints:
+  - https://diariooficial.mt.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.mt.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado MT; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-055
+  name: Portal da Transparência MS
+  owner_org: Governo do Estado de MS
+  base_domains:
+  - transparencia.ms.gov.br
+  entrypoints: &id029
+  - https://transparencia.ms.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id029
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.ms.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado MS; inclui contratos e licitações.
+- source_id: SRC-056
+  name: Portal de Dados Abertos MS
+  owner_org: Governo do Estado de MS
+  base_domains:
+  - dados.ms.gov.br
+  entrypoints: &id030
+  - https://dados.ms.gov.br/
+  discovery:
+    method: api index
+    urls: *id030
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ms.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado MS; contém conjuntos variados.
+- source_id: SRC-057
+  name: Tribunal de Justiça MS
+  owner_org: Tribunal de Justiça do Estado de MS
+  base_domains:
+  - tjms.jus.br
+  entrypoints:
+  - https://www.tjms.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjms.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-058
+  name: Diário Oficial MS
+  owner_org: Imprensa Oficial do Estado de MS
+  base_domains:
+  - diariooficial.ms.gov.br
+  entrypoints:
+  - https://diariooficial.ms.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.ms.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado MS; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-059
+  name: Portal da Transparência MG
+  owner_org: Governo do Estado de MG
+  base_domains:
+  - transparencia.mg.gov.br
+  entrypoints: &id031
+  - https://transparencia.mg.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id031
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.mg.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado MG; inclui contratos e licitações.
+- source_id: SRC-060
+  name: Portal de Dados Abertos MG
+  owner_org: Governo do Estado de MG
+  base_domains:
+  - dados.mg.gov.br
+  entrypoints: &id032
+  - https://dados.mg.gov.br/
+  discovery:
+    method: api index
+    urls: *id032
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.mg.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado MG; contém conjuntos variados.
+- source_id: SRC-061
+  name: Tribunal de Justiça MG
+  owner_org: Tribunal de Justiça do Estado de MG
+  base_domains:
+  - tjmg.jus.br
+  entrypoints:
+  - https://www.tjmg.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjmg.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-062
+  name: Diário Oficial MG
+  owner_org: Imprensa Oficial do Estado de MG
+  base_domains:
+  - diariooficial.mg.gov.br
+  entrypoints:
+  - https://diariooficial.mg.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.mg.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado MG; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-063
+  name: Portal da Transparência PA
+  owner_org: Governo do Estado de PA
+  base_domains:
+  - transparencia.pa.gov.br
+  entrypoints: &id033
+  - https://transparencia.pa.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id033
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.pa.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado PA; inclui contratos e licitações.
+- source_id: SRC-064
+  name: Portal de Dados Abertos PA
+  owner_org: Governo do Estado de PA
+  base_domains:
+  - dados.pa.gov.br
+  entrypoints: &id034
+  - https://dados.pa.gov.br/
+  discovery:
+    method: api index
+    urls: *id034
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.pa.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado PA; contém conjuntos variados.
+- source_id: SRC-065
+  name: Tribunal de Justiça PA
+  owner_org: Tribunal de Justiça do Estado de PA
+  base_domains:
+  - tjpa.jus.br
+  entrypoints:
+  - https://www.tjpa.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjpa.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-066
+  name: Diário Oficial PA
+  owner_org: Imprensa Oficial do Estado de PA
+  base_domains:
+  - diariooficial.pa.gov.br
+  entrypoints:
+  - https://diariooficial.pa.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.pa.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado PA; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-067
+  name: Portal da Transparência PB
+  owner_org: Governo do Estado de PB
+  base_domains:
+  - transparencia.pb.gov.br
+  entrypoints: &id035
+  - https://transparencia.pb.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id035
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.pb.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado PB; inclui contratos e licitações.
+- source_id: SRC-068
+  name: Portal de Dados Abertos PB
+  owner_org: Governo do Estado de PB
+  base_domains:
+  - dados.pb.gov.br
+  entrypoints: &id036
+  - https://dados.pb.gov.br/
+  discovery:
+    method: api index
+    urls: *id036
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.pb.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado PB; contém conjuntos variados.
+- source_id: SRC-069
+  name: Tribunal de Justiça PB
+  owner_org: Tribunal de Justiça do Estado de PB
+  base_domains:
+  - tjpb.jus.br
+  entrypoints:
+  - https://www.tjpb.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjpb.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-070
+  name: Diário Oficial PB
+  owner_org: Imprensa Oficial do Estado de PB
+  base_domains:
+  - diariooficial.pb.gov.br
+  entrypoints:
+  - https://diariooficial.pb.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.pb.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado PB; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-071
+  name: Portal da Transparência PR
+  owner_org: Governo do Estado de PR
+  base_domains:
+  - transparencia.pr.gov.br
+  entrypoints: &id037
+  - https://transparencia.pr.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id037
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.pr.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado PR; inclui contratos e licitações.
+- source_id: SRC-072
+  name: Portal de Dados Abertos PR
+  owner_org: Governo do Estado de PR
+  base_domains:
+  - dados.pr.gov.br
+  entrypoints: &id038
+  - https://dados.pr.gov.br/
+  discovery:
+    method: api index
+    urls: *id038
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.pr.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado PR; contém conjuntos variados.
+- source_id: SRC-073
+  name: Tribunal de Justiça PR
+  owner_org: Tribunal de Justiça do Estado de PR
+  base_domains:
+  - tjpr.jus.br
+  entrypoints:
+  - https://www.tjpr.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjpr.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-074
+  name: Diário Oficial PR
+  owner_org: Imprensa Oficial do Estado de PR
+  base_domains:
+  - diariooficial.pr.gov.br
+  entrypoints:
+  - https://diariooficial.pr.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.pr.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado PR; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-075
+  name: Portal da Transparência PE
+  owner_org: Governo do Estado de PE
+  base_domains:
+  - transparencia.pe.gov.br
+  entrypoints: &id039
+  - https://transparencia.pe.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id039
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.pe.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado PE; inclui contratos e licitações.
+- source_id: SRC-076
+  name: Portal de Dados Abertos PE
+  owner_org: Governo do Estado de PE
+  base_domains:
+  - dados.pe.gov.br
+  entrypoints: &id040
+  - https://dados.pe.gov.br/
+  discovery:
+    method: api index
+    urls: *id040
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.pe.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado PE; contém conjuntos variados.
+- source_id: SRC-077
+  name: Tribunal de Justiça PE
+  owner_org: Tribunal de Justiça do Estado de PE
+  base_domains:
+  - tjpe.jus.br
+  entrypoints:
+  - https://www.tjpe.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjpe.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-078
+  name: Diário Oficial PE
+  owner_org: Imprensa Oficial do Estado de PE
+  base_domains:
+  - diariooficial.pe.gov.br
+  entrypoints:
+  - https://diariooficial.pe.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.pe.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado PE; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-079
+  name: Portal da Transparência PI
+  owner_org: Governo do Estado de PI
+  base_domains:
+  - transparencia.pi.gov.br
+  entrypoints: &id041
+  - https://transparencia.pi.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id041
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.pi.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado PI; inclui contratos e licitações.
+- source_id: SRC-080
+  name: Portal de Dados Abertos PI
+  owner_org: Governo do Estado de PI
+  base_domains:
+  - dados.pi.gov.br
+  entrypoints: &id042
+  - https://dados.pi.gov.br/
+  discovery:
+    method: api index
+    urls: *id042
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.pi.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado PI; contém conjuntos variados.
+- source_id: SRC-081
+  name: Tribunal de Justiça PI
+  owner_org: Tribunal de Justiça do Estado de PI
+  base_domains:
+  - tjpi.jus.br
+  entrypoints:
+  - https://www.tjpi.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjpi.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-082
+  name: Diário Oficial PI
+  owner_org: Imprensa Oficial do Estado de PI
+  base_domains:
+  - diariooficial.pi.gov.br
+  entrypoints:
+  - https://diariooficial.pi.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.pi.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado PI; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-083
+  name: Portal da Transparência RJ
+  owner_org: Governo do Estado de RJ
+  base_domains:
+  - transparencia.rj.gov.br
+  entrypoints: &id043
+  - https://transparencia.rj.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id043
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.rj.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado RJ; inclui contratos e licitações.
+- source_id: SRC-084
+  name: Portal de Dados Abertos RJ
+  owner_org: Governo do Estado de RJ
+  base_domains:
+  - dados.rj.gov.br
+  entrypoints: &id044
+  - https://dados.rj.gov.br/
+  discovery:
+    method: api index
+    urls: *id044
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.rj.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado RJ; contém conjuntos variados.
+- source_id: SRC-085
+  name: Tribunal de Justiça RJ
+  owner_org: Tribunal de Justiça do Estado de RJ
+  base_domains:
+  - tjrj.jus.br
+  entrypoints:
+  - https://www.tjrj.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjrj.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-086
+  name: Diário Oficial RJ
+  owner_org: Imprensa Oficial do Estado de RJ
+  base_domains:
+  - diariooficial.rj.gov.br
+  entrypoints:
+  - https://diariooficial.rj.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.rj.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado RJ; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-087
+  name: Portal da Transparência RN
+  owner_org: Governo do Estado de RN
+  base_domains:
+  - transparencia.rn.gov.br
+  entrypoints: &id045
+  - https://transparencia.rn.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id045
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.rn.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado RN; inclui contratos e licitações.
+- source_id: SRC-088
+  name: Portal de Dados Abertos RN
+  owner_org: Governo do Estado de RN
+  base_domains:
+  - dados.rn.gov.br
+  entrypoints: &id046
+  - https://dados.rn.gov.br/
+  discovery:
+    method: api index
+    urls: *id046
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.rn.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado RN; contém conjuntos variados.
+- source_id: SRC-089
+  name: Tribunal de Justiça RN
+  owner_org: Tribunal de Justiça do Estado de RN
+  base_domains:
+  - tjrn.jus.br
+  entrypoints:
+  - https://www.tjrn.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjrn.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-090
+  name: Diário Oficial RN
+  owner_org: Imprensa Oficial do Estado de RN
+  base_domains:
+  - diariooficial.rn.gov.br
+  entrypoints:
+  - https://diariooficial.rn.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.rn.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado RN; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-091
+  name: Portal da Transparência RS
+  owner_org: Governo do Estado de RS
+  base_domains:
+  - transparencia.rs.gov.br
+  entrypoints: &id047
+  - https://transparencia.rs.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id047
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.rs.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado RS; inclui contratos e licitações.
+- source_id: SRC-092
+  name: Portal de Dados Abertos RS
+  owner_org: Governo do Estado de RS
+  base_domains:
+  - dados.rs.gov.br
+  entrypoints: &id048
+  - https://dados.rs.gov.br/
+  discovery:
+    method: api index
+    urls: *id048
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.rs.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado RS; contém conjuntos variados.
+- source_id: SRC-093
+  name: Tribunal de Justiça RS
+  owner_org: Tribunal de Justiça do Estado de RS
+  base_domains:
+  - tjrs.jus.br
+  entrypoints:
+  - https://www.tjrs.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjrs.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-094
+  name: Diário Oficial RS
+  owner_org: Imprensa Oficial do Estado de RS
+  base_domains:
+  - diariooficial.rs.gov.br
+  entrypoints:
+  - https://diariooficial.rs.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.rs.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado RS; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-095
+  name: Portal da Transparência RO
+  owner_org: Governo do Estado de RO
+  base_domains:
+  - transparencia.ro.gov.br
+  entrypoints: &id049
+  - https://transparencia.ro.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id049
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.ro.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado RO; inclui contratos e licitações.
+- source_id: SRC-096
+  name: Portal de Dados Abertos RO
+  owner_org: Governo do Estado de RO
+  base_domains:
+  - dados.ro.gov.br
+  entrypoints: &id050
+  - https://dados.ro.gov.br/
+  discovery:
+    method: api index
+    urls: *id050
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ro.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado RO; contém conjuntos variados.
+- source_id: SRC-097
+  name: Tribunal de Justiça RO
+  owner_org: Tribunal de Justiça do Estado de RO
+  base_domains:
+  - tjro.jus.br
+  entrypoints:
+  - https://www.tjro.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjro.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-098
+  name: Diário Oficial RO
+  owner_org: Imprensa Oficial do Estado de RO
+  base_domains:
+  - diariooficial.ro.gov.br
+  entrypoints:
+  - https://diariooficial.ro.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.ro.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado RO; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-099
+  name: Portal da Transparência RR
+  owner_org: Governo do Estado de RR
+  base_domains:
+  - transparencia.rr.gov.br
+  entrypoints: &id051
+  - https://transparencia.rr.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id051
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.rr.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado RR; inclui contratos e licitações.
+- source_id: SRC-100
+  name: Portal de Dados Abertos RR
+  owner_org: Governo do Estado de RR
+  base_domains:
+  - dados.rr.gov.br
+  entrypoints: &id052
+  - https://dados.rr.gov.br/
+  discovery:
+    method: api index
+    urls: *id052
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.rr.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado RR; contém conjuntos variados.
+- source_id: SRC-101
+  name: Tribunal de Justiça RR
+  owner_org: Tribunal de Justiça do Estado de RR
+  base_domains:
+  - tjrr.jus.br
+  entrypoints:
+  - https://www.tjrr.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjrr.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-102
+  name: Diário Oficial RR
+  owner_org: Imprensa Oficial do Estado de RR
+  base_domains:
+  - diariooficial.rr.gov.br
+  entrypoints:
+  - https://diariooficial.rr.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.rr.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado RR; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-103
+  name: Portal da Transparência SC
+  owner_org: Governo do Estado de SC
+  base_domains:
+  - transparencia.sc.gov.br
+  entrypoints: &id053
+  - https://transparencia.sc.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id053
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.sc.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado SC; inclui contratos e licitações.
+- source_id: SRC-104
+  name: Portal de Dados Abertos SC
+  owner_org: Governo do Estado de SC
+  base_domains:
+  - dados.sc.gov.br
+  entrypoints: &id054
+  - https://dados.sc.gov.br/
+  discovery:
+    method: api index
+    urls: *id054
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.sc.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado SC; contém conjuntos variados.
+- source_id: SRC-105
+  name: Tribunal de Justiça SC
+  owner_org: Tribunal de Justiça do Estado de SC
+  base_domains:
+  - tjsc.jus.br
+  entrypoints:
+  - https://www.tjsc.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjsc.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-106
+  name: Diário Oficial SC
+  owner_org: Imprensa Oficial do Estado de SC
+  base_domains:
+  - diariooficial.sc.gov.br
+  entrypoints:
+  - https://diariooficial.sc.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.sc.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado SC; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-107
+  name: Portal da Transparência SP
+  owner_org: Governo do Estado de SP
+  base_domains:
+  - transparencia.sp.gov.br
+  entrypoints: &id055
+  - https://transparencia.sp.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id055
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.sp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado SP; inclui contratos e licitações.
+- source_id: SRC-108
+  name: Portal de Dados Abertos SP
+  owner_org: Governo do Estado de SP
+  base_domains:
+  - dados.sp.gov.br
+  entrypoints: &id056
+  - https://dados.sp.gov.br/
+  discovery:
+    method: api index
+    urls: *id056
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.sp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado SP; contém conjuntos variados.
+- source_id: SRC-109
+  name: Tribunal de Justiça SP
+  owner_org: Tribunal de Justiça do Estado de SP
+  base_domains:
+  - tjsp.jus.br
+  entrypoints:
+  - https://www.tjsp.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjsp.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-110
+  name: Diário Oficial SP
+  owner_org: Imprensa Oficial do Estado de SP
+  base_domains:
+  - diariooficial.sp.gov.br
+  entrypoints:
+  - https://diariooficial.sp.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.sp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado SP; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-111
+  name: Portal da Transparência SE
+  owner_org: Governo do Estado de SE
+  base_domains:
+  - transparencia.se.gov.br
+  entrypoints: &id057
+  - https://transparencia.se.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id057
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.se.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado SE; inclui contratos e licitações.
+- source_id: SRC-112
+  name: Portal de Dados Abertos SE
+  owner_org: Governo do Estado de SE
+  base_domains:
+  - dados.se.gov.br
+  entrypoints: &id058
+  - https://dados.se.gov.br/
+  discovery:
+    method: api index
+    urls: *id058
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.se.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado SE; contém conjuntos variados.
+- source_id: SRC-113
+  name: Tribunal de Justiça SE
+  owner_org: Tribunal de Justiça do Estado de SE
+  base_domains:
+  - tjse.jus.br
+  entrypoints:
+  - https://www.tjse.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjse.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-114
+  name: Diário Oficial SE
+  owner_org: Imprensa Oficial do Estado de SE
+  base_domains:
+  - diariooficial.se.gov.br
+  entrypoints:
+  - https://diariooficial.se.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.se.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado SE; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-115
+  name: Portal da Transparência TO
+  owner_org: Governo do Estado de TO
+  base_domains:
+  - transparencia.to.gov.br
+  entrypoints: &id059
+  - https://transparencia.to.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id059
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.to.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas e despesas do estado TO; inclui contratos e licitações.
+- source_id: SRC-116
+  name: Portal de Dados Abertos TO
+  owner_org: Governo do Estado de TO
+  base_domains:
+  - dados.to.gov.br
+  entrypoints: &id060
+  - https://dados.to.gov.br/
+  discovery:
+    method: api index
+    urls: *id060
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.to.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo estadual de dados abertos do estado TO; contém conjuntos variados.
+- source_id: SRC-117
+  name: Tribunal de Justiça TO
+  owner_org: Tribunal de Justiça do Estado de TO
+  base_domains:
+  - tjto.jus.br
+  entrypoints:
+  - https://www.tjto.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tjto.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual; contém nomes de partes e advogados; respeitar LGPD e
+    limitações.
+- source_id: SRC-118
+  name: Diário Oficial TO
+  owner_org: Imprensa Oficial do Estado de TO
+  base_domains:
+  - diariooficial.to.gov.br
+  entrypoints:
+  - https://diariooficial.to.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.to.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do estado TO; publica leis, atos e nomeações; PDFs diários.
+- source_id: SRC-119
+  name: Tribunal Regional Federal da 1ª Região (TRF1)
+  owner_org: TRF1
+  base_domains:
+  - trf1.jus.br
+  entrypoints:
+  - https://www.trf1.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trf1.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual de segunda instância; contém dados sensíveis.
+- source_id: SRC-120
+  name: Tribunal Regional Federal da 2ª Região (TRF2)
+  owner_org: TRF2
+  base_domains:
+  - trf2.jus.br
+  entrypoints:
+  - https://www.trf2.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trf2.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual de segunda instância; contém dados sensíveis.
+- source_id: SRC-121
+  name: Tribunal Regional Federal da 3ª Região (TRF3)
+  owner_org: TRF3
+  base_domains:
+  - trf3.jus.br
+  entrypoints:
+  - https://www.trf3.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trf3.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual de segunda instância; contém dados sensíveis.
+- source_id: SRC-122
+  name: Tribunal Regional Federal da 4ª Região (TRF4)
+  owner_org: TRF4
+  base_domains:
+  - trf4.jus.br
+  entrypoints:
+  - https://www.trf4.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trf4.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual de segunda instância; contém dados sensíveis.
+- source_id: SRC-123
+  name: Tribunal Regional Federal da 5ª Região (TRF5)
+  owner_org: TRF5
+  base_domains:
+  - trf5.jus.br
+  entrypoints:
+  - https://www.trf5.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trf5.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual de segunda instância; contém dados sensíveis.
+- source_id: SRC-124
+  name: Tribunal Regional Federal da 6ª Região (TRF6)
+  owner_org: TRF6
+  base_domains:
+  - trf6.jus.br
+  entrypoints:
+  - https://www.trf6.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trf6.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual de segunda instância; contém dados sensíveis.
+- source_id: SRC-125
+  name: Tribunal Regional do Trabalho da 1ª Região (TRT1)
+  owner_org: TRT1
+  base_domains:
+  - trt1.jus.br
+  entrypoints:
+  - https://www.trt1.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt1.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-126
+  name: Tribunal Regional do Trabalho da 2ª Região (TRT2)
+  owner_org: TRT2
+  base_domains:
+  - trt2.jus.br
+  entrypoints:
+  - https://www.trt2.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt2.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-127
+  name: Tribunal Regional do Trabalho da 3ª Região (TRT3)
+  owner_org: TRT3
+  base_domains:
+  - trt3.jus.br
+  entrypoints:
+  - https://www.trt3.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt3.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-128
+  name: Tribunal Regional do Trabalho da 4ª Região (TRT4)
+  owner_org: TRT4
+  base_domains:
+  - trt4.jus.br
+  entrypoints:
+  - https://www.trt4.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt4.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-129
+  name: Tribunal Regional do Trabalho da 5ª Região (TRT5)
+  owner_org: TRT5
+  base_domains:
+  - trt5.jus.br
+  entrypoints:
+  - https://www.trt5.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt5.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-130
+  name: Tribunal Regional do Trabalho da 6ª Região (TRT6)
+  owner_org: TRT6
+  base_domains:
+  - trt6.jus.br
+  entrypoints:
+  - https://www.trt6.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt6.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-131
+  name: Tribunal Regional do Trabalho da 7ª Região (TRT7)
+  owner_org: TRT7
+  base_domains:
+  - trt7.jus.br
+  entrypoints:
+  - https://www.trt7.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt7.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-132
+  name: Tribunal Regional do Trabalho da 8ª Região (TRT8)
+  owner_org: TRT8
+  base_domains:
+  - trt8.jus.br
+  entrypoints:
+  - https://www.trt8.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt8.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-133
+  name: Tribunal Regional do Trabalho da 9ª Região (TRT9)
+  owner_org: TRT9
+  base_domains:
+  - trt9.jus.br
+  entrypoints:
+  - https://www.trt9.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt9.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-134
+  name: Tribunal Regional do Trabalho da 10ª Região (TRT10)
+  owner_org: TRT10
+  base_domains:
+  - trt10.jus.br
+  entrypoints:
+  - https://www.trt10.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt10.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-135
+  name: Tribunal Regional do Trabalho da 11ª Região (TRT11)
+  owner_org: TRT11
+  base_domains:
+  - trt11.jus.br
+  entrypoints:
+  - https://www.trt11.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt11.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-136
+  name: Tribunal Regional do Trabalho da 12ª Região (TRT12)
+  owner_org: TRT12
+  base_domains:
+  - trt12.jus.br
+  entrypoints:
+  - https://www.trt12.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt12.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-137
+  name: Tribunal Regional do Trabalho da 13ª Região (TRT13)
+  owner_org: TRT13
+  base_domains:
+  - trt13.jus.br
+  entrypoints:
+  - https://www.trt13.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt13.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-138
+  name: Tribunal Regional do Trabalho da 14ª Região (TRT14)
+  owner_org: TRT14
+  base_domains:
+  - trt14.jus.br
+  entrypoints:
+  - https://www.trt14.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt14.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-139
+  name: Tribunal Regional do Trabalho da 15ª Região (TRT15)
+  owner_org: TRT15
+  base_domains:
+  - trt15.jus.br
+  entrypoints:
+  - https://www.trt15.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt15.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-140
+  name: Tribunal Regional do Trabalho da 16ª Região (TRT16)
+  owner_org: TRT16
+  base_domains:
+  - trt16.jus.br
+  entrypoints:
+  - https://www.trt16.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt16.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-141
+  name: Tribunal Regional do Trabalho da 17ª Região (TRT17)
+  owner_org: TRT17
+  base_domains:
+  - trt17.jus.br
+  entrypoints:
+  - https://www.trt17.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt17.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-142
+  name: Tribunal Regional do Trabalho da 18ª Região (TRT18)
+  owner_org: TRT18
+  base_domains:
+  - trt18.jus.br
+  entrypoints:
+  - https://www.trt18.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt18.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-143
+  name: Tribunal Regional do Trabalho da 19ª Região (TRT19)
+  owner_org: TRT19
+  base_domains:
+  - trt19.jus.br
+  entrypoints:
+  - https://www.trt19.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt19.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-144
+  name: Tribunal Regional do Trabalho da 20ª Região (TRT20)
+  owner_org: TRT20
+  base_domains:
+  - trt20.jus.br
+  entrypoints:
+  - https://www.trt20.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt20.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-145
+  name: Tribunal Regional do Trabalho da 21ª Região (TRT21)
+  owner_org: TRT21
+  base_domains:
+  - trt21.jus.br
+  entrypoints:
+  - https://www.trt21.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt21.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-146
+  name: Tribunal Regional do Trabalho da 22ª Região (TRT22)
+  owner_org: TRT22
+  base_domains:
+  - trt22.jus.br
+  entrypoints:
+  - https://www.trt22.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt22.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-147
+  name: Tribunal Regional do Trabalho da 23ª Região (TRT23)
+  owner_org: TRT23
+  base_domains:
+  - trt23.jus.br
+  entrypoints:
+  - https://www.trt23.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt23.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-148
+  name: Tribunal Regional do Trabalho da 24ª Região (TRT24)
+  owner_org: TRT24
+  base_domains:
+  - trt24.jus.br
+  entrypoints:
+  - https://www.trt24.jus.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.trt24.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Consulta processual trabalhista; contém dados de empregados e empresas; restringir
+    texto integral.
+- source_id: SRC-149
+  name: ANVISA – dados de regulação
+  owner_org: Agência Nacional de Vigilância Sanitária
+  base_domains:
+  - portal.anvisa.gov.br
+  entrypoints:
+  - https://portal.anvisa.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://portal.anvisa.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-150
+  name: ANEEL – dados de regulação
+  owner_org: Agência Nacional de Energia Elétrica
+  base_domains:
+  - www.aneel.gov.br
+  entrypoints:
+  - https://www.aneel.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.aneel.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-151
+  name: ANATEL – dados de regulação
+  owner_org: Agência Nacional de Telecomunicações
+  base_domains:
+  - www.anatel.gov.br
+  entrypoints:
+  - https://www.anatel.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.anatel.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-152
+  name: ANP – dados de regulação
+  owner_org: Agência Nacional do Petróleo, Gás Natural e Biocombustíveis
+  base_domains:
+  - www.anp.gov.br
+  entrypoints:
+  - https://www.anp.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.anp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-153
+  name: ANAC – dados de regulação
+  owner_org: Agência Nacional de Aviação Civil
+  base_domains:
+  - www.anac.gov.br
+  entrypoints:
+  - https://www.anac.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.anac.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-154
+  name: ANA – dados de regulação
+  owner_org: Agência Nacional de Águas e Saneamento Básico
+  base_domains:
+  - www.ana.gov.br
+  entrypoints:
+  - https://www.ana.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.ana.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-155
+  name: SUSEP – dados de regulação
+  owner_org: Superintendência de Seguros Privados
+  base_domains:
+  - www.susep.gov.br
+  entrypoints:
+  - https://www.susep.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.susep.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-156
+  name: CVM – dados de regulação
+  owner_org: Comissão de Valores Mobiliários
+  base_domains:
+  - www.gov.br/cvm
+  entrypoints:
+  - https://www.gov.br/cvm/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/cvm/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-157
+  name: CADE – dados de regulação
+  owner_org: Conselho Administrativo de Defesa Econômica
+  base_domains:
+  - www.gov.br/cade
+  entrypoints:
+  - https://www.gov.br/cade/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/cade/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-158
+  name: INMETRO – dados de regulação
+  owner_org: Instituto Nacional de Metrologia, Qualidade e Tecnologia
+  base_domains:
+  - www.gov.br/inmetro
+  entrypoints:
+  - https://www.gov.br/inmetro/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/inmetro/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de resoluções, atos normativos e estatísticas; sem dados pessoais.
+- source_id: SRC-159
+  name: BEC-SP
+  owner_org: Bolsa Eletrônica de Compras do Governo de São Paulo
+  base_domains:
+  - www.bec.sp.gov.br
+  entrypoints:
+  - https://www.bec.sp.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.bec.sp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Sistema de compras eletrônicas do Estado de São Paulo; contém licitações
+    e pregões.
+- source_id: SRC-160
+  name: PNCP
+  owner_org: Portal Nacional de Contratações Públicas
+  base_domains:
+  - www.gov.br/pncp
+  entrypoints: &id061
+  - https://www.gov.br/pncp/
+  discovery:
+    method: sitemap
+    urls: *id061
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Repositório central de contratações públicas; novas leis de licitações.
+- source_id: SRC-161
+  name: SIASG
+  owner_org: Sistema Integrado de Administração de Serviços Gerais
+  base_domains:
+  - siasgnet.gov.br
+  entrypoints:
+  - https://www.gov.br/compras/pt-br/siasg
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Sistema de gestão de compras do Governo Federal; dados sobre contratos.
+- source_id: SRC-162
+  name: Painel de Preços
+  owner_org: Painel de Preços do Governo Federal
+  base_domains:
+  - paineldeprecos.economia.gov.br
+  entrypoints: &id062
+  - https://paineldeprecos.economia.gov.br/
+  discovery:
+    method: api index
+    urls: *id062
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://paineldeprecos.economia.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Painel de preços praticados pelo governo; permite consultas agregadas.
+- source_id: SRC-163
+  name: SICONV
+  owner_org: Sistema de Gestão de Convênios e Contratos de Repasse
+  base_domains:
+  - www.gov.br/convenios
+  entrypoints:
+  - https://www.gov.br/convenios/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Sistema de convênios; acesso restrito; cuidado com dados pessoais.
+- source_id: SRC-164
+  name: Portal da Transparência de São Paulo
+  owner_org: Prefeitura Municipal de São Paulo
+  base_domains:
+  - transparencia.prefeitura.sp.gov.br
+  entrypoints: &id063
+  - https://transparencia.prefeitura.sp.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id063
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.prefeitura.sp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de São Paulo.
+- source_id: SRC-165
+  name: Portal de Dados Abertos de São Paulo
+  owner_org: Prefeitura Municipal de São Paulo
+  base_domains:
+  - dados.prefeitura.sp.gov.br
+  entrypoints: &id064
+  - https://dados.prefeitura.sp.gov.br/
+  discovery:
+    method: api index
+    urls: *id064
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.prefeitura.sp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de São Paulo; diversos conjuntos.
+- source_id: SRC-166
+  name: Diário Oficial de São Paulo
+  owner_org: Prefeitura Municipal de São Paulo
+  base_domains:
+  - diariooficial.sãopaulo.sp.gov.br
+  entrypoints:
+  - https://diariooficial.sãopaulo.sp.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.sãopaulo.sp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do município de São Paulo; publica leis e atos locais.
+- source_id: SRC-167
+  name: Portal da Transparência de Rio de Janeiro
+  owner_org: Prefeitura Municipal de Rio de Janeiro
+  base_domains:
+  - transparencia.rio.rj.gov.br
+  entrypoints: &id065
+  - https://transparencia.rio.rj.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id065
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.rio.rj.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de Rio de Janeiro.
+- source_id: SRC-168
+  name: Portal de Dados Abertos de Rio de Janeiro
+  owner_org: Prefeitura Municipal de Rio de Janeiro
+  base_domains:
+  - dados.rio
+  entrypoints: &id066
+  - https://dados.rio/
+  discovery:
+    method: api index
+    urls: *id066
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.rio/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de Rio de Janeiro; diversos conjuntos.
+- source_id: SRC-169
+  name: Diário Oficial de Rio de Janeiro
+  owner_org: Prefeitura Municipal de Rio de Janeiro
+  base_domains:
+  - diariooficial.riodejaneiro.rj.gov.br
+  entrypoints:
+  - https://diariooficial.riodejaneiro.rj.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://diariooficial.riodejaneiro.rj.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Veículo oficial do município de Rio de Janeiro; publica leis e atos locais.
+- source_id: SRC-170
+  name: Portal da Transparência de Belo Horizonte
+  owner_org: Prefeitura Municipal de Belo Horizonte
+  base_domains:
+  - prefeitura.pbh.gov.br/transparencia
+  entrypoints: &id067
+  - https://prefeitura.pbh.gov.br/transparencia
+  discovery:
+    method: sitemap
+    urls: *id067
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://prefeitura.pbh.gov.br/transparencia/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de Belo Horizonte.
+- source_id: SRC-171
+  name: Portal de Dados Abertos de Belo Horizonte
+  owner_org: Prefeitura Municipal de Belo Horizonte
+  base_domains:
+  - dados.pbh.gov.br
+  entrypoints: &id068
+  - https://dados.pbh.gov.br/
+  discovery:
+    method: api index
+    urls: *id068
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.pbh.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de Belo Horizonte; diversos conjuntos.
+- source_id: SRC-172
+  name: Portal da Transparência de Porto Alegre
+  owner_org: Prefeitura Municipal de Porto Alegre
+  base_domains:
+  - transparencia.portoalegre.rs.gov.br
+  entrypoints: &id069
+  - https://transparencia.portoalegre.rs.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id069
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.portoalegre.rs.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de Porto Alegre.
+- source_id: SRC-173
+  name: Portal de Dados Abertos de Porto Alegre
+  owner_org: Prefeitura Municipal de Porto Alegre
+  base_domains:
+  - dados.portoalegre.rs.gov.br
+  entrypoints: &id070
+  - https://dados.portoalegre.rs.gov.br/
+  discovery:
+    method: api index
+    urls: *id070
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.portoalegre.rs.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de Porto Alegre; diversos conjuntos.
+- source_id: SRC-174
+  name: Portal da Transparência de Curitiba
+  owner_org: Prefeitura Municipal de Curitiba
+  base_domains:
+  - transparencia.curitiba.pr.gov.br
+  entrypoints: &id071
+  - https://transparencia.curitiba.pr.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id071
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.curitiba.pr.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de Curitiba.
+- source_id: SRC-175
+  name: Portal de Dados Abertos de Curitiba
+  owner_org: Prefeitura Municipal de Curitiba
+  base_domains:
+  - dadosabertos.c3sl.ufpr.br
+  entrypoints: &id072
+  - https://dadosabertos.c3sl.ufpr.br/
+  discovery:
+    method: api index
+    urls: *id072
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dadosabertos.c3sl.ufpr.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de Curitiba; diversos conjuntos.
+- source_id: SRC-176
+  name: Portal da Transparência de Recife
+  owner_org: Prefeitura Municipal de Recife
+  base_domains:
+  - transparencia.recife.pe.gov.br
+  entrypoints: &id073
+  - https://transparencia.recife.pe.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id073
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.recife.pe.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de Recife.
+- source_id: SRC-177
+  name: Portal de Dados Abertos de Recife
+  owner_org: Prefeitura Municipal de Recife
+  base_domains:
+  - dados.recife.pe.gov.br
+  entrypoints: &id074
+  - https://dados.recife.pe.gov.br/
+  discovery:
+    method: api index
+    urls: *id074
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.recife.pe.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de Recife; diversos conjuntos.
+- source_id: SRC-178
+  name: Portal da Transparência de Salvador
+  owner_org: Prefeitura Municipal de Salvador
+  base_domains:
+  - transparencia.salvador.ba.gov.br
+  entrypoints: &id075
+  - https://transparencia.salvador.ba.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id075
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.salvador.ba.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de Salvador.
+- source_id: SRC-179
+  name: Portal de Dados Abertos de Salvador
+  owner_org: Prefeitura Municipal de Salvador
+  base_domains:
+  - dados.salvador.ba.gov.br
+  entrypoints: &id076
+  - https://dados.salvador.ba.gov.br/
+  discovery:
+    method: api index
+    urls: *id076
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.salvador.ba.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de Salvador; diversos conjuntos.
+- source_id: SRC-180
+  name: Portal da Transparência de Fortaleza
+  owner_org: Prefeitura Municipal de Fortaleza
+  base_domains:
+  - transparencia.fortaleza.ce.gov.br
+  entrypoints: &id077
+  - https://transparencia.fortaleza.ce.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id077
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.fortaleza.ce.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Portal de receitas, despesas e contratos da prefeitura de Fortaleza.
+- source_id: SRC-181
+  name: Portal de Dados Abertos de Fortaleza
+  owner_org: Prefeitura Municipal de Fortaleza
+  base_domains:
+  - dados.fortaleza.ce.gov.br
+  entrypoints: &id078
+  - https://dados.fortaleza.ce.gov.br/
+  discovery:
+    method: api index
+    urls: *id078
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.fortaleza.ce.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados abertos do município de Fortaleza; diversos conjuntos.
+- source_id: SRC-182
+  name: INEP Microdados ENEM
+  owner_org: Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira
+    (INEP)
+  base_domains:
+  - inep.gov.br
+  entrypoints:
+  - https://download.inep.gov.br/microdados/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Microdados de exames educacionais; contém informações sensíveis e pseudonimizadas.
+- source_id: SRC-183
+  name: CNES – Cadastro Nacional de Estabelecimentos de Saúde
+  owner_org: Ministério da Saúde
+  base_domains:
+  - cnes.datasus.gov.br
+  entrypoints:
+  - https://cnes.datasus.gov.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://cnes.datasus.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Cadastro de estabelecimentos de saúde; dados sobre unidades e serviços.
+- source_id: SRC-184
+  name: SINESP
+  owner_org: Ministério da Justiça
+  base_domains:
+  - sinesp.gov.br
+  entrypoints: &id079
+  - https://dados.sinesp.gov.br/
+  discovery:
+    method: api index
+    urls: *id079
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.sinesp.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Dados de segurança pública; acesso controlado por API Key; PII alto.
+- source_id: SRC-185
+  name: IPEADATA
+  owner_org: Instituto de Pesquisa Econômica Aplicada (IPEA)
+  base_domains:
+  - ipeadata.gov.br
+  entrypoints: &id080
+  - https://www.ipeadata.gov.br/api
+  discovery:
+    method: api index
+    urls: *id080
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.ipeadata.gov.br/robots.txt
+    default_storage_mode: ALLOW_FULLTEXT
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: API de séries econômicas e sociais do IPEA; sem PII.
+- source_id: SRC-186
+  name: Receita Federal – Normas e Instruções
+  owner_org: Secretaria da Receita Federal do Brasil
+  base_domains:
+  - normas.receita.fazenda.gov.br
+  entrypoints: &id081
+  - https://normas.receita.fazenda.gov.br/
+  discovery:
+    method: sitemap
+    urls: *id081
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://normas.receita.fazenda.gov.br/robots.txt
+    default_storage_mode: ALLOW_FULLTEXT
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Publicações de atos normativos; sem PII.
+- source_id: SRC-187
+  name: Bacen – Dados Abertos
+  owner_org: Banco Central do Brasil
+  base_domains:
+  - dadosabertos.bcb.gov.br
+  entrypoints: &id082
+  - https://dadosabertos.bcb.gov.br/
+  discovery:
+    method: api index
+    urls: *id082
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dadosabertos.bcb.gov.br/robots.txt
+    default_storage_mode: ALLOW_FULLTEXT
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Plataforma de dados abertos do Banco Central; contém indicadores e publicações.
+- source_id: SRC-188
+  name: TCU – Portal de Dados Abertos
+  owner_org: Tribunal de Contas da União (TCU)
+  base_domains:
+  - dados.tcu.gov.br
+  entrypoints: &id083
+  - https://dados.tcu.gov.br/
+  discovery:
+    method: api index
+    urls: *id083
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.5
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.tcu.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Dados abertos do TCU incluindo despesas, auditorias e acordos.
+- source_id: SRC-189
+  name: TSE – Dados Abertos Eleitorais
+  owner_org: Tribunal Superior Eleitoral
+  base_domains:
+  - www.tse.jus.br
+  entrypoints:
+  - https://www.tse.jus.br/eleicoes/estatisticas/repositorio-de-dados-eleitorais-1
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.tse.jus.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Repositório de dados eleitorais; pode conter informações sensíveis (candidatos,
+    doadores).
+- source_id: SRC-190
+  name: Senado Federal – Dados Abertos
+  owner_org: Senado Federal
+  base_domains:
+  - dados.senado.leg.br
+  entrypoints: &id084
+  - https://dados.senado.leg.br/
+  discovery:
+    method: api index
+    urls: *id084
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www12.senado.leg.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Dados legislativos do Senado, como proposições, votações e despesas.
+- source_id: SRC-191
+  name: Câmara dos Deputados – Dados Abertos
+  owner_org: Câmara dos Deputados
+  base_domains:
+  - dados.camara.leg.br
+  entrypoints: &id085
+  - https://dadosabertos.camara.leg.br/api/v2
+  discovery:
+    method: api index
+    urls: *id085
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.camara.leg.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: API da Câmara com dados sobre deputados, proposições, votos e gastos.
+- source_id: SRC-192
+  name: Domínio Público – Acervo Digital
+  owner_org: Ministério da Cultura
+  base_domains:
+  - dominiopublico.gov.br
+  entrypoints:
+  - https://www.dominiopublico.gov.br/pesquisa/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.dominiopublico.gov.br/robots.txt
+    default_storage_mode: ALLOW_FULLTEXT
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Biblioteca digital com obras em domínio público; sem PII.
+- source_id: SRC-193
+  name: IBAMA – Dados Abertos
+  owner_org: Instituto Brasileiro do Meio Ambiente e dos Recursos Naturais Renováveis
+    (IBAMA)
+  base_domains:
+  - dados.ibama.gov.br
+  entrypoints: &id086
+  - https://dados.ibama.gov.br/
+  discovery:
+    method: api index
+    urls: *id086
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.3
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.ibama.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Dados ambientais, licenças e infrações.
+- source_id: SRC-194
+  name: FUNAI – Dados Abertos
+  owner_org: Fundação Nacional dos Povos Indígenas
+  base_domains:
+  - funai.gov.br
+  entrypoints:
+  - https://www.gov.br/funai/pt-br/dados-abertos
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://www.gov.br/funai/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Dados sobre terras e políticas indígenas; verificar PII.
+- source_id: SRC-195
+  name: Ministério da Educação – Dados Abertos
+  owner_org: Ministério da Educação
+  base_domains:
+  - dados.mec.gov.br
+  entrypoints: &id087
+  - https://dados.mec.gov.br/
+  discovery:
+    method: api index
+    urls: *id087
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.4
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://dados.mec.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: low
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Catálogo de dados do MEC, incluindo universidades e programas.
+- source_id: SRC-196
+  name: SISCOMEX – Exportações e Importações
+  owner_org: Receita Federal do Brasil
+  base_domains:
+  - portal.siscomex.gov.br
+  entrypoints:
+  - https://portal.siscomex.gov.br/portal/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://portal.siscomex.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Sistema de comércio exterior; dados agregados sobre importações e exportações.
+- source_id: SRC-197
+  name: CAGED – Novo CAGED
+  owner_org: Ministério do Trabalho
+  base_domains:
+  - pdet.mte.gov.br
+  entrypoints:
+  - https://pdet.mte.gov.br/novo-caged
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://pdet.mte.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Cadastro Geral de Empregados e Desempregados; dados agregados e microdados.
+- source_id: SRC-198
+  name: ProUni – Bolsas de Estudo
+  owner_org: Ministério da Educação
+  base_domains:
+  - prouniportal.mec.gov.br
+  entrypoints:
+  - https://prouniportal.mec.gov.br/dados-abertos
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.1
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://prouniportal.mec.gov.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Dados de bolsas do Programa Universidade para Todos; possíveis CPFs de bolsistas
+    pseudonimizados.
+- source_id: SRC-199
+  name: Lattes – Currículos CNPq
+  owner_org: Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq)
+  base_domains:
+  - lattes.cnpq.br
+  entrypoints:
+  - https://lattes.cnpq.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.05
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: restricted
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://lattes.cnpq.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: high
+    pii_actions:
+    - detect
+    - redact
+    - block_on_threshold
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Plataforma de currículos de pesquisadores; contém dados pessoais; acesso
+    restrito.
+- source_id: SRC-200
+  name: Portal Transparência Câmara Municipal de SP
+  owner_org: Câmara Municipal de São Paulo
+  base_domains:
+  - transparencia.saopaulo.sp.leg.br
+  entrypoints:
+  - https://transparencia.saopaulo.sp.leg.br/
+  discovery:
+    method: manual
+    urls: []
+  crawl_policy:
+    robots_respect: true
+    user_agent: 'BancoDadosPublicosBot/1.0 (contact: security@local)'
+    rate_limit_rps: 0.2
+    concurrency: 1
+    allow_paths: []
+    deny_paths: []
+  license_policy:
+    license_status: unknown
+    license_evidence_url: unknown
+    tos_url: unknown
+    robots_url: https://transparencia.saopaulo.sp.leg.br/robots.txt
+    default_storage_mode: METADATA_ONLY
+  data_handling:
+    pii_expected: medium
+    pii_actions:
+    - detect
+    - redact
+    retention_days: 365
+  budget:
+    max_pages_per_day: 100
+    max_bytes_per_day: 50000000
+  notes: Informações sobre gastos e atividades legislativas da Câmara de São Paulo.

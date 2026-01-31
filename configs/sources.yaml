@@ -50,14 +50,17 @@ sources:
       allow_paths: ["/ccivil_03/"]
       deny_paths: []
     license_policy:
-      license_status: "unknown"
-      license_evidence: "Registrar ToS/licença em Fontes_Licencas.md"
-      default_storage_mode: "METADATA_ONLY"
+      license_status: "public_domain"
+      license_evidence: "T-ONB-SRC-002 (2026-01-30): Lei 9.610/1998, Art. 8º, IV — atos oficiais não têm proteção autoral. Robots.txt ausente (404). LAI aplicável."
+      default_storage_mode: "ALLOW_FULLTEXT"
     data_handling:
       pii_expected: "low"
       pii_actions: ["detect"]
       retention_days: 365
-    notes: "Conteúdo legal; geralmente baixo PII. MVP: metadados + link."
+    notes: "FULLTEXT PERMITIDO: Legislação federal = domínio público (Lei 9.610/1998). Rate limit conservador. Citação obrigatória."
+    onboarding_status: "completed"
+    onboarding_date: "2026-01-30"
+    onboarding_task: "T-ONB-SRC-002"
 
   - source_id: "SRC-003"
     name: "IBGE - Dados e APIs"

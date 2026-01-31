@@ -116,6 +116,16 @@
   - Handoff: [T-ONB-SRC-004-Handoff.md](Handoffs/T-ONB-SRC-004.md)
   - DUV relacionada: DUV-007
 
+- **T-ONB-SRC-005:** Onboarding SRC-005 (dados.gov.br)
+  - Data: 2026-01-31
+  - Tempo: ~35 min
+  - Resultado: METADATA_ONLY (fail-closed — ToS/robots/licença não verificáveis)
+  - Deliverables: WorkOrder, license_analysis.md, fetch_test.log, sample_urls.txt, notes.md, robots.txt
+  - Decision: default_storage_mode = METADATA_ONLY (fail-closed)
+  - Evidence: [T-ONB-SRC-005 Evidence Pack](../../docs/evidence/T-ONB-SRC-005/)
+  - Handoff: [T-ONB-SRC-005.md](Handoffs/T-ONB-SRC-005.md)
+  - DUV relacionada: DUV-008
+
 ---
 
 ## 2. DÚVIDAS / IMPEDIMENTOS (SLA 24h)
@@ -129,7 +139,8 @@
 | **DUV-004** | **20260130** | **T-ONB-SRC-001** | **DOU bloqueado por WAF - Como obter dados?**               | **20260201** | **🔴 ABERTA**    | **Contexto**: in.gov.br protegido por Azion WAF (403 em robots.txt). Scraping não permitido. **Próximos passos**: (1) Verificar API oficial em dados.gov.br, (2) Pesquisar feeds RSS oficiais, (3) Considerar contato formal com Imprensa Nacional. **Impacto**: SRC-001 marcado como BLOCK até resolução. |
 | **DUV-005** | **20260130** | **T-ONB-SRC-002** | **Falha de conectividade impede verificação de robots/ToS** | **20260201** | **🔴 ABERTA**    | **Contexto**: fetch para planalto.gov.br falhou (erro de conexão). Sem robots/ToS/licença verificáveis. **Impacto**: SRC-002 permanece METADATA_ONLY (fail-closed) até verificação em ambiente com conectividade estável.                                                                                  |
 | **DUV-006** | **20260131** | **T-ONB-SRC-003** | **Robots.txt 503 e ToS/licença não verificáveis (IBGE)**    | **20260201** | **🔴 ABERTA**    | **Contexto**: robots.txt em servicodados.ibge.gov.br retornou 503; API root também 503. ToS/licença não localizadas com evidência. **Impacto**: SRC-003 permanece METADATA_ONLY (fail-closed) até verificação.                                                                                             |
-| **DUV-007** | **20260131** | **T-ONB-SRC-004** | **Licença aberta não especificada por dataset (BCB)**       | **20260201** | **🔴 ABERTA**    | **Contexto**: FAQ menciona licença aberta, porém sem especificação por dataset. **Impacto**: SRC-004 permanece METADATA_ONLY até licença explícita.                                                                                                                                        |
+| **DUV-007** | **20260131** | **T-ONB-SRC-004** | **Licença aberta não especificada por dataset (BCB)**       | **20260201** | **🔴 ABERTA**    | **Contexto**: FAQ menciona licença aberta, porém sem especificação por dataset. **Impacto**: SRC-004 permanece METADATA_ONLY até licença explícita.                                                                                                                                                        |
+| **DUV-008** | **20260131** | **T-ONB-SRC-005** | **ToS/licença exigem login; robots.txt inválido (HTML)**    | **20260201** | **🔴 ABERTA**    | **Contexto**: dados.gov.br retornou HTML em robots.txt e páginas de termos exigem login gov.br. **Impacto**: SRC-005 permanece METADATA_ONLY até evidência de licença por dataset.                                                                                                                         |
 
 ---
 
@@ -169,7 +180,7 @@
 
 | Tipo         | Total | Aberto | Vencido | Resolvido |
 | ------------ | ----- | ------ | ------- | --------- |
-| Dúvidas      | 7     | 4      | 0       | 3         |
+| Dúvidas      | 8     | 5      | 0       | 3         |
 | Impedimentos | 0     | 0      | 0       | 0         |
 
 **Próxima revisão:** 2026-01-31 (fim de rodada)

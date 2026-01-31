@@ -37,17 +37,20 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 
 ### SRC-002 — Planalto - Legislação
 
-**Status:** ✅ APROVADO (METADATA_ONLY até verificação de licença)
+**Status:** ✅ APROVADO (ALLOW_FULLTEXT — legislação = domínio público)
 **Domínio:** planalto.gov.br
 **Discovery:** HTML index (https://www.planalto.gov.br/ccivil_03/)
-**Robots.txt:** ❌ FALHA DE CONEXÃO (não verificado) — ver evidence pack
-**ToS:** ❌ NÃO LOCALIZADO (não verificado)
-**Licença:** ❌ NÃO VERIFICADA (sem evidência oficial)
-**Policy Gate:** METADATA_ONLY (fail-closed)
-**PII esperado:** Médio
-**Rate limit:** 0.3 rps
+**Robots.txt:** ❌ NOT FOUND (404 — sem restrições explícitas por RFC 9309)
+**ToS:** ❌ NÃO LOCALIZADO (ausência de ToS oficial publicado)
+**Licença:** ✅ **DOMÍNIO PÚBLICO** (Lei 9.610/1998, Art. 8º, IV: "Não são objeto de proteção como direitos autorais [...] os textos de tratados ou convenções, leis, decretos, regulamentos, decisões judiciais e demais atos oficiais")
+**Policy Gate:** **ALLOW_FULLTEXT** (upgrade aprovado com fundamentação legal)
+**PII esperado:** Baixo (legislação geralmente não contém PII, mas detecção obrigatória)
+**Rate limit:** 0.3 rps (conservador)
 **Budget:** 500 URLs/dia, 50 MB/dia
-**Observações:** Falha de conectividade impediu verificação de robots/ToS. Manter METADATA_ONLY até confirmação formal. Onboarding em T-ONB-SRC-002.
+**Onboarding:** T-ONB-SRC-002 (2026-01-30) — COMPLETED com resultado ALLOW_FULLTEXT
+**Evidence Pack:** [docs/evidence/T-ONB-SRC-002/](../../docs/evidence/T-ONB-SRC-002/)
+**Fundamentação legal:** Lei 9.610/1998, Art. 8º, IV (atos oficiais não têm proteção autoral) + LAI (Lei 12.527/2011)
+**Observações:** Legislação federal é de livre acesso e reprodução. Sem robots.txt (404) = sem restrições explícitas. Citação de fonte obrigatória (boa prática + rastreabilidade). **FULLTEXT PERMITIDO** para leis, decretos, regulamentos e atos oficiais.
 
 ---
 
@@ -87,15 +90,15 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 
 **Status:** ✅ APROVADO (METADATA_ONLY — licença variável por dataset)
 **Domínio:** dados.gov.br
-**Discovery:** API CKAN (https://dados.gov.br/api/3)
-**Robots.txt:** [PENDENTE verificação]
-**ToS:** [PENDENTE — verificar termos gerais do portal]
+**Discovery:** API CKAN (https://dados.gov.br/api/3) + catálogo web
+**Robots.txt:** ⚠️ Retornou HTML (não regras de robots) — não verificável
+**ToS:** ❌ Exige login gov.br (não verificável)
 **Licença:** **VARIÁVEL POR DATASET** — cada dataset tem licença própria (CC0, CC-BY, Proprietária, etc.)
 **Policy Gate:** METADATA_ONLY (fail-closed; verificar licença POR DATASET antes de fulltext)
-**PII esperado:** POSSÍVEL (alguns datasets podem conter PII; detector obrigatório)
-**Rate limit:** 0.5 rps
+**PII esperado:** Médio (datasets podem conter PII)
+**Rate limit:** 0.2 rps
 **Budget:** 500 URLs/dia, 50 MB/dia
-**Observações:** Catálogo misto; precisamos verificar licença individualmente por dataset. PII detection obrigatória. Onboarding em T-ONB-SRC-005.
+**Observações:** Robots/ToS não verificáveis; licença variável por dataset. Manter METADATA_ONLY até evidência por dataset. Onboarding em T-ONB-SRC-005.
 
 ---
 

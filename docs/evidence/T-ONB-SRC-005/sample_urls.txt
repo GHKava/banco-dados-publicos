@@ -1,0 +1,25 @@
+# Sample URLs — SRC-005 (dados.gov.br)
+
+## Golden URLs para testes
+
+1. https://dados.gov.br/dados/conjuntos-dados
+   - Descrição: Lista de conjuntos de dados
+   - Tipo: HTML
+
+2. https://dados.gov.br/api/3/action/status_show
+   - Descrição: Status da API CKAN
+   - Tipo: JSON
+
+3. https://dados.gov.br/dados/organizacoes
+   - Descrição: Lista de organizações
+   - Tipo: HTML
+
+---
+
+## URLs institucionais
+
+- https://dados.gov.br/termos-de-uso
+- https://dados.gov.br/politica-de-privacidade
+- https://dados.gov.br/faq
+
+---
