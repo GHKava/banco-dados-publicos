@@ -1,0 +1,22 @@
+{
+  "task": "T-010",
+  "date": "2026-01-31",
+  "status": "DONE",
+  "created": [
+    "tests/test_audit_log.py",
+    "docs/evidence/T-010/commands.log",
+    "docs/evidence/T-010/tests.log",
+    "docs/evidence/T-010/notes.md",
+    "docs/evidence/T-010/files_changed.json"
+  ],
+  "modified": [
+    "src/database/audit_log.py",
+    "src/database/__init__.py",
+    "src/bots/policy_gate.py",
+    "_OBSIDIAN/Organização do Projeto/WorkOrders/T-010-WorkOrder.md",
+    "_OBSIDIAN/Organização do Projeto/Heartbeat do Orquestrador.md",
+    "_OBSIDIAN/Organização do Projeto/Roadmap detalhado do Projeto.md",
+    "_OBSIDIAN/Organização do Projeto/Backlog.md"
+  ],
+  "deleted": []
+}

@@ -1,7 +1,7 @@
 # Backlog — Banco de Dados Interrelacional
 
 **Data criação:** 2026-01-30
-**Última atualização:** 2026-01-31 02:10 UTC
+**Última atualização:** 2026-01-31 02:45 UTC
 **SLA padrão de dúvidas:** 24h ou próxima rodada
 
 ---
@@ -144,6 +144,14 @@
   - Deliverables: src/bots/robots_checker.py, tests/test_robots_checker.py, WorkOrder, evidence pack
   - Evidence: [T-009 Evidence Pack](../../docs/evidence/T-009/)
   - Handoff: [T-009.md](Handoffs/T-009.md)
+
+- **T-010:** Audit logging
+  - Data: 2026-01-31
+  - Tempo: ~35 min
+  - Resultado: audit_log utilitário com lazy imports + testes unitários
+  - Deliverables: src/database/audit_log.py, tests/test_audit_log.py, WorkOrder, evidence pack
+  - Evidence: [T-010 Evidence Pack](../../docs/evidence/T-010/)
+  - Handoff: [T-010.md](Handoffs/T-010.md)
 
 ---
 

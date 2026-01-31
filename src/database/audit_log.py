@@ -8,15 +8,28 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 from uuid import UUID
 
-from sqlalchemy import func, select
-
-from src.database import get_session
-from src.database.models import AuditLog
-
 logger = logging.getLogger(__name__)
+
+
+def _get_session():
+    from src.database import get_session
+
+    return get_session()
+
+
+def _get_model():
+    from src.database.models import AuditLog
+
+    return AuditLog
+
+
+def _get_sqlalchemy() -> Tuple[Any, Any]:
+    from sqlalchemy import func, select
+
+    return func, select
 
 
 def log_event(
@@ -46,8 +59,9 @@ def log_event(
     Returns:
         UUID of created audit log entry
     """
-    session = get_session()
+    session = _get_session()
     try:
+        AuditLog = _get_model()
         audit_entry = AuditLog(
             event_type=event_type,
             event_timestamp=datetime.utcnow(),
@@ -91,8 +105,10 @@ def query_audit_log(
     Returns:
         List of AuditLog objects ordered by timestamp DESC
     """
-    session = get_session()
+    session = _get_session()
     try:
+        AuditLog = _get_model()
+        func, select = _get_sqlalchemy()
         stmt = select(AuditLog).order_by(AuditLog.event_timestamp.desc()).limit(limit)
 
         if event_type:
@@ -114,12 +130,13 @@ def get_audit_stats() -> Dict[str, Any]:
     Returns:
         dict with total_events, events_by_type, latest_timestamp
     """
-    session = get_session()
+    session = _get_session()
     try:
+        AuditLog = _get_model()
+        func, select = _get_sqlalchemy()
         total = session.execute(select(func.count(AuditLog.log_id))).scalar()
-        events_by_type_query = (
-            select(AuditLog.event_type, func.count(AuditLog.log_id))
-            .group_by(AuditLog.event_type)
+        events_by_type_query = select(AuditLog.event_type, func.count(AuditLog.log_id)).group_by(
+            AuditLog.event_type
         )
         events_by_type = {row[0]: row[1] for row in session.execute(events_by_type_query)}
         latest_ts = session.execute(select(func.max(AuditLog.event_timestamp))).scalar()

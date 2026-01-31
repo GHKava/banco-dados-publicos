@@ -10,6 +10,31 @@ from typing import Any, Iterable, List
 from src.database import audit_log
 
 
+class DummyColumn:
+    def __init__(self, name: str):
+        self.name = name
+
+    def desc(self):
+        return ("desc", self.name)
+
+
+class DummyAuditLog:
+    event_timestamp = DummyColumn("event_timestamp")
+    event_type = DummyColumn("event_type")
+    source_id = DummyColumn("source_id")
+    actor = DummyColumn("actor")
+    log_id = DummyColumn("log_id")
+
+    def __init__(self, **kwargs):
+        self.event_type_value = kwargs.get("event_type")
+        self.source_id_value = kwargs.get("source_id")
+        self.actor_value = kwargs.get("actor")
+        self.action_value = kwargs.get("action")
+        self.details_value = kwargs.get("details")
+        self.result_value = kwargs.get("result")
+        self.log_id = "dummy-log-id"
+
+
 @dataclass
 class DummyExecute:
     scalar_value: Any = None
@@ -59,9 +84,40 @@ class DummySession:
         return self.execute_results.pop(0)
 
 
+def _patch_sqlalchemy(monkeypatch):
+    class DummyQuery:
+        def order_by(self, _arg):
+            return self
+
+        def limit(self, _arg):
+            return self
+
+        def where(self, _arg):
+            return self
+
+        def group_by(self, _arg):
+            return self
+
+    class DummyFunc:
+        @staticmethod
+        def count(arg):
+            return ("count", arg)
+
+        @staticmethod
+        def max(arg):
+            return ("max", arg)
+
+    def dummy_select(*args, **kwargs):
+        return DummyQuery()
+
+    monkeypatch.setattr(audit_log, "_get_sqlalchemy", lambda: (DummyFunc, dummy_select))
+
+
 def test_log_event_creates_entry(monkeypatch):
     session = DummySession()
-    monkeypatch.setattr(audit_log, "get_session", lambda: session)
+    monkeypatch.setattr(audit_log, "_get_session", lambda: session)
+    monkeypatch.setattr(audit_log, "_get_model", lambda: DummyAuditLog)
+    _patch_sqlalchemy(monkeypatch)
 
     log_id = audit_log.log_event(event_type="policy_check", source_id="SRC-001")
 
@@ -73,9 +129,11 @@ def test_log_event_creates_entry(monkeypatch):
 
 
 def test_query_audit_log_returns_list(monkeypatch):
-    expected = [audit_log.AuditLog(event_type="policy_check")]
+    expected = [DummyAuditLog(event_type="policy_check")]
     session = DummySession(execute_results=[DummyExecute(scalars_list=expected)])
-    monkeypatch.setattr(audit_log, "get_session", lambda: session)
+    monkeypatch.setattr(audit_log, "_get_session", lambda: session)
+    monkeypatch.setattr(audit_log, "_get_model", lambda: DummyAuditLog)
+    _patch_sqlalchemy(monkeypatch)
 
     result = audit_log.query_audit_log(event_type="policy_check", limit=1)
 
@@ -91,7 +149,9 @@ def test_get_audit_stats(monkeypatch):
             DummyExecute(scalar_value="2026-01-31T02:30:00Z"),
         ]
     )
-    monkeypatch.setattr(audit_log, "get_session", lambda: session)
+    monkeypatch.setattr(audit_log, "_get_session", lambda: session)
+    monkeypatch.setattr(audit_log, "_get_model", lambda: DummyAuditLog)
+    _patch_sqlalchemy(monkeypatch)
 
     stats = audit_log.get_audit_stats()
 
