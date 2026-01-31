@@ -2,7 +2,7 @@
 
 **Data criação:** 2026-01-30
 **Atualização:** 2026-01-31
-**Estado:** FASE 0 COMPLETE (T-001 a T-008 DONE) - T-ONB-SRC-005 DONE
+**Estado:** FASE 0 COMPLETE (T-001 a T-008 DONE) - T-009 DONE
 
 ---
 
@@ -23,6 +23,7 @@
 | 6     | T-006         | Redis + RQ setup                  | Redis, RQ job queue, workers                           | TL       | T-005               | DONE   | 0           | 2026-01-30 | 2026-01-30 | [T-006](WorkOrders/T-006.md)                           | docs/evidence/T-006/         | [T-006](Handoffs/T-006.md)                         |
 | 7     | T-007         | Bot: source registry              | CLI: CRUD de fontes + rules                            | DE       | T-005, T-004        | DONE   | 0           | 2026-01-30 | 2026-01-30 | [T-007](WorkOrders/T-007.md)                           | docs/evidence/T-007/         | [T-007](Handoffs/T-007.md)                         |
 | 8     | T-008         | Bot: policy gate                  | Lógica: ALLOW/BLOCK/METADATA_ONLY                      | DE       | T-007, SEC approved | DONE   | 0           | 2026-01-30 | 2026-01-30 | [T-008](WorkOrders/T-008-WorkOrder.md)                 | docs/evidence/T-008/         | [T-008](Handoffs/T-008.md)                         |
+| 9     | T-009         | Bot: robots checker               | Fetch + parse robots.txt por fonte                     | DE+SEC   | T-008               | DONE   | 0           | 2026-01-31 | 2026-01-31 | [T-009](WorkOrders/T-009-WorkOrder.md)                 | docs/evidence/T-009/         | [T-009](Handoffs/T-009.md)                         |
 | ...   | ...           | ...                               | ...                                                    | ...      | ...                 | ...    | ...         | ...        | ...        | ...                                                    | ...                          | ...                                                |
 
 ---
@@ -42,8 +43,8 @@
 
 - [ ] T-007 — Bot: source registry (BLOCKED → T-005, T-004)
 - [x] T-008 — Bot: policy gate (DONE)
-- [ ] T-009 — Bot: robots checker (BLOCKED → T-008)
-- [ ] T-010 — Audit logging (BLOCKED → T-008)
+- [x] T-009 — Bot: robots checker (DONE)
+- [ ] T-010 — Audit logging (BLOCKED → T-009)
 
 ### **FASE B — Discovery & Frontier** (T-011 a T-015)
 

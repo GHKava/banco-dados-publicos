@@ -1,0 +1,22 @@
+{
+  "task": "T-009",
+  "date": "2026-01-31",
+  "status": "DONE",
+  "created": [
+    "src/bots/robots_checker.py",
+    "tests/test_robots_checker.py",
+    "_OBSIDIAN/Organização do Projeto/WorkOrders/T-009-WorkOrder.md",
+    "_OBSIDIAN/Organização do Projeto/Handoffs/T-009.md",
+    "docs/evidence/T-009/commands.log",
+    "docs/evidence/T-009/tests.log",
+    "docs/evidence/T-009/notes.md",
+    "docs/evidence/T-009/files_changed.json"
+  ],
+  "modified": [
+    "src/bots/__init__.py",
+    "_OBSIDIAN/Organização do Projeto/Heartbeat do Orquestrador.md",
+    "_OBSIDIAN/Organização do Projeto/Roadmap detalhado do Projeto.md",
+    "_OBSIDIAN/Organização do Projeto/Backlog.md"
+  ],
+  "deleted": []
+}

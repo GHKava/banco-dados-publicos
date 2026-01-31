@@ -1,7 +1,7 @@
 # Backlog — Banco de Dados Interrelacional
 
 **Data criação:** 2026-01-30
-**Última atualização:** 2026-01-31 01:45 UTC
+**Última atualização:** 2026-01-31 02:10 UTC
 **SLA padrão de dúvidas:** 24h ou próxima rodada
 
 ---
@@ -136,6 +136,14 @@
   - Evidence: [T-ONB-SRC-005 Evidence Pack](../../docs/evidence/T-ONB-SRC-005/)
   - Handoff: [T-ONB-SRC-005.md](Handoffs/T-ONB-SRC-005.md)
   - DUV relacionada: DUV-008
+
+- **T-009:** Bot: robots checker
+  - Data: 2026-01-31
+  - Tempo: ~25 min
+  - Resultado: RobotsChecker com status allowed/disallowed/unknown + testes
+  - Deliverables: src/bots/robots_checker.py, tests/test_robots_checker.py, WorkOrder, evidence pack
+  - Evidence: [T-009 Evidence Pack](../../docs/evidence/T-009/)
+  - Handoff: [T-009.md](Handoffs/T-009.md)
 
 ---
 
