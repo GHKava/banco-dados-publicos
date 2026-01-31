@@ -51,11 +51,11 @@ import os
 import re
 import sys
 import time
+import urllib.request
+import urllib.robotparser
 from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urlparse
-import urllib.robotparser
-import urllib.request
 
 try:
     import yaml  # type: ignore
@@ -83,20 +83,20 @@ class Source:
 
 def load_sources(yaml_path: Path) -> list[Source]:
     """Load sources from YAML configuration, returning a list of Source objects."""
-    with yaml_path.open('r', encoding='utf-8') as f:
+    with yaml_path.open("r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
     sources: list[Source] = []
     for item in data:
-        rate = item.get('crawl_policy', {}).get('rate_limit_rps', 1.0)
-        entrypoints = item.get('entrypoints', []) or []
+        rate = item.get("crawl_policy", {}).get("rate_limit_rps", 1.0)
+        entrypoints = item.get("entrypoints", []) or []
         # Ensure we have at least one entrypoint
         if not entrypoints:
             continue
         sources.append(
             Source(
-                source_id=item['source_id'],
-                name=item['name'],
-                base_domains=item.get('base_domains', []),
+                source_id=item["source_id"],
+                name=item["name"],
+                base_domains=item.get("base_domains", []),
                 entrypoints=entrypoints,
                 rate_limit_rps=rate if rate else 1.0,
             )
@@ -125,12 +125,12 @@ def fetch_url(url: str) -> tuple[bytes, str]:
     if requests:
         resp = requests.get(url, headers=headers, timeout=30)
         resp.raise_for_status()
-        content_type = resp.headers.get('Content-Type', '')
+        content_type = resp.headers.get("Content-Type", "")
         return resp.content, content_type
     else:
         req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=30) as resp:
-            content_type = resp.headers.get('Content-Type', '')
+            content_type = resp.headers.get("Content-Type", "")
             data = resp.read()
         return data, content_type
 
@@ -139,29 +139,29 @@ def save_content(src: Source, url: str, content: bytes, content_type: str, out_d
     """Save content to a file derived from the URL path inside out_dir."""
     parsed = urlparse(url)
     # Use path or default to index
-    path = parsed.path.strip('/') or 'index'
+    path = parsed.path.strip("/") or "index"
     # Replace slashes with underscores
-    filename = re.sub(r'[/\\]+', '_', path)
+    filename = re.sub(r"[/\\]+", "_", path)
     # Append extension based on content_type
-    if 'json' in content_type.lower():
-        filename += '.json'
+    if "json" in content_type.lower():
+        filename += ".json"
         try:
-            obj = json.loads(content.decode('utf-8'))
-            with (out_dir / filename).open('w', encoding='utf-8') as f:
+            obj = json.loads(content.decode("utf-8"))
+            with (out_dir / filename).open("w", encoding="utf-8") as f:
                 json.dump(obj, f, ensure_ascii=False, indent=2)
             return
         except Exception:
             pass  # fall back to binary write
-    elif 'html' in content_type.lower():
-        filename += '.html'
-    elif 'pdf' in content_type.lower():
-        filename += '.pdf'
+    elif "html" in content_type.lower():
+        filename += ".html"
+    elif "pdf" in content_type.lower():
+        filename += ".pdf"
     # Save binary data
-    with (out_dir / filename).open('wb') as f:
+    with (out_dir / filename).open("wb") as f:
         f.write(content)
 
 
-def scrape_sources(config_path: str = 'configs/sources.yaml', output_root: str = 'output') -> None:
+def scrape_sources(config_path: str = "configs/sources.yaml", output_root: str = "output") -> None:
     """Main entry point: load sources and fetch each entrypoint."""
     sources = load_sources(Path(config_path))
     out_base = Path(output_root)
@@ -185,10 +185,11 @@ def scrape_sources(config_path: str = 'configs/sources.yaml', output_root: str =
             time.sleep(delay)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description='Scrape entrypoints from public data sources.')
-    parser.add_argument('-c', '--config', default='configs/sources.yaml', help='Path to the YAML configuration file.')
-    parser.add_argument('-o', '--output', default='output', help='Directory to save downloaded content.')
+
+    parser = argparse.ArgumentParser(description="Scrape entrypoints from public data sources.")
+    parser.add_argument("-c", "--config", default="configs/sources.yaml", help="Path to the YAML configuration file.")
+    parser.add_argument("-o", "--output", default="output", help="Directory to save downloaded content.")
     args = parser.parse_args()
     scrape_sources(args.config, args.output)

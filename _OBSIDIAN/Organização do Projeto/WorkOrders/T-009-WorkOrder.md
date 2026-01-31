@@ -53,11 +53,11 @@ pytest -q tests/test_robots_checker.py
 
 ## 6. Riscos
 
-| Risco                         | Severidade | Mitigação                                   |
-| ----------------------------- | ---------- | ------------------------------------------- |
-| robots.txt inválido (HTML)    | Média      | Reportar status unknown                     |
-| Bloqueio indevido por falhas  | Alta       | Não inferir bloqueio quando fetch falhar    |
-| Divergência de user-agent     | Média      | Parametrizar user-agent no checker          |
+| Risco                        | Severidade | Mitigação                                |
+| ---------------------------- | ---------- | ---------------------------------------- |
+| robots.txt inválido (HTML)   | Média      | Reportar status unknown                  |
+| Bloqueio indevido por falhas | Alta       | Não inferir bloqueio quando fetch falhar |
+| Divergência de user-agent    | Média      | Parametrizar user-agent no checker       |
 
 ---
 
