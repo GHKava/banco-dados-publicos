@@ -1,0 +1,21 @@
+{
+  "task": "T-013",
+  "date": "2026-01-31",
+  "status": "DONE",
+  "created": [
+    "docs/evidence/T-013/commands.log",
+    "docs/evidence/T-013/tests.log",
+    "docs/evidence/T-013/notes.md",
+    "docs/evidence/T-013/files_changed.json"
+  ],
+  "modified": [
+    "src/bots/discovery_rss.py",
+    "tests/test_discovery_rss.py",
+    "_OBSIDIAN/Organização do Projeto/WorkOrders/T-013-WorkOrder.md",
+    "_OBSIDIAN/Organização do Projeto/Heartbeat do Orquestrador.md",
+    "_OBSIDIAN/Organização do Projeto/Roadmap detalhado do Projeto.md",
+    "_OBSIDIAN/Organização do Projeto/Backlog.md",
+    "_OBSIDIAN/Organização do Projeto/Handoffs/T-013.md"
+  ],
+  "deleted": []
+}

@@ -1,8 +1,185 @@
 # Heartbeat do Orquestrador — Banco de Dados Interrelacional
 
-**Última atualização:** 2026-01-30 23:15 UTC
-**Rodada:** #6 (T-006 + T-007 DONE - Budget exhausted)
-**Status:** ✅ T-006 + T-007 DONE → Budget limits reached (~100 min, 4/5 tasks)
+**Última atualização:** 2026-01-31 02:45 UTC
+**Rodada:** #10 (em andamento - loop contínuo ativo)
+**Status:** ✅ T-010 DONE
+**Budget Rodada #10:** 3/5 tarefas, ~75/90 min
+
+---
+
+## Rodada #10 — Source Onboarding (2026-01-31 01:10 - ongoing)
+
+### T-ONB-SRC-005: dados.gov.br Onboarding (DONE)
+
+- **Status:** ✅ DONE (METADATA_ONLY)
+- **Início:** 2026-01-31 01:10 UTC
+- **Fim:** 2026-01-31 01:45 UTC
+- **Persona:** PM + LEGAL
+- **Ações realizadas:**
+  1. WorkOrder criado ([T-ONB-SRC-005-WorkOrder.md](WorkOrders/T-ONB-SRC-005-WorkOrder.md))
+  2. Fetch robots.txt → 200 OK, conteúdo HTML (não robots)
+  3. Fetch homepage e API CKAN (status_show) → 200 OK
+  4. ToS/licença exigem login gov.br (não verificáveis nesta rodada)
+  5. Evidence pack completo (robots.txt, logs, license_analysis, notes, sample_urls)
+  6. Policy gate final: METADATA_ONLY (fail-closed)
+  7. DUV-008 criada (ToS/licença exigem login; robots inválido)
+  8. Fontes_Licencas.md atualizado
+  9. Handoff criado ([T-ONB-SRC-005.md](Handoffs/T-ONB-SRC-005.md))
+- **Próximo passo:** T-009 (Bot - robots checker)
+
+### T-009: Bot — robots checker (DONE)
+
+- **Status:** ✅ DONE
+- **Início:** 2026-01-31 01:45 UTC
+- **Fim:** 2026-01-31 02:10 UTC
+- **Persona:** DE + SEC
+- **Ações realizadas:**
+  1. WorkOrder criado ([T-009-WorkOrder.md](WorkOrders/T-009-WorkOrder.md))
+  2. Implementado `RobotsChecker` com status allowed/disallowed/unknown
+  3. Tratamento conservador para HTML inválido e HTTP != 200
+  4. Testes unitários criados e executados (pytest)
+  5. Evidence pack criado (commands.log, tests.log, notes, files_changed.json)
+  6. Handoff criado ([T-009.md](Handoffs/T-009.md))
+- **Próximo passo:** T-010 (Audit logging)
+
+### T-010: Audit logging (DONE)
+
+- **Status:** ✅ DONE
+- **Início:** 2026-01-31 02:10 UTC
+- **Fim:** 2026-01-31 02:45 UTC
+- **Persona:** DE + SEC
+- **Ações realizadas:**
+  1. Correção de `audit_log.py` com imports preguiçosos
+  2. Atualização de `src/database/__init__.py` para lazy imports
+  3. Integração opcional no `PolicyGate` (audit_logger)
+  4. Testes unitários com stubs de sessão (pytest)
+  5. Evidence pack criado (commands.log, tests.log, notes, files_changed.json)
+  6. Handoff criado ([T-010.md](Handoffs/T-010.md))
+- **Próximo passo:** T-011 (Bot — URL frontier)
+
+---
+
+## Rodada #9 — Source Onboarding (2026-01-30 23:00 - ongoing)
+
+### T-ONB-SRC-001: DOU Onboarding (DONE)
+
+- **Status:** ✅ DONE (resultado: BLOCK provisório)
+- **Tempo:** ~25 min (23:00 - 23:25 UTC)
+- **Persona:** PM + LEGAL
+- **Resultado:** SRC-001 marcado como BLOCK (proteção Azion WAF)
+- **Ações realizadas:**
+  1. WorkOrder criado ([T-ONB-SRC-001-WorkOrder.md](WorkOrders/T-ONB-SRC-001-WorkOrder.md))
+  2. Tentativa fetch robots.txt → 403 Forbidden (Azion WAF)
+  3. Análise de licença (LAI identificada)
+  4. Policy gate decision: BLOCK (fail-closed)
+  5. Evidence pack criado (4 arquivos)
+  6. DUV-004 criada: "Como obter dados do DOU sem violar proteção anti-bot?"
+  7. sources.yaml atualizado (default_storage_mode: BLOCK)
+  8. Fontes_Licencas.md atualizado
+  9. Handoff criado ([T-ONB-SRC-001-Handoff.md](Handoffs/T-ONB-SRC-001-Handoff.md))
+  10. Commit + push (646b20e)
+- **Decisões críticas:**
+  - SRC-001 BLOCK (não METADATA_ONLY) devido a proteção anti-bot indicar scraping não permitido
+  - DUV-004 criada (SLA: 2026-02-01)
+  - Próximos passos: verificar API oficial em dados.gov.br, feeds RSS, contato formal
+- **Evidence:** [docs/evidence/T-ONB-SRC-001/](../../docs/evidence/T-ONB-SRC-001/)
+- **Commit:** 646b20e
+
+### T-ONB-SRC-002: Planalto Onboarding (DONE)
+
+- **Status:** ✅ DONE (METADATA_ONLY)
+- **Início:** 2026-01-30 23:35 UTC
+- **Fim:** 2026-01-31 00:05 UTC
+- **Persona:** PM + LEGAL
+- **Ações realizadas:**
+  1. WorkOrder criado ([T-ONB-SRC-002-WorkOrder.md](WorkOrders/T-ONB-SRC-002-WorkOrder.md))
+  2. Tentativas de fetch (robots/homepage/ccivil_03) falharam (erro de conexão)
+  3. Evidence pack completo (robots.txt com erro, outputs.log, fetch_test.log, notes)
+  4. Policy gate final: METADATA_ONLY (fail-closed)
+  5. DUV-005 criada (conectividade/robots/ToS não verificáveis)
+- **Pendências:** revalidar robots/ToS/licença quando houver conectividade estável
+- **Próximo passo:** T-ONB-SRC-003 (IBGE)
+
+### T-ONB-SRC-003: IBGE Onboarding (DONE)
+
+- **Status:** ✅ DONE (METADATA_ONLY)
+- **Início:** 2026-01-31 00:15 UTC
+- **Fim:** 2026-01-31 00:30 UTC
+- **Persona:** PM + LEGAL
+- **Ações realizadas:**
+  1. WorkOrder criado ([T-ONB-SRC-003-WorkOrder.md](WorkOrders/T-ONB-SRC-003-WorkOrder.md))
+  2. Fetch robots.txt → 503 (indisponível)
+  3. Fetch API docs → 200 OK; API root → 503
+  4. Policy gate final: METADATA_ONLY (fail-closed)
+  5. DUV-006 criada (robots/ToS/licença não verificáveis)
+- **Evidence:** [docs/evidence/T-ONB-SRC-003/](../../docs/evidence/T-ONB-SRC-003/)
+- **Próximo passo:** T-ONB-SRC-004 (BCB)
+
+### T-ONB-SRC-004: BCB Onboarding (DONE)
+
+- **Status:** ✅ DONE (METADATA_ONLY)
+- **Início:** 2026-01-31 00:40 UTC
+- **Fim:** 2026-01-31 00:55 UTC
+- **Persona:** PM + LEGAL
+- **Ações realizadas:**
+  1. WorkOrder criado ([T-ONB-SRC-004-WorkOrder.md](WorkOrders/T-ONB-SRC-004-WorkOrder.md))
+  2. robots.txt dadosabertos → 200 OK (Disallow /api/, Crawl-Delay 10)
+  3. robots.txt bcb.gov.br → 200 OK
+  4. Política de privacidade/termos com reprodução permitida (citação)
+  5. Policy gate final: METADATA_ONLY (licença por dataset não explícita)
+  6. DUV-007 criada (licença aberta não especificada)
+- **Evidence:** [docs/evidence/T-ONB-SRC-004/](../../docs/evidence/T-ONB-SRC-004/)
+- **Próximo passo:** T-ONB-SRC-005 (dados.gov.br)
+
+---
+
+## Rodada #6 — T-006 + T-007: RQ + Source Registry Bot (2026-01-30)
+
+### Tarefas executadas nesta rodada
+
+- **T-006:** Redis + RQ setup
+  - Status: ✅ DONE
+  - Tempo: ~15 min (infrastructure only)
+  - Persona: TL (Tech Lead)
+  - Ações:
+    - docker-compose.yml validado (postgres, redis, pgadmin services)
+    - src/jobs/**init**.py: JobQueue wrapper class (enqueue, status, result, test_connection)
+    - src/jobs/tasks.py: Example jobs (example_job, fetch_source_task, process_document_task)
+    - src/jobs/worker.py: RQ worker launcher with CLI (--burst, --queue flags)
+    - tests/test_jobs.py: 6 unit tests (100% pass rate)
+    - pytest: 6/6 PASSED ✅, black PASSED ✅
+    - Commit: "T-006: Redis + RQ setup (jobs module, worker, example tasks)"
+  - WorkOrder: [T-006-WorkOrder.md](WorkOrders/T-006-WorkOrder.md)
+  - Evidence: [T-006 Evidence Pack](../../docs/evidence/T-006/)
+
+- **T-007:** Bot - Source Registry
+  - Status: ✅ DONE
+  - Tempo: ~15-20 min (validators + registry structure)
+  - Persona: DE (Data Engineer)
+  - Ações:
+    - src/bots/**init**.py: Module initialization (validators import only)
+    - src/bots/validators.py: Policy enforcement (fail-closed, allowlist, license, robots) - 75 LOC
+    - src/bots/registry.py: SourceRegistryBot class (CRUD: list, get, add, update, remove, validate) - 129 LOC
+    - tests/test_bot_registry.py: 9 unit tests for validators (94% coverage, 100% pass rate)
+    - Policy rules: Allowlist {SRC-001..SRC-005}, License required, Robots respected
+    - pytest: 9/9 PASSED ✅, black PASSED ✅
+    - Note: ORM integration tests deferred (Python 3.14/SQLAlchemy 2.0 compatibility issue)
+    - Commit: "T-007: Bot - Source Registry (validators + registry CRUD, 9 tests passing)"
+  - WorkOrder: [T-007-WorkOrder.md](WorkOrders/T-007-WorkOrder.md)
+  - Evidence: [T-007 Evidence Pack](../../docs/evidence/T-007/)
+
+### Status do Orquestrador
+
+- **Tarefas Concluídas:** 4 of 5 (80%)
+  - ✅ T-003: CI/tests/lint/typecheck
+  - ✅ T-005: Postgres schema v0
+  - ✅ T-006: Redis + RQ setup
+  - ✅ T-007: Bot - Source Registry
+- **Tarefas Bloqueadas (Agora READY):**
+  - T-008: Bot - policy gate (READY - depends on T-007 ✅)
+  - T-009+: Additional bots (READY after T-008)
+- **Orçamento:** ~100 min consumidos de 90 min disponível → **BUDGET EXHAUSTED**
+- **Próxima Ação:** HAND OFF to next session (T-008 and source onboarding tasks)
 
 ---
 

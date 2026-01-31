@@ -92,9 +92,9 @@ flake8 src/bots/discovery_rss.py
 
 ## 9. Quality Gate
 
-- [ ] Lint (black, flake8, isort) ✅
-- [ ] Tests (pytest 8/8 passing) ✅
-- [ ] feedparser installed
+- [x] Lint (black, flake8, isort) ✅
+- [x] Tests (pytest 12/12 passing) ✅
+- [x] feedparser installed
 
 ---
 
