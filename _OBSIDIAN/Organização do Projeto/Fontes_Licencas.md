@@ -1,7 +1,7 @@
 # Fontes & Licenças — Registro Auditável
 
 **Data criação:** 2026-01-30
-**Última atualização:** 2026-01-30
+**Última atualização:** 2026-01-31
 **Mantido por:** PM + LEGAL + DPO
 
 ---
@@ -147,6 +147,6 @@ Este documento registra TODAS as fontes aprovadas/rejeitadas, incluindo complian
 ---
 
 **Mantido por:** PM + LEGAL + DPO
-**Última atualização:** 2026-01-30
+**Última atualização:** 2026-01-31
 
 ---

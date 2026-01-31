@@ -1,7 +1,7 @@
 # Backlog — Banco de Dados Interrelacional
 
 **Data criação:** 2026-01-30
-**Última atualização:** 2026-01-30 22:45 UTC
+**Última atualização:** 2026-01-31 01:45 UTC
 **SLA padrão de dúvidas:** 24h ou próxima rodada
 
 ---
@@ -85,6 +85,17 @@
   - Evidence: [T-ONB-SRC-001 Evidence Pack](../../docs/evidence/T-ONB-SRC-001/)
   - Handoff: [T-ONB-SRC-001-Handoff.md](Handoffs/T-ONB-SRC-001-Handoff.md)
   - DUV relacionada: DUV-004
+
+- **T-ONB-SRC-002:** Onboarding SRC-002 (Planalto)
+  - Data: 2026-01-30
+  - Tempo: ~23 min
+  - Resultado: ALLOW_FULLTEXT (legislação = domínio público, Lei 9.610/1998, Art. 8º, IV). Evidence pack completo.
+  - Deliverables: WorkOrder, license_analysis.md, fetch_test.log, sample_urls.txt, notes.md
+  - Decision: default_storage_mode = ALLOW_FULLTEXT (upgrade de METADATA_ONLY)
+  - Fundamentação: Lei 9.610/1998, Art. 8º, IV + LAI (Lei 12.527/2011)
+  - Evidence: [T-ONB-SRC-002 Evidence Pack](../../docs/evidence/T-ONB-SRC-002/)
+  - Handoff: [T-ONB-SRC-002-Handoff.md](Handoffs/T-ONB-SRC-002-Handoff.md)
+  - Commit: 3484970
 
 - **T-ONB-SRC-002:** Onboarding SRC-002 (Planalto)
   - Data: 2026-01-30

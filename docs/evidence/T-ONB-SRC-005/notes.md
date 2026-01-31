@@ -1,7 +1,7 @@
 # Notes — T-ONB-SRC-005 (dados.gov.br Onboarding)
 
-**Data:** 2026-01-31  
-**Executor:** ORQ (Agente Orquestrador)  
+**Data:** 2026-01-31
+**Executor:** ORQ (Agente Orquestrador)
 **Status:** ✅ DONE (fail-closed)
 
 ---
@@ -44,6 +44,6 @@ Onboarding de SRC-005 concluído. Robots.txt retornou HTML do portal (não regra
 
 1. Verificar robots.txt real e ToS/licença com autenticação
 2. Identificar licenças por dataset antes de qualquer upgrade
-3. Abrir DUV para pendências de licenciamento
+3. DUV-008 aberta para pendências de licenciamento
 
 ---

@@ -1,14 +1,14 @@
 # T-ONB-SRC-005 — Análise de Compliance dados.gov.br
 
-**Data:** 2026-01-31  
-**Fonte:** SRC-005 (dados.gov.br)  
+**Data:** 2026-01-31
+**Fonte:** SRC-005 (dados.gov.br)
 **Status:** ANÁLISE CONCLUÍDA (decisão METADATA_ONLY)
 
 ---
 
 ## 1. Robots.txt
 
-**URL testada:** https://dados.gov.br/robots.txt  
+**URL testada:** https://dados.gov.br/robots.txt
 **Resultado:** 200 OK, mas conteúdo retornou HTML do portal (não regras de robots)
 
 **Conclusão:** robots.txt **não verificado** (conteúdo inválido para robots). Tratar como não disponível.
